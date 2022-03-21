@@ -1,9 +1,9 @@
 package ntnu.idatt2001;
 
 public class User {
-    private String email;
-    private String password;
-    private String name;
+    protected String email;
+    protected String password;
+    protected String name;
 
     public User(String email, String password, String name) {
         this.email = email;
