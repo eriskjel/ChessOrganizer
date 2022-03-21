@@ -18,8 +18,13 @@ public class PlayerRegistry {
     }
     public boolean addPlayer(Player player){
         try{
-            players.add(player);
-            return true;
+            if(players.contains(player)){
+                return false;
+            }
+            else{
+                players.add(player);
+                return true;
+            }
         }
         catch(IllegalArgumentException e){
             e.printStackTrace();
