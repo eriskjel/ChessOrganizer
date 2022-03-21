@@ -1,6 +1,7 @@
 module ChessTournament {
     requires javafx.controls;
     requires javafx.fxml;
+    requires charm.glisten;
     //requires de.jensd.fx.fontawesomefx.fontawesome;
 
 

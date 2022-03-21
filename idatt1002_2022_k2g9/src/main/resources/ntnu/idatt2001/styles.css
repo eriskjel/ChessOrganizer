@@ -8,6 +8,20 @@
 
 }
 
+.header{
+    -fx-text-fill: black;
+    -fx-font-size: 35px;
+    -fx-font-weight: bold;
+}
+
+.button:hover{
+    -fx-cursor: hand;
+}
+
+.menuButton:hover{
+    -fx-cursor: hand;
+}
+
 .button-menu{
     -fx-alignment: center-left;
     -fx-background-color: #333333;
@@ -19,4 +33,8 @@
     -fx-background-color: white;
     -fx-text-fill: black;
     -fx-font-weight: bold;
+}
+
+.p{
+    -fx-font-size: 15px;
 }
