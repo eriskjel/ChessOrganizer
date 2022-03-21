@@ -81,16 +81,18 @@ public class HelloController {
 
     @FXML
     public void setFormatKnockout(ActionEvent actionEvent) {
+        this.inpTournamentFormat.setText("Knockout");
         this.tournamentFormat = "Knockout";
     }
 
     @FXML
     public void formatSwiss(ActionEvent actionEvent) {
+        this.inpTournamentFormat.setText("Swiss");
         this.tournamentFormat = "Swiss";
     }
 
         /*
-    public void SwitchToScene2(ActionEvent event) throws IOException {
+        public void SwitchToScene2(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view2.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
