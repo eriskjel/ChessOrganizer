@@ -1,5 +1,8 @@
 package ntnu.idatt2001;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Objects;
 
 public class User {
@@ -57,5 +60,26 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(email, password);
+    }
+    public byte[] generateSalt() {
+        byte[] byteTable = SecureRandom.getSeed(16);
+        return byteTable;
+    }
+    public String hashPassword(String password, byte[] salt){
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            digest.update(salt);
+            byte[] bytes = digest.digest(password.getBytes());
+            StringBuilder stringBuilder = new StringBuilder();
+            for(int i = 0; i < bytes.length; i++){
+                stringBuilder.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            String hashedPassword = stringBuilder.toString();
+            return hashedPassword;
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
