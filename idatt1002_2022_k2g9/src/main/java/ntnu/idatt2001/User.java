@@ -1,5 +1,7 @@
 package ntnu.idatt2001;
 
+import java.util.Objects;
+
 public class User {
     protected String email;
     protected String password;
@@ -42,5 +44,18 @@ public class User {
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return email.equals(user.email) && password.equals(user.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(email, password);
     }
 }

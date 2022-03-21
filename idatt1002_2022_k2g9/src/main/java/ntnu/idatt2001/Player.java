@@ -9,10 +9,22 @@ public class Player extends User {
 
     public Player(String email, String password, String name, int fideRating, int age, String rank, int matchesWon, int matchesLost) {
         super(email, password, name);
+        if(fideRating < 0){
+            throw new IllegalArgumentException("fideRating can not be below zero.");
+        }
         this.fideRating = fideRating;
+        if(age < 0){
+            throw new IllegalArgumentException("Age can not be below zero.");
+        }
         this.age = age;
         this.rank = rank;
+        if(matchesWon < 0){
+            throw new IllegalArgumentException("matchesWon can not be below zero.");
+        }
         this.matchesWon = matchesWon;
+        if(matchesLost < 0){
+            throw new IllegalArgumentException("matchesLost can not be below zero.");
+        }
         this.matchesLost = matchesLost;
     }
 
