@@ -60,15 +60,6 @@ public class HelloController {
     }
 
 
-
-    public void SwitchToScene1(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setScene(scene);
-        stage.show();
-    }
-
     @FXML
     public void addTournament(ActionEvent actionEvent) {
         String tournamentName = inpTournamentName.getText();
