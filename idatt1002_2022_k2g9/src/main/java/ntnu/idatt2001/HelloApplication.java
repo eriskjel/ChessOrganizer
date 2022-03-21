@@ -1,4 +1,4 @@
-package com.example.chesstournament;
+package ntnu.idatt2001;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

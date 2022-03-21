@@ -1,4 +1,4 @@
-package com.example.chesstournament;
+package ntnu.idatt2001;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

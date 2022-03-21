@@ -1,8 +1,8 @@
-module com.example.chesstournament {
+module ChessTournament {
     requires javafx.controls;
     requires javafx.fxml;
 
 
-    opens com.example.chesstournament to javafx.fxml;
-    exports com.example.chesstournament;
+    opens ntnu.idatt2001 to javafx.fxml;
+    exports ntnu.idatt2001;
 }
