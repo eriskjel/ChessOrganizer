@@ -1,15 +1,16 @@
 package ntnu.idatt2001;
 
-import com.gluonhq.charm.glisten.control.TextField;
+//import com.gluonhq.charm.glisten.control.*;
+//import com.gluonhq.charm.glisten.control.TextField;
+//import com.gluonhq.charm.glisten.control.TextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
