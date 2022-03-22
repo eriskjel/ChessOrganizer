@@ -3,6 +3,9 @@ package ntnu.idatt2001.k2g9;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * Class representing a Chess Tournament.
+ */
 public class Tournament {
     private PlayerRegistry players;
     private String format;
@@ -10,6 +13,12 @@ public class Tournament {
     private ArrayList<Match> matches;
     private User organizer;
 
+    /**
+     * Constructor that creates a Tournament object.
+     * @param format
+     * @param date
+     * @param organizer
+     */
     public Tournament(String format, LocalDate date, User organizer) {
         this.format = format;
         this.date = date;
@@ -47,6 +56,7 @@ public class Tournament {
     public void setOrganizer(User organizer) {
         this.organizer = organizer;
     }
+
     public boolean addPlayer(Player player){
         if(players.getPlayers().contains(player)){
             return false;
