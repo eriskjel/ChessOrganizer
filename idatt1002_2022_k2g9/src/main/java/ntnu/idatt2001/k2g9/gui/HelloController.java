@@ -23,6 +23,8 @@ public class HelloController {
     public DatePicker inpDate;
     public MenuButton inpTournamentFormat;
     public MenuItem formatKnockout;
+    public TextField inpFullName;
+    public TextField inpAge;
     private Stage stage;
 
 
@@ -84,6 +86,10 @@ public class HelloController {
     public void formatSwiss(ActionEvent actionEvent) {
         this.inpTournamentFormat.setText("Swiss");
         this.tournamentFormat = "Swiss";
+    }
+
+    public void addCompetitor(ActionEvent actionEvent) {
+        //TODO: add code
     }
 
         /*
