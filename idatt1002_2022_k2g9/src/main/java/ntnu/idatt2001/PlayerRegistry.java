@@ -48,4 +48,13 @@ public class PlayerRegistry {
                 "players=" + players.toString() +
                 '}';
     }
+
+    public int getSize(){
+        return players.size();
+    }
+    public void removePlayer(Player player){
+        if(this.players.contains(player)){
+            this.players.remove(player);
+        }
+    }
 }
