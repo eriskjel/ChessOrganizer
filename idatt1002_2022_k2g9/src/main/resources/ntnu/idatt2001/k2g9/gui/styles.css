@@ -41,8 +41,9 @@
 }
 
 .button-logout{
-    -fx-background-color: white;
+    -fx-text-fill: #2B78E4;
     -fx-font-weight: bold;
+    -fx-background-color: white;
 }
 
 .p{
