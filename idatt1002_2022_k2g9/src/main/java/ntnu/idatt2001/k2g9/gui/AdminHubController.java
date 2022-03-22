@@ -41,9 +41,9 @@ public class AdminHubController {
 
 
     @FXML
-    public void goToAddTournament(ActionEvent event) throws IOException {
+    public void goToAddTournament(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("admin-add-tournament.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
 
         //this.addTournamentBtnTournamentHub.setStyle("-fx-background-color: #2B78E4 !important;");
@@ -54,9 +54,9 @@ public class AdminHubController {
     }
 
     @FXML
-    public void goToAdminTournamentHub(ActionEvent event) throws IOException {
+    public void goToAdminTournamentHub(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("admin-hub.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
 
         stage.setTitle("Tournament hub");
@@ -105,6 +105,20 @@ public class AdminHubController {
 
     public void adminLogOut(ActionEvent actionEvent) {
         //todo
+    }
+
+    public void gotoAdminManageTournament(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("admin-manage-tournaments.fxml"));
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
+
+        stage.setTitle("Tournament hub");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void newTournament(ActionEvent actionEvent) {
+        //add code
     }
 
         /*
