@@ -1,9 +1,8 @@
-package ntnu.idatt2001;
+package ntnu.idatt2001.k2g9.gui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;

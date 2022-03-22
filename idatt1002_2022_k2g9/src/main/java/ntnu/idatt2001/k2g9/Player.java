@@ -1,4 +1,4 @@
-package ntnu.idatt2001;
+package ntnu.idatt2001.k2g9;
 
 public class Player extends User {
     private int fideRating;

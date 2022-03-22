@@ -1,4 +1,4 @@
-package ntnu.idatt2001;
+package ntnu.idatt2001.k2g9.gui;
 
 //import com.gluonhq.charm.glisten.control.*;
 //import com.gluonhq.charm.glisten.control.TextField;
@@ -15,7 +15,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Date;
 
 public class HelloController {
     @FXML
@@ -25,15 +24,10 @@ public class HelloController {
     public MenuButton inpTournamentFormat;
     public MenuItem formatKnockout;
     private Stage stage;
-    private Scene scene;
-    private Label welcomeText;
+
 
     private String tournamentFormat;
 
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
 
     @FXML
     public void goToAddTournament(ActionEvent event) throws IOException {
