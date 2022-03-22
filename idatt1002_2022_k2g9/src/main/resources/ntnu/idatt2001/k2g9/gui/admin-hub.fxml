@@ -44,7 +44,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="680.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntnu.idatt2001.k2g9.gui.HelloController">
+<VBox prefHeight="680.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntnu.idatt2001.k2g9.gui.AdminHubController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -83,7 +83,7 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="739.0" prefWidth="1251.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="656.0" prefWidth="1300.0" VBox.vgrow="ALWAYS">
       <children>
             <Pane layoutY="86.0" prefHeight="570.0" prefWidth="200.0" styleClass="top-bar" stylesheets="@styles.css">
                <children>
@@ -104,14 +104,14 @@
                      </styleClass></Button>
                </children>
             </Pane>
-            <Pane prefHeight="86.0" prefWidth="1251.0" styleClass="top-bar" stylesheets="@styles.css">
+            <Pane prefHeight="86.0" prefWidth="1300.0" styleClass="top-bar" stylesheets="@styles.css">
                <children>
                   <Label layoutY="29.0" prefHeight="30.0" prefWidth="286.0" styleClass="p-header" stylesheets="@styles.css" text="Chess tournament organizer">
                      <padding>
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <Button layoutX="1099.0" layoutY="31.0" mnemonicParsing="false" stylesheets="@styles.css" text="Admin, log out">
+                  <Button layoutX="1153.0" layoutY="31.0" mnemonicParsing="false" stylesheets="@styles.css" text="Admin, log out">
                      <styleClass>
                         <String fx:value="button-logout" />
                         <String fx:value="button" />

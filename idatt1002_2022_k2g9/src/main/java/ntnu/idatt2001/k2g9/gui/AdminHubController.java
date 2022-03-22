@@ -3,6 +3,8 @@ package ntnu.idatt2001.k2g9.gui;
 //import com.gluonhq.charm.glisten.control.*;
 //import com.gluonhq.charm.glisten.control.TextField;
 //import com.gluonhq.charm.glisten.control.TextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,31 +13,36 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class HelloController {
+public class AdminHubController {
     @FXML
     public TextField inpTournamentName;
-    public TextField inpNumCompetitors;
     public DatePicker inpDate;
     public MenuButton inpTournamentFormat;
     public MenuItem formatKnockout;
     public TextField inpFullName;
     public TextField inpAge;
+    public TableView tableCompetitors;
+    public TableColumn tblName;
+    public TableColumn tblAge;
     private Stage stage;
 
 
     private String tournamentFormat;
+    TableView<CompetitorModel> table;
+    ObservableList<CompetitorModel> data;
 
 
     @FXML
     public void goToAddTournament(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("admin-add-tournament.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load(), 1250, 680);
+        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
 
 
         stage.setTitle("Add tournament!");
@@ -47,7 +54,7 @@ public class HelloController {
     public void goToAdminTournamentHub(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("admin-hub.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load(), 1250, 680);
+        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
 
 
         stage.setTitle("Tournament hub");
@@ -68,12 +75,11 @@ public class HelloController {
     @FXML
     public void addTournament(ActionEvent actionEvent) {
         String tournamentName = inpTournamentName.getText();
-        int numCompetitors = Integer.parseInt(inpNumCompetitors.getText());
         //will be null if a format is not selected in the application
         String tournamentFormat = this.tournamentFormat;
         LocalDate date = inpDate.getValue();
 
-        System.out.println(tournamentName + ", " + tournamentFormat + ", " + numCompetitors + ", " + date);
+        System.out.println(tournamentName + ", " + tournamentFormat  + ", " + date);
     }
 
     @FXML
@@ -89,7 +95,19 @@ public class HelloController {
     }
 
     public void addCompetitor(ActionEvent actionEvent) {
-        //TODO: add code
+        System.out.println(this.tblName);
+        data = FXCollections.observableArrayList(
+                new CompetitorModel(this.inpFullName.getText(), Integer.parseInt(this.inpAge.getText()))
+        );
+        this.tableCompetitors.setItems(data);
+        this.tableCompetitors.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+        //this.tableCompetitors.getColumns().addAll()
+    }
+
+    @FXML
+    public void updateTable(ActionEvent event){
+        //codee
     }
 
         /*
