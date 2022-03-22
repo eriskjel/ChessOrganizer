@@ -44,3 +44,11 @@
 .p{
     -fx-font-size: 15px;
 }
+
+.anchor{
+    -fx-text-fill: blue;
+}
+
+.anchor:hover{
+
+}
