@@ -43,6 +43,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox prefHeight="680.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntnu.idatt2001.k2g9.gui.AdminHubController">
   <children>
@@ -87,11 +88,7 @@
       <children>
             <Pane layoutY="86.0" prefHeight="570.0" prefWidth="200.0" styleClass="top-bar" stylesheets="@styles.css">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" style="-fx-text-alignment: left;" stylesheets="@styles.css" text="Tournament hub">
-                     <styleClass>
-                        <String fx:value="button-menu" />
-                        <String fx:value="button" />
-                     </styleClass></Button>
+                  <Button fx:id="hubBtnTournamentHub" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" style="-fx-text-alignment: left;" styleClass="button-menu" stylesheets="@styles.css" text="Tournament hub" />
                   <Button layoutY="62.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" stylesheets="@styles.css" text="Manage tournaments">
                      <styleClass>
                         <String fx:value="button-menu" />
@@ -111,23 +108,25 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <Button layoutX="1153.0" layoutY="31.0" mnemonicParsing="false" stylesheets="@styles.css" text="Admin, log out">
-                     <styleClass>
-                        <String fx:value="button-logout" />
-                        <String fx:value="button" />
-                     </styleClass></Button>
+                  <Button layoutX="1157.0" layoutY="28.0" mnemonicParsing="false" onAction="#adminLogOut" prefHeight="30.0" prefWidth="107.0" styleClass="button-logout" stylesheets="@styles.css" text="Admin, log out" />
                </children>
             </Pane>
-            <Button layoutX="419.0" layoutY="307.0" mnemonicParsing="false" onAction="#goToAddTournament" prefHeight="110.0" prefWidth="155.0" stylesheets="@styles.css" text="Add tournament">
+            <Button layoutX="419.0" layoutY="307.0" mnemonicParsing="false" onAction="#goToAddTournament" prefHeight="141.0" prefWidth="192.0" stylesheets="@styles.css" text="Add tournament">
                <styleClass>
                   <String fx:value="btnHub" />
                   <String fx:value="button" />
-               </styleClass></Button>
-            <Button layoutX="852.0" layoutY="307.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="155.0" stylesheets="@styles.css" text="Manage tournaments">
+               </styleClass>
+               <font>
+                  <Font size="19.0" />
+               </font></Button>
+            <Button layoutX="852.0" layoutY="307.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="192.0" stylesheets="@styles.css" text="Manage tournaments">
                <styleClass>
                   <String fx:value="btnHub" />
                   <String fx:value="button" />
-               </styleClass></Button>
+               </styleClass>
+               <font>
+                  <Font size="17.0" />
+               </font></Button>
       </children>
     </AnchorPane>
   </children>

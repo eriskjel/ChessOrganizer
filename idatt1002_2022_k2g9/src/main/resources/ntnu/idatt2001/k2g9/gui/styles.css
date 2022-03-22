@@ -35,15 +35,44 @@
     -fx-font-size: 18px;
 }
 
+.activeBtn{
+    -fx-background-color: #2B78E4;
+    -fx-text-fill: white
+}
+
+.activeBtn{
+    -fx-background-color: #2B78E4;
+    -fx-text-fill: white
+}
+
 .button-logout{
-    -fx-background-color: white;
-    -fx-text-fill: black;
+    -fx-text-fill: #2B78E4;
     -fx-font-weight: bold;
+    -fx-background-color: white;
 }
 
 .p{
     -fx-font-size: 15px;
 }
+
+
+
+
+.btnHub{
+    -fx-border-color: #2B78E4;
+    -fx-border-width: 3px;
+    -fx-border-radius: 4px;
+    -fx-background-color: white;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2B78E4;
+}
+
+.btnHub:hover{
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-background-color: #2B78E4;
+}
+
 
 .anchor{
     -fx-text-fill: blue;
