@@ -97,7 +97,7 @@
       <children>
             <Pane layoutY="86.0" prefHeight="570.0" prefWidth="200.0" styleClass="top-bar" stylesheets="@styles.css">
                <children>
-                  <Button fx:id="addTournamentBtnTournamentHub" mnemonicParsing="false" onAction="#goToAdminTournamentHub" prefHeight="62.0" prefWidth="200.0" stylesheets="@styles.css" text="Tournament hub" textFill="#2b78e4">
+                  <Button mnemonicParsing="false" onAction="#goToAdminTournamentHub" prefHeight="62.0" prefWidth="200.0" style="-fx-text-alignment: left;" stylesheets="@styles.css" text="Tournament hub">
                      <styleClass>
                         <String fx:value="button-menu" />
                         <String fx:value="activeBtn" />
@@ -113,7 +113,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <Button layoutX="1157.0" layoutY="28.0" mnemonicParsing="false" onAction="#adminLogOut" prefHeight="30.0" prefWidth="107.0" styleClass="button-logout" stylesheets="@styles.css" text="Admin, log out" />
+                  <Button layoutX="1156.0" layoutY="32.0" mnemonicParsing="false" styleClass="button-logout" stylesheets="@styles.css" text="Admin, log out" />
                </children>
             </Pane>
             <Pane id="tblCompetitors" layoutX="200.0" layoutY="86.0" prefHeight="570.0" prefWidth="1051.0" styleClass="table" stylesheets="@styles.css">
@@ -143,7 +143,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </Label>
-                        <Label layoutX="357.0" prefHeight="51.0" prefWidth="253.0" styleClass="h2" stylesheets="@styles.css" text="Register competitors">
+                        <Label layoutX="357.0" layoutY="14.0" prefHeight="51.0" prefWidth="253.0" styleClass="h2" stylesheets="@styles.css" text="Register competitors">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
