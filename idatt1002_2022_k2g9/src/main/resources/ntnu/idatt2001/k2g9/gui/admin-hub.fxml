@@ -31,16 +31,22 @@
   (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
-<!--
-<?import com.gluonhq.charm.glisten.control.TextField?>
-<?import com.gluonhq.charm.glisten.control.*?>
--->
+
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<VBox prefHeight="680.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntnu.idatt2001.HelloController">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="680.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntnu.idatt2001.k2g9.gui.AdminHubController">
   <children>
-    <MenuBar prefHeight="25.0" prefWidth="1217.0" VBox.vgrow="NEVER">
+    <MenuBar VBox.vgrow="NEVER">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
@@ -77,52 +83,57 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="739.0" prefWidth="1251.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="656.0" prefWidth="1300.0" VBox.vgrow="ALWAYS">
       <children>
             <Pane layoutY="86.0" prefHeight="570.0" prefWidth="200.0" styleClass="top-bar" stylesheets="@styles.css">
                <children>
-                  <Button mnemonicParsing="false" onAction="#goToAdminTournamentHub" prefHeight="62.0" prefWidth="200.0" style="-fx-text-alignment: left;" styleClass="button-menu" stylesheets="@styles.css" text="Tournament hub" />
-                  <Button layoutY="62.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" styleClass="button-menu" stylesheets="@styles.css" text="Manage tournaments" />
-                  <Button layoutY="124.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" styleClass="button-menu" stylesheets="@styles.css" text="Admin settings" />
+                  <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" style="-fx-text-alignment: left;" stylesheets="@styles.css" text="Tournament hub">
+                     <styleClass>
+                        <String fx:value="button-menu" />
+                        <String fx:value="activeBtn" />
+                     </styleClass></Button>
+                  <Button layoutY="62.0" mnemonicParsing="false" onAction="#gotoAdminManageTournament" prefHeight="62.0" prefWidth="200.0" stylesheets="@styles.css" text="Manage tournaments">
+                     <styleClass>
+                        <String fx:value="button-menu" />
+                        <String fx:value="button" />
+                     </styleClass></Button>
+                  <Button layoutY="124.0" mnemonicParsing="false" onAction="#goToAddTournament" prefHeight="62.0" prefWidth="200.0" stylesheets="@styles.css" text="Add tournament">
+                     <styleClass>
+                        <String fx:value="button-menu" />
+                        <String fx:value="button" />
+                     </styleClass></Button>
+                  <Button layoutY="186.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" stylesheets="@styles.css" text="Admin settings">
+                     <styleClass>
+                        <String fx:value="button-menu" />
+                        <String fx:value="button" />
+                     </styleClass>
+                  </Button>
                </children>
             </Pane>
-            <Pane prefHeight="86.0" prefWidth="1251.0" styleClass="top-bar" stylesheets="@styles.css">
+            <Pane prefHeight="86.0" prefWidth="1300.0" styleClass="top-bar" stylesheets="@styles.css">
                <children>
                   <Label layoutY="29.0" prefHeight="30.0" prefWidth="286.0" styleClass="p-header" stylesheets="@styles.css" text="Chess tournament organizer">
                      <padding>
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <Button layoutX="1099.0" layoutY="31.0" mnemonicParsing="false" styleClass="button-logout" stylesheets="@styles.css" text="Admin, log out" />
+                  <Button layoutX="1156.0" layoutY="32.0" mnemonicParsing="false" stylesheets="@styles.css" text="Admin, log out">
+                     <styleClass>
+                        <String fx:value="button-logout" />
+                        <String fx:value="button" />
+                     </styleClass></Button>
                </children>
             </Pane>
-            <Pane layoutX="200.0" layoutY="86.0" prefHeight="570.0" prefWidth="1051.0">
-               <children>
-                  <Label layoutX="378.0" layoutY="85.0" prefHeight="51.0" prefWidth="296.0" styleClass="header" stylesheets="@styles.css" text="Add tournament">
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </Label>
-                  <Pane layoutX="210.0" layoutY="172.0" prefHeight="351.0" prefWidth="632.0">
-                     <children>
-                        <Label layoutX="51.0" layoutY="64.0" prefHeight="21.0" prefWidth="132.0" styleClass="p" stylesheets="@styles.css" text="Tournament name:" />
-                        <TextField id="inpTournamentName" fx:id="inpTournamentName" layoutX="51.0" layoutY="98.0" prefHeight="25.0" prefWidth="181.0" />
-                        <Label layoutX="51.0" layoutY="146.0" prefHeight="21.0" prefWidth="168.0" styleClass="p" stylesheets="@styles.css" text="Number of competitors:" />
-                        <TextField id="inpNumCompetitors" fx:id="inpNumCompetitors" layoutX="51.0" layoutY="185.0" prefHeight="25.0" prefWidth="181.0" />
-                        <Label layoutX="51.0" layoutY="226.0" prefHeight="21.0" prefWidth="139.0" styleClass="p" stylesheets="@styles.css" text="Tournament format:" />
-                        <MenuButton id="inpTournamentFormat" fx:id="inpTournamentFormat" layoutX="51.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" styleClass="menuButton" stylesheets="@styles.css" text="Tournament format">
-                          <items>
-                            <MenuItem fx:id="formatKnockout" mnemonicParsing="false" onAction="#setFormatKnockout" text="Knockout" />
-                            <MenuItem mnemonicParsing="false" onAction="#formatSwiss" text="Swiss-system (not implemented)" />
-                          </items>
-                        </MenuButton>
-                        <DatePicker id="inpDate" fx:id="inpDate" layoutX="316.0" layoutY="98.0" showWeekNumbers="true" />
-                        <Label layoutX="316.0" layoutY="64.0" prefHeight="21.0" prefWidth="132.0" styleClass="p" stylesheets="@styles.css" text="Pick date:" />
-                        <Button layoutX="386.0" layoutY="260.0" mnemonicParsing="false" onAction="#addTournament" text="Add tournament" />
-                     </children>
-                  </Pane>
-               </children>
-            </Pane>
+            <Button layoutX="419.0" layoutY="307.0" mnemonicParsing="false" onAction="#goToAddTournament" prefHeight="110.0" prefWidth="155.0" stylesheets="@styles.css" text="Add tournament">
+               <styleClass>
+                  <String fx:value="btnHub" />
+                  <String fx:value="button" />
+               </styleClass></Button>
+            <Button layoutX="852.0" layoutY="307.0" mnemonicParsing="false" onAction="#gotoAdminManageTournament" prefHeight="110.0" prefWidth="155.0" stylesheets="@styles.css" text="Manage tournaments">
+               <styleClass>
+                  <String fx:value="btnHub" />
+                  <String fx:value="button" />
+               </styleClass></Button>
       </children>
     </AnchorPane>
   </children>

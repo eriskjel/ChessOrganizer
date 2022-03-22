@@ -1,5 +1,9 @@
-package ntnu.idatt2001;
+package ntnu.idatt2001.k2g9;
 
+/**
+ * Subclass representing a Player user. This player has stored ranking, age, fideRating and win/loss statistics.
+ *
+ */
 public class Player extends User {
     private int fideRating;
     private int age;
@@ -7,6 +11,17 @@ public class Player extends User {
     private int matchesWon;
     private int matchesLost;
 
+    /**
+     * Constructor for Player class. Checks parameters and throws exception if illegal values found.
+     * @param email
+     * @param password
+     * @param name
+     * @param fideRating
+     * @param age
+     * @param rank
+     * @param matchesWon
+     * @param matchesLost
+     */
     public Player(String email, String password, String name, int fideRating, int age, String rank, int matchesWon, int matchesLost) {
         super(email, password, name);
         if(fideRating < 0){
