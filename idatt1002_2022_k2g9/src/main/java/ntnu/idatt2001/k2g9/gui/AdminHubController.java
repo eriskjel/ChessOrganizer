@@ -10,10 +10,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Controller that administers the fxml file "admin-hub-tournaments" and handels all the events on said fxml file
+ * Controller that administers the fxml file "admin-hub-tournaments" and handles all the events on said fxml file
  */
 public class AdminHubController {
 
+    /**
+     * stage of application
+     */
     private Stage stage;
 
     /**
