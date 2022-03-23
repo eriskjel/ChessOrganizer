@@ -68,14 +68,14 @@ public class Tournament {
             return false;
         }
         else{
-            players.addPlayer(player);
+            players.addPlayerObject(player);
             this.setTotalRounds();
             return true;
         }
     }
     public void playerLost(Player player){
         players.removePlayer(player);
-        knockedOutPlayers.addPlayer(player);
+        knockedOutPlayers.addPlayerObject(player);
     }
 
     public void updateTournamentRounds(Match[] round){

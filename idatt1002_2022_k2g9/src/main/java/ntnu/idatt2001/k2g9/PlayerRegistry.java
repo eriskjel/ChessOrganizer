@@ -28,44 +28,70 @@ public class PlayerRegistry {
         return players;
     }
 
-    /**
-     * Method for adding a new player to the PlayerRegistry. Checks if player already exists in registry, if so returns
-     * false. If not, player is added and true is returned.
-     * @param player
-     * @return
-     */
-    public boolean addPlayer(Player player){
+
+    /*
+    public void addPlayerObject(Player player){
         try{
-            if(players.contains(player)){
-                return false;
-            }
-            else{
+                player.setPlayerID(players.size());
                 players.add(player);
-                return true;
-            }
         }
         catch(IllegalArgumentException e){
             e.printStackTrace();
-            return false;
+        }
+    }
+    */
+
+    /**
+     * Method for adding a player to the PlayerRegistry. Sets playerID from size of registry.
+     * @param name
+     * @param age
+     */
+    public void addPlayer(String name, int age) {
+        try {
+            Player player = new Player(name, age);
+            player.setPlayerID(players.size());
+            players.add(player);
+
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
         }
     }
 
     /**
-     * Finds a player in the registry using email and password to locate user. Returns null if player is not found.
+     * Method for adding a user to the PlayerRegistry. Sets playerID from size of registry.
+     * @param name
+     * @param age
      * @param email
      * @param password
-     * @return
      */
-    public Player getPlayer(String email, String password){
-        ArrayList<Player> foundPlayer = players.stream()
-                .filter(Player -> Player.getEmail().equals(email) && Player.getPassword().equals(password))
-                .collect(Collectors.toCollection(ArrayList::new));
-        if(foundPlayer.size() == 1){
-            return foundPlayer.get(0);
+    public void addUser(String name, int age, String email, String password) {
+        try {
+            User user = new User(name,age,email,password);
+            user.setPlayerID(players.size());
+            players.add(user);
+
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
         }
-        return null;
     }
 
+    /**
+     * Method for adding an admin to the PlayerRegistry. Sets playerID from size of registry.
+     * @param name
+     * @param age
+     * @param email
+     * @param password
+     */
+    public void addAdmin(String name, int age, String email, String password) {
+        try {
+            Admin admin = new Admin(name,age,email,password);
+            admin.setPlayerID(players.size());
+            players.add(admin);
+
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public String toString() {
         return "PlayerRegistry{" +
@@ -76,9 +102,14 @@ public class PlayerRegistry {
     public int getSize(){
         return players.size();
     }
+
     public void removePlayer(Player player){
-        if(this.players.contains(player)){
-            this.players.remove(player);
+        try {
+            players.remove(player);
+        }
+        catch(IndexOutOfBoundsException e){
+            e.printStackTrace();
         }
     }
+
 }

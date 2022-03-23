@@ -9,10 +9,10 @@ public class TournamentRegistryTest {
     public void testGetTournament() {
         TournamentRegistry testReg = new TournamentRegistry();
         PlayerRegistry players = new PlayerRegistry();
-        players.addPlayer(new Player("Erik1",20));
-        players.addPlayer(new Player("Erik2",20));
-        players.addPlayer(new Player("Erik3",20));
-        players.addPlayer(new Player("Erik4",20));;
+        players.addPlayerObject(new Player("Erik1",20));
+        players.addPlayerObject(new Player("Erik2",20));
+        players.addPlayerObject(new Player("Erik3",20));
+        players.addPlayerObject(new Player("Erik4",20));;
         Admin organizer = new Admin("Daniel",19,"daniesky@ntnu.no","123");
         Tournament testT1 = new Tournament("Tournament 1", LocalDate.parse("2022-03-23"), organizer, players);
         Tournament testT2 = new Tournament("Tournament 2", LocalDate.parse("2022-03-22"), organizer, players);
