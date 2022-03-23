@@ -73,7 +73,7 @@ public class AdminAddTournamentController implements Initializable {
     }
 
     /**
-     *
+     *Method that changed the scene to  a new fxml page
      * @param actionEvent event
      * @throws IOException
      */
