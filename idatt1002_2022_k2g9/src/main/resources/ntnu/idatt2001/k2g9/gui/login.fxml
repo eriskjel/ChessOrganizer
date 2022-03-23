@@ -99,7 +99,7 @@
             <Text layoutX="361.0" layoutY="546.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" />
             <Label layoutX="367.0" layoutY="424.0" styleClass="anchor" stylesheets="@styles.css" text="Forgot your password?" />
             <Label layoutX="489.0" layoutY="533.0" styleClass="anchor" stylesheets="@styles.css" text="Register here!" />
-            <Button layoutX="451.0" layoutY="465.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" styleClass="btnHub" stylesheets="@styles.css" text="admin login" />
+            <Button layoutX="451.0" layoutY="465.0" mnemonicParsing="false" onAction="#goToAdminTournamentHub" prefHeight="40.0" prefWidth="110.0" styleClass="btnHub" stylesheets="@styles.css" text="admin login" />
          </children>
       </AnchorPane>
    </children>
