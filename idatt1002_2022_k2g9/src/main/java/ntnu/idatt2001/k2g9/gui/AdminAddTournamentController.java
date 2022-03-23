@@ -29,16 +29,14 @@ public class AdminAddTournamentController implements Initializable {
     public MenuItem formatKnockout;
     public TextField inpFullName;
     public TextField inpAge;
-    public TableColumn tblName;
-    public TableColumn tblAge;
     private Stage stage;
     private String tournamentFormat;
 
 
     //table for handling added competitors
     public TableView tableCompetitors;
-    public TableColumn<CompetitorModel, String> colName;
-    public TableColumn<CompetitorModel, Integer> colAge;
+    public TableColumn<CompetitorModel, String> tblName;
+    public TableColumn<CompetitorModel, Integer> tblAge;
     //list that will be used to feed into table
     ObservableList<CompetitorModel> observableList = FXCollections.observableArrayList();
 
