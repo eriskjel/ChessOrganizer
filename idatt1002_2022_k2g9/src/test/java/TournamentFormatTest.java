@@ -20,7 +20,7 @@ class TournamentFormatTest {
             players.addPlayer(new Player("eriskjel@ntnu.no","456"+Integer.toString(i),"Erik"+Integer.toString(i), 300,20,"Dirt",0,100));
         }
 
-        ArrayList<Match[]> layout = TournamentFormat.createRounds("Knock-Out", players);
+        ArrayList<Match[]> layout = TournamentFormat.createBracket("Knock-Out", players);
 
         Assertions.assertTrue(layout.get(0).length == 4
                                 & layout.get(1).length == 8
@@ -37,7 +37,7 @@ class TournamentFormatTest {
             players.addPlayer(new Player("eriskjel@ntnu.no","456"+Integer.toString(i),"Erik"+Integer.toString(i), 300,20,"Dirt",0,100));
         }
 
-        ArrayList<Match[]> layout = TournamentFormat.createRounds("Knock-Out", players);
+        ArrayList<Match[]> layout = TournamentFormat.createBracket("Knock-Out", players);
 
         int playersPlacedInPreliminary = 0;
         for(int i = 0 ; i < layout.get(0).length ; i++){

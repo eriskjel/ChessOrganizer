@@ -3,17 +3,24 @@ package ntnu.idatt2001.k2g9;
 import java.util.*;
 
 /**
- * @author Navid Muradi
- * @project idatt1002_2022_k2g9
+ * Class for creating tournament brackets of a given format.
+ * When the bracket is created it will be sent into tournament class to be handled.
  */
-public class TournamentFormat {
 
-    public static ArrayList<Match[]> createRounds(String format , PlayerRegistry players) {
+public class TournamentFormat {
+    /**
+     * Static method to be called when creating tournament brackets.
+     * The entire bracket is filled in as much as possible and is then handled by Tournament class.
+     * @param format   The format of the bracket that should be created.
+     * @param players  The players to participate in the bracket.
+     * @return  The tournament bracket.
+     */
+    public static ArrayList<Match[]> createBracket(String format , PlayerRegistry players) {
         ArrayList<Match[]> layout = new ArrayList<>();
 
         if (format.equals("Knock-Out"))
         {
-            //Creates and shuffles the players to take part in the round.
+            //Creates and shuffles the players to take part in the tournament.
             ArrayList<Player> participants = new ArrayList<>();
             participants.addAll(players.getPlayers());
             Collections.shuffle(participants);
@@ -27,8 +34,6 @@ public class TournamentFormat {
             //Creates match array with size equal to the number of preliminary matches.
             Match[] preliminaryRound = new Match[noOfPreliminaryMatches];
 
-
-
             //Fills the preliminary round with the shuffled arraylist of players until it is filled.
             for (int i = 0 ; i < noOfPreliminaryMatches ; i++){
                 preliminaryRound[i] = new Match(participants.get(0) , participants.get(1));
@@ -39,8 +44,8 @@ public class TournamentFormat {
             //Fills in the first index of the layout arrayList with the preliminary round.
             layout.add(preliminaryRound);
 
-            //Fills in the layout with arrays of matches for each round, starting from first index.
-            //ArrayList of Arrays of matches for 10 players would be this layout:
+            //Fills in the bracket with arrays of matches for each round, starting from first index.
+            //ArrayList of match arrays for 10 players would be this layout:
             //{(Preliminary) Matches[2], (FirstRound) Matches[4], (semi-finals) Matches[2], (finals) Matches[1]}.
             Match[] tempHolder;
             for (int round = 1 ; round <= log2base ; round++) {
