@@ -103,8 +103,14 @@ public class AdminHubController {
         //codee
     }
 
-    public void adminLogOut(ActionEvent actionEvent) {
-        //todo
+    public void adminLogOut(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("login.fxml"));
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
+
+        stage.setTitle("Chess tournament organizer");
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void gotoAdminManageTournament(ActionEvent actionEvent) throws IOException {
