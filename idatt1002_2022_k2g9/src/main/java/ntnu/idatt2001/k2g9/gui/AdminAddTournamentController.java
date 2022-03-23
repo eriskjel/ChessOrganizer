@@ -145,8 +145,5 @@ public class AdminAddTournamentController implements Initializable {
         //will be null if a format is not selected in the application
         String tournamentFormat = this.tournamentFormat;
         LocalDate date = inpDate.getValue();
-
     }
-
-
 }

@@ -61,19 +61,7 @@
          <children>
             <Pane layoutY="86.0" prefHeight="570.0" prefWidth="200.0" styleClass="top-bar" stylesheets="@styles.css">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" style="-fx-text-alignment: left;" stylesheets="@styles.css" text="Tournament hub">
-                     <styleClass>
-                        <String fx:value="button-menu" />
-                        <String fx:value="button" />
-                     </styleClass>
-                  </Button>
-                  <Button layoutY="62.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" stylesheets="@styles.css" text="Manage tournaments">
-                     <styleClass>
-                        <String fx:value="button-menu" />
-                        <String fx:value="button" />
-                     </styleClass>
-                  </Button>
-                  <Button layoutY="124.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" stylesheets="@styles.css" text="Admin settings">
+                  <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" style="-fx-text-alignment: left;" stylesheets="@styles.css" text="View tournaments">
                      <styleClass>
                         <String fx:value="button-menu" />
                         <String fx:value="button" />
@@ -88,7 +76,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <Button layoutX="1156.0" layoutY="32.0" mnemonicParsing="false" stylesheets="@styles.css" text="Log in">
+                  <Button layoutX="1153.0" layoutY="31.0" mnemonicParsing="false" stylesheets="@styles.css" text="Admin, log out">
                      <styleClass>
                         <String fx:value="button-logout" />
                         <String fx:value="button" />
@@ -98,19 +86,20 @@
 
             </Pane>
             <TextField fx:id="inpUsername" layoutX="367.0" layoutY="288.0" stylesheets="@styles.css" />
-            <TextField fx:id="inpPassword" layoutX="367.0" layoutY="389.0" stylesheets="@styles.css" />
+            <TextField fx:id="inpPassword" layoutX="367.0" layoutY="377.0" stylesheets="@styles.css" />
             <Text layoutX="373.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email adress:" />
-            <Text layoutX="367.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
+            <Text layoutX="367.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
             <Text layoutX="373.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
                <font>
                   <Font size="41.0" />
                </font>
             </Text>
-            <Button layoutX="367.0" layoutY="465.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="68.0" styleClass="btnHub" stylesheets="@styles.css" text="Log In" />
+            <Button layoutX="368.0" layoutY="456.0" mnemonicParsing="false" text="Log In" />
             <ButtonBar layoutX="694.0" layoutY="369.0" prefHeight="40.0" prefWidth="200.0" />
-            <Text layoutX="361.0" layoutY="546.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" />
-            <Label layoutX="367.0" layoutY="424.0" styleClass="anchor" stylesheets="@styles.css" text="Forgot your password?" />
-            <Label layoutX="489.0" layoutY="533.0" styleClass="anchor" stylesheets="@styles.css" text="Register here!" />
+            <Text layoutX="368.0" layoutY="529.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" />
+            <Label layoutX="369.0" layoutY="423.0" styleClass="anchor" stylesheets="@styles.css" text="Forgot your password?" />
+            <Label layoutX="510.0" layoutY="516.0" styleClass="anchor" stylesheets="@styles.css" text="Register here!" />
+            <Button layoutX="430.0" layoutY="456.0" mnemonicParsing="false" onAction="#goToAdminTournamentHub" text="Admin  log in" />
          </children>
       </AnchorPane>
    </children>
