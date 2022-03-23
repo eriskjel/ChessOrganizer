@@ -124,12 +124,12 @@
                      </styleClass></Button>
                </children>
             </Pane>
-            <Button layoutX="419.0" layoutY="307.0" mnemonicParsing="false" onAction="#goToAddTournament" prefHeight="110.0" prefWidth="155.0" stylesheets="@styles.css" text="Add tournament">
+            <Button layoutX="461.0" layoutY="273.0" mnemonicParsing="false" onAction="#goToAddTournament" prefHeight="110.0" prefWidth="155.0" stylesheets="@styles.css" text="Add tournament">
                <styleClass>
                   <String fx:value="btnHub" />
                   <String fx:value="button" />
                </styleClass></Button>
-            <Button layoutX="852.0" layoutY="307.0" mnemonicParsing="false" onAction="#gotoAdminManageTournament" prefHeight="110.0" prefWidth="155.0" stylesheets="@styles.css" text="Manage tournaments">
+            <Button layoutX="850.0" layoutY="273.0" mnemonicParsing="false" onAction="#gotoAdminManageTournament" prefHeight="110.0" prefWidth="155.0" stylesheets="@styles.css" text="Manage tournaments">
                <styleClass>
                   <String fx:value="btnHub" />
                   <String fx:value="button" />
