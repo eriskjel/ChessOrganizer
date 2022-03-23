@@ -1,9 +1,6 @@
 package ntnu.idatt2001.k2g9;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Random;
+import java.util.*;
 
 /**
  * @author Navid Muradi
@@ -18,7 +15,7 @@ public class TournamentFormat {
         {
             //Creates and shuffles the players to take part in the round.
             ArrayList<Player> participants = players.getPlayers();
-            Collections.shuffle(participants);
+            //Collections.shuffle(participants);
 
             //Calculating the number of rounds there will be, excluding preliminary round.
             int log2base = (int) (Math.log(participants.size()) / Math.log(2));
@@ -29,25 +26,30 @@ public class TournamentFormat {
             //Creates match array with size equal to the number of preliminary matches.
             Match[] preliminaryRound = new Match[noOfPreliminaryMatches];
 
-            //Fills in the layout with arrays of matches for each round, starting from first index.
-            //ArrayList of Arrays of matches for 10 players would be this layout:
-            //{(Preliminary) Matches[2], (FirstRound) Matches[4], (semi-finals) Matches[2], (finals) Matches[1]}.
-            for (int round = 1 ; round <= log2base ; round++) {
-                layout.set(round , new Match[(int) Math.pow(2 , log2base - round)]);
-            }
+
 
             //Fills the preliminary round with the shuffled arraylist of players until it is filled.
-            for (int i = 0 ; i < noOfPreliminaryMatches ; i += 2){
-                preliminaryRound[i/2] = new Match(participants.get(i) , participants.get(i+1));
+            for (int i = 0 ; i < noOfPreliminaryMatches ; i++){
+                preliminaryRound[i] = new Match(participants.get(2*i) , participants.get(2*i+1));
             }
 
             //Fills in the first index of the layout arrayList with the preliminary round.
-            layout.set(0 , preliminaryRound);
+            layout.add(preliminaryRound);
 
-            //Fills in the first round of the tournament with the remaining players from bottom and up.
-            for(int n = noOfPreliminaryMatches ; n < layout.get(1).length ; n += 2) {
-                if (n+1 < layout.get(1).length){
-                    layout.get(1)[n] = new Match(participants.get(n) , participants.get(n+1));
+            //Fills in the layout with arrays of matches for each round, starting from first index.
+            //ArrayList of Arrays of matches for 10 players would be this layout:
+            //{(Preliminary) Matches[2], (FirstRound) Matches[4], (semi-finals) Matches[2], (finals) Matches[1]}.
+            Match[] tempHolder;
+            for (int round = 1 ; round <= log2base ; round++) {
+                tempHolder = new Match[(int) Math.pow(2 , log2base - round)];
+                Arrays.fill(tempHolder, new Match());
+                layout.add(round, tempHolder);
+            }
+
+            //Fills in the first round of the tournament with the remaining players from bottom matches and up.
+            for(int n = layout.get(1).length-1 ; n >= noOfPreliminaryMatches ; n--) {
+                if (n-1 > noOfPreliminaryMatches){
+                    layout.get(1)[n] = new Match(participants.get(n) , participants.get(n-1));
                 } //If remaning player count is odd, one player will not have a pair to match up with.
                 else {//This is taken into consideration so that the player will instead match with a winner from preliminaries.
                     layout.get(1)[n].setPlayer2(participants.get(n));
