@@ -1,5 +1,7 @@
 package ntnu.idatt2001.k2g9;
 
+import java.util.Objects;
+
 /**
  * Subclass representing a Player user. This player has stored ranking, age, fideRating and win/loss statistics.
  *
@@ -7,6 +9,8 @@ package ntnu.idatt2001.k2g9;
 public class Player{
     protected String name;
     protected int age;
+    protected int playerID;
+
 
 
     /**
@@ -35,14 +39,33 @@ public class Player{
         this.age = age;
     }
 
+    public int getPlayerID() {
+        return playerID;
+    }
+
+    public void setPlayerID(int playerID) {
+        this.playerID = playerID;
+    }
 
     @Override
     public String toString() {
         return "Player{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
+                ", playerID=" + playerID +
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Player)) return false;
+        Player player = (Player) o;
+        return age == player.age && playerID == player.playerID && Objects.equals(name, player.name);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age, playerID);
+    }
 }
