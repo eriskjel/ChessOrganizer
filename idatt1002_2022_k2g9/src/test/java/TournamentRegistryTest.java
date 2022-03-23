@@ -1,4 +1,8 @@
-import ntnu.idatt2001.k2g9.*;
+import ntnu.idatt2001.k2g9.player.Admin;
+import ntnu.idatt2001.k2g9.player.Player;
+import ntnu.idatt2001.k2g9.player.PlayerRegistry;
+import ntnu.idatt2001.k2g9.tournament.Tournament;
+import ntnu.idatt2001.k2g9.tournament.TournamentRegistry;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

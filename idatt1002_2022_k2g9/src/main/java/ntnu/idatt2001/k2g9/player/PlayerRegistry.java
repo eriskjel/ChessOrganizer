@@ -1,7 +1,6 @@
-package ntnu.idatt2001.k2g9;
+package ntnu.idatt2001.k2g9.player;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 /**
  * Class representing a registry of Players.

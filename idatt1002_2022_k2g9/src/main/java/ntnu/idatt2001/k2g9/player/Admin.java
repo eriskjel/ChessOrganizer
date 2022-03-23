@@ -1,6 +1,7 @@
-package ntnu.idatt2001.k2g9;
+package ntnu.idatt2001.k2g9.player;
 
-import java.time.LocalDate;
+import ntnu.idatt2001.k2g9.tournament.Tournament;
+
 import java.util.ArrayList;
 
 /**

@@ -1,4 +1,4 @@
-package ntnu.idatt2001.k2g9;
+package ntnu.idatt2001.k2g9.player;
 
 import java.util.Objects;
 

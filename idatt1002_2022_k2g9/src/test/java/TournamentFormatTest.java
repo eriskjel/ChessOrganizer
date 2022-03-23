@@ -1,7 +1,7 @@
-import ntnu.idatt2001.k2g9.Match;
-import ntnu.idatt2001.k2g9.Player;
-import ntnu.idatt2001.k2g9.PlayerRegistry;
-import ntnu.idatt2001.k2g9.TournamentFormat;
+import ntnu.idatt2001.k2g9.tournament.Match;
+import ntnu.idatt2001.k2g9.player.Player;
+import ntnu.idatt2001.k2g9.player.PlayerRegistry;
+import ntnu.idatt2001.k2g9.tournament.TournamentFormat;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
