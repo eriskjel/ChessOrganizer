@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
  */
 public class AdminAddTournamentController implements Initializable {
 
+    //fxml variables
     @FXML
     public TextField inpTournamentName;
     public DatePicker inpDate;
