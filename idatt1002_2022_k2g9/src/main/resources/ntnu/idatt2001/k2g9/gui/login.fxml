@@ -88,7 +88,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <Button layoutX="1153.0" layoutY="31.0" mnemonicParsing="false" stylesheets="@styles.css" text="Admin, log out">
+                  <Button layoutX="1156.0" layoutY="32.0" mnemonicParsing="false" stylesheets="@styles.css" text="Log in">
                      <styleClass>
                         <String fx:value="button-logout" />
                         <String fx:value="button" />
@@ -98,19 +98,19 @@
 
             </Pane>
             <TextField fx:id="inpUsername" layoutX="367.0" layoutY="288.0" stylesheets="@styles.css" />
-            <TextField fx:id="inpPassword" layoutX="367.0" layoutY="404.0" stylesheets="@styles.css" />
+            <TextField fx:id="inpPassword" layoutX="367.0" layoutY="389.0" stylesheets="@styles.css" />
             <Text layoutX="373.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email adress:" />
-            <Text layoutX="373.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
+            <Text layoutX="367.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
             <Text layoutX="373.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
                <font>
                   <Font size="41.0" />
                </font>
             </Text>
-            <Button layoutX="577.0" layoutY="448.0" mnemonicParsing="false" text="Log In" />
+            <Button layoutX="367.0" layoutY="465.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="68.0" styleClass="btnHub" stylesheets="@styles.css" text="Log In" />
             <ButtonBar layoutX="694.0" layoutY="369.0" prefHeight="40.0" prefWidth="200.0" />
-            <Text layoutX="372.0" layoutY="529.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" />
-            <Label layoutX="373.0" layoutY="465.0" styleClass="anchor" stylesheets="@styles.css" text="Forgot your password?" />
-            <Label layoutX="588.0" layoutY="516.0" stylesheets="@styles.css" text="Register here!" />
+            <Text layoutX="361.0" layoutY="546.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" />
+            <Label layoutX="367.0" layoutY="424.0" styleClass="anchor" stylesheets="@styles.css" text="Forgot your password?" />
+            <Label layoutX="489.0" layoutY="533.0" styleClass="anchor" stylesheets="@styles.css" text="Register here!" />
          </children>
       </AnchorPane>
    </children>
