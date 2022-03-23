@@ -5,6 +5,9 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Objects;
 
+/**
+ * Superclass representing a user. Contains the protected variables: email, password and name.
+ */
 public class User {
     protected String email;
     protected String password;
@@ -61,10 +64,22 @@ public class User {
     public int hashCode() {
         return Objects.hash(email, password);
     }
+
+    /**
+     * Generates a salt to use for encryption.
+     * @return
+     */
     public byte[] generateSalt() {
         byte[] byteTable = SecureRandom.getSeed(16);
         return byteTable;
     }
+
+    /**
+     * Method takes in a salt as a parameter and returns a String with a hashed password using the SHA-256 algorithm.
+     * @param password
+     * @param salt
+     * @return
+     */
     public String hashPassword(String password, byte[] salt){
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
