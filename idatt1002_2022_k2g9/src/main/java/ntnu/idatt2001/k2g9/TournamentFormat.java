@@ -14,8 +14,9 @@ public class TournamentFormat {
         if (format.equals("Knock-Out"))
         {
             //Creates and shuffles the players to take part in the round.
-            ArrayList<Player> participants = players.getPlayers();
-            //Collections.shuffle(participants);
+            ArrayList<Player> participants = new ArrayList<>();
+            participants.addAll(players.getPlayers());
+            Collections.shuffle(participants);
 
             //Calculating the number of rounds there will be, excluding preliminary round.
             int log2base = (int) (Math.log(participants.size()) / Math.log(2));
@@ -30,7 +31,9 @@ public class TournamentFormat {
 
             //Fills the preliminary round with the shuffled arraylist of players until it is filled.
             for (int i = 0 ; i < noOfPreliminaryMatches ; i++){
-                preliminaryRound[i] = new Match(participants.get(2*i) , participants.get(2*i+1));
+                preliminaryRound[i] = new Match(participants.get(0) , participants.get(1));
+                participants.remove(0);
+                participants.remove(0);
             }
 
             //Fills in the first index of the layout arrayList with the preliminary round.
@@ -47,17 +50,18 @@ public class TournamentFormat {
             }
 
             //Fills in the first round of the tournament with the remaining players from bottom matches and up.
-            for(int n = layout.get(1).length-1 ; n >= noOfPreliminaryMatches ; n--) {
-                if (n-1 > noOfPreliminaryMatches){
-                    layout.get(1)[n] = new Match(participants.get(n) , participants.get(n-1));
+            for(int n = layout.get(1).length-1 ; n >= noOfPreliminaryMatches/2 ; n--) {
+                if (participants.size() > 1){
+                    layout.get(1)[n] = new Match(participants.get(0) , participants.get(1));
+                    participants.remove(0);
+                    participants.remove(0);
                 } //If remaning player count is odd, one player will not have a pair to match up with.
                 else {//This is taken into consideration so that the player will instead match with a winner from preliminaries.
-                    layout.get(1)[n].setPlayer2(participants.get(n));
+                    layout.get(1)[n].setPlayer2(participants.get(0));
+                    participants.remove(0);
                 }
             }
-
         }
-
         return layout;
     }
 }
