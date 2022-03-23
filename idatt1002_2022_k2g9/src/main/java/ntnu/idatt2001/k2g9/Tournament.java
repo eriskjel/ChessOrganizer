@@ -1,47 +1,61 @@
 package ntnu.idatt2001.k2g9;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Tournament {
     private PlayerRegistry players;
-    private String format;
+    private PlayerRegistry knockedOutPlayers;
     private LocalDate date;
-    private ArrayList<Match> matches;
+    private ArrayList<Match[]> tournamentRounds;
     private User organizer;
+    private int totalRounds;
+    private int currentRound;
 
-    public Tournament(String format, LocalDate date, User organizer) {
-        this.format = format;
+    public Tournament(LocalDate date, User organizer, PlayerRegistry players) {
         this.date = date;
         this.organizer = organizer;
+        this.players = players;
+        this.tournamentRounds = new ArrayList<>();
+        this.totalRounds = (int)Math.ceil(players.getSize()/2);
+        this.knockedOutPlayers = new PlayerRegistry();
+        this.currentRound = 0;
+
     }
 
     public PlayerRegistry getPlayers() {
         return players;
     }
 
-    public String getFormat() {
-        return format;
+    public int getCurrentRound() {
+        return currentRound;
     }
 
     public LocalDate getDate() {
         return date;
     }
 
-    public ArrayList<Match> getMatches() {
-        return matches;
+    private void setTotalRounds() {
+        this.totalRounds = (int)Math.ceil(players.getSize()/2);
+    }
+
+    public ArrayList<Match[]> getTournamentRounds() {
+        return tournamentRounds;
+    }
+
+    public int getTotalRounds() {
+        return totalRounds;
     }
 
     public User getOrganizer() {
         return organizer;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public PlayerRegistry getKnockedOutPlayers() {
+        return knockedOutPlayers;
     }
 
-    public void setFormat(String format) {
-        this.format = format;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public void setOrganizer(User organizer) {
@@ -53,12 +67,17 @@ public class Tournament {
         }
         else{
             players.addPlayer(player);
+            this.setTotalRounds();
             return true;
         }
     }
-    public boolean addMatch(Match match){
-        matches.add(match);
-        return true;
+    public void playerLost(Player player){
+        players.removePlayer(player);
+        knockedOutPlayers.addPlayer(player);
     }
-    //TODO: 21.03.2022 ADD TOURNAMENT FUNCTIONALITIES
+
+    public void updateTournamentRounds(Match[] round){
+        this.tournamentRounds.add(round);
+        currentRound++;
+    }
 }

@@ -90,18 +90,24 @@
                   <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" style="-fx-text-alignment: left;" stylesheets="@styles.css" text="Tournament hub">
                      <styleClass>
                         <String fx:value="button-menu" />
-                        <String fx:value="button" />
+                        <String fx:value="activeBtn" />
                      </styleClass></Button>
-                  <Button layoutY="62.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" stylesheets="@styles.css" text="Manage tournaments">
+                  <Button layoutY="62.0" mnemonicParsing="false" onAction="#gotoAdminManageTournament" prefHeight="62.0" prefWidth="200.0" stylesheets="@styles.css" text="Manage tournaments">
                      <styleClass>
                         <String fx:value="button-menu" />
                         <String fx:value="button" />
                      </styleClass></Button>
-                  <Button layoutY="124.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" stylesheets="@styles.css" text="Admin settings">
+                  <Button layoutY="124.0" mnemonicParsing="false" onAction="#goToAddTournament" prefHeight="62.0" prefWidth="200.0" stylesheets="@styles.css" text="Add tournament">
                      <styleClass>
                         <String fx:value="button-menu" />
                         <String fx:value="button" />
                      </styleClass></Button>
+                  <Button layoutY="186.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" stylesheets="@styles.css" text="Admin settings">
+                     <styleClass>
+                        <String fx:value="button-menu" />
+                        <String fx:value="button" />
+                     </styleClass>
+                  </Button>
                </children>
             </Pane>
             <Pane prefHeight="86.0" prefWidth="1300.0" styleClass="top-bar" stylesheets="@styles.css">
@@ -111,7 +117,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <Button layoutX="1153.0" layoutY="31.0" mnemonicParsing="false" stylesheets="@styles.css" text="Admin, log out">
+                  <Button layoutX="1156.0" layoutY="32.0" mnemonicParsing="false" onAction="#adminLogOut" stylesheets="@styles.css" text="Admin, log out">
                      <styleClass>
                         <String fx:value="button-logout" />
                         <String fx:value="button" />
@@ -123,7 +129,7 @@
                   <String fx:value="btnHub" />
                   <String fx:value="button" />
                </styleClass></Button>
-            <Button layoutX="852.0" layoutY="307.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="155.0" stylesheets="@styles.css" text="Manage tournaments">
+            <Button layoutX="852.0" layoutY="307.0" mnemonicParsing="false" onAction="#gotoAdminManageTournament" prefHeight="110.0" prefWidth="155.0" stylesheets="@styles.css" text="Manage tournaments">
                <styleClass>
                   <String fx:value="btnHub" />
                   <String fx:value="button" />
