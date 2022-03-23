@@ -1,7 +1,7 @@
-import ntnu.idatt2001.k2g9.Match;
-import ntnu.idatt2001.k2g9.Player;
-import ntnu.idatt2001.k2g9.PlayerRegistry;
-import ntnu.idatt2001.k2g9.TournamentFormat;
+import ntnu.idatt2001.k2g9.tournament.Match;
+import ntnu.idatt2001.k2g9.player.Player;
+import ntnu.idatt2001.k2g9.player.PlayerRegistry;
+import ntnu.idatt2001.k2g9.tournament.TournamentFormat;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +17,7 @@ class TournamentFormatTest {
         PlayerRegistry players = new PlayerRegistry();
 
         for(int i = 0 ; i<20 ; i++){
-            players.addPlayer(new Player("eriskjel@ntnu.no","456"+Integer.toString(i),"Erik"+Integer.toString(i), 300,20,"Dirt",0,100));
+            players.addPlayerObject(new Player("Erik"+Integer.toString(i),20+i));
         }
 
         ArrayList<Match[]> layout = TournamentFormat.createBracket("Knock-Out", players);
@@ -34,7 +34,7 @@ class TournamentFormatTest {
         PlayerRegistry players = new PlayerRegistry();
 
         for(int i = 0 ; i<20 ; i++){
-            players.addPlayer(new Player("eriskjel@ntnu.no","456"+Integer.toString(i),"Erik"+Integer.toString(i), 300,20,"Dirt",0,100));
+            players.addPlayerObject(new Player("Erik"+Integer.toString(i),20+i));
         }
 
         ArrayList<Match[]> layout = TournamentFormat.createBracket("Knock-Out", players);

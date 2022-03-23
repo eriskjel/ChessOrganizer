@@ -1,4 +1,8 @@
-package ntnu.idatt2001.k2g9;
+package ntnu.idatt2001.k2g9.tournament;
+import ntnu.idatt2001.k2g9.player.Player;
+import ntnu.idatt2001.k2g9.player.PlayerRegistry;
+import ntnu.idatt2001.k2g9.player.User;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -68,14 +72,14 @@ public class Tournament {
             return false;
         }
         else{
-            players.addPlayer(player);
+            players.addPlayerObject(player);
             this.setTotalRounds();
             return true;
         }
     }
     public void playerLost(Player player){
         players.removePlayer(player);
-        knockedOutPlayers.addPlayer(player);
+        knockedOutPlayers.addPlayerObject(player);
     }
 
     public void updateTournamentRounds(Match[] round){

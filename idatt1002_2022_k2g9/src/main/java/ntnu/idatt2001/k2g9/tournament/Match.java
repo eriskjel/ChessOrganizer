@@ -1,4 +1,6 @@
-package ntnu.idatt2001.k2g9;
+package ntnu.idatt2001.k2g9.tournament;
+
+import ntnu.idatt2001.k2g9.player.Player;
 
 public class Match {
     private Player player1;

@@ -1,22 +1,28 @@
-package ntnu.idatt2001.k2g9;
+package ntnu.idatt2001.k2g9.player;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.Objects;
 
 /**
  * Superclass representing a user. Contains the protected variables: email, password and name.
  */
-public class User {
+public class User extends Player{
     protected String email;
     protected String password;
-    protected String name;
+    protected String rank;
+    protected int matchesWon;
+    protected int matchesLost;
+    protected int fideRating;
 
-    public User(String email, String password, String name) {
+    public User(String name, int age, String email, String password) {
+        super(name, age);
         this.email = email;
         this.password = password;
-        this.name = name;
+        this.rank = "Noob";
+        this.matchesWon = 0;
+        this.matchesLost = 0;
+        this.fideRating = 300;
     }
 
     public String getEmail() {
@@ -35,38 +41,60 @@ public class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getRank() {
+        return rank;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public int getAge() {
+        return super.getAge();
+    }
+
+    public int getFideRating() {
+        return fideRating;
+    }
+
+    public int getMatchesLost() {
+        return matchesLost;
+    }
+
+    public int getMatchesWon() {
+        return matchesWon;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
+
+    public void setMatchesWon(int matchesWon) {
+        this.matchesWon = matchesWon;
+    }
+
+    public void setMatchesLost(int matchesLost) {
+        this.matchesLost = matchesLost;
+    }
+
+    public void setFideRating(int fideRating) {
+        this.fideRating = fideRating;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "email='" + email + '\'' +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", playerID=" + playerID +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
+                ", rank='" + rank + '\'' +
+                ", matchesWon=" + matchesWon +
+                ", matchesLost=" + matchesLost +
+                ", fideRating=" + fideRating +
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
-        return email.equals(user.email) && password.equals(user.password);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(email, password);
-    }
-
     /**
-     * Generates a salt to use for encryption.
+     * Generates a salt to use for encryption. NOT IN USE YET.
      * @return
      */
     public byte[] generateSalt() {
@@ -76,6 +104,7 @@ public class User {
 
     /**
      * Method takes in a salt as a parameter and returns a String with a hashed password using the SHA-256 algorithm.
+     * NOT IN USE YET
      * @param password
      * @param salt
      * @return
