@@ -83,6 +83,7 @@ public class User extends Player{
         return "User{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
+                ", playerID=" + playerID +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", rank='" + rank + '\'' +

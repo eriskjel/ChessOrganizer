@@ -26,5 +26,20 @@ public class Admin extends User{
     public ArrayList<Tournament> getMyTournaments() {
         return myTournaments;
     }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", playerID=" + playerID +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", rank='" + rank + '\'' +
+                ", matchesWon=" + matchesWon +
+                ", matchesLost=" + matchesLost +
+                ", fideRating=" + fideRating +
+                '}';
+    }
 }
 
