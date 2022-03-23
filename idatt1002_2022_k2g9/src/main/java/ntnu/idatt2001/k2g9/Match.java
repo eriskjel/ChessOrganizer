@@ -31,6 +31,18 @@ public class Match {
         this.player2 = player2;
     }
 
+    public int playersInitialized(){
+        if (player1 == null && player2 == null){
+            return 0;
+        }
+        else if (player1 == null|| player2 == null){
+            return 1;
+        }
+        else{
+            return 2;
+        }
+    }
+
     public Player getWinner() {
         return winner;
     }
