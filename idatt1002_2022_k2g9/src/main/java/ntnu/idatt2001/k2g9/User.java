@@ -8,15 +8,22 @@ import java.util.Objects;
 /**
  * Superclass representing a user. Contains the protected variables: email, password and name.
  */
-public class User {
+public class User extends Player{
     protected String email;
     protected String password;
-    protected String name;
+    private String rank;
+    private int matchesWon;
+    private int matchesLost;
+    private int fideRating;
 
-    public User(String email, String password, String name) {
+    public User(String name, int age, String email, String password) {
+        super(name, age);
         this.email = email;
         this.password = password;
-        this.name = name;
+        this.rank = "Noob";
+        this.matchesWon = 0;
+        this.matchesLost = 0;
+        this.fideRating = 300;
     }
 
     public String getEmail() {
@@ -35,34 +42,55 @@ public class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getRank() {
+        return rank;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public int getAge() {
+        return super.getAge();
+    }
+
+    public int getFideRating() {
+        return fideRating;
+    }
+
+    public int getMatchesLost() {
+        return matchesLost;
+    }
+
+    public int getMatchesWon() {
+        return matchesWon;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
+
+    public void setMatchesWon(int matchesWon) {
+        this.matchesWon = matchesWon;
+    }
+
+    public void setMatchesLost(int matchesLost) {
+        this.matchesLost = matchesLost;
+    }
+
+    public void setFideRating(int fideRating) {
+        this.fideRating = fideRating;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "email='" + email + '\'' +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
+                ", rank='" + rank + '\'' +
+                ", matchesWon=" + matchesWon +
+                ", matchesLost=" + matchesLost +
+                ", fideRating=" + fideRating +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
-        return email.equals(user.email) && password.equals(user.password);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(email, password);
     }
 
     /**
