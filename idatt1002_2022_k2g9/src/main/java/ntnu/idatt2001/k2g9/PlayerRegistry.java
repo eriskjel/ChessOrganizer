@@ -29,7 +29,6 @@ public class PlayerRegistry {
     }
 
 
-    /*
     public void addPlayerObject(Player player){
         try{
                 player.setPlayerID(players.size());
@@ -39,7 +38,6 @@ public class PlayerRegistry {
             e.printStackTrace();
         }
     }
-    */
 
     /**
      * Method for adding a player to the PlayerRegistry. Sets playerID from size of registry.
