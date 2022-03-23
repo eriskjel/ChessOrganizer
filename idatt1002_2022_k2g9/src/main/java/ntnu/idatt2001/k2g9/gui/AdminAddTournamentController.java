@@ -29,6 +29,8 @@ public class AdminAddTournamentController implements Initializable {
     public MenuItem formatKnockout;
     public TextField inpFullName;
     public TextField inpAge;
+    public TableColumn tblName;
+    public TableColumn tblAge;
     private Stage stage;
     private String tournamentFormat;
 
@@ -114,8 +116,8 @@ public class AdminAddTournamentController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        colName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        colAge.setCellValueFactory(new PropertyValueFactory<>("Age"));
+        this.tblName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        this.tblAge.setCellValueFactory(new PropertyValueFactory<>("Age"));
         this.tableCompetitors.setItems(observableList);
     }
 
