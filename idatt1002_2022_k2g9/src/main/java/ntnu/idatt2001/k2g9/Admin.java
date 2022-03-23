@@ -4,14 +4,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
- * Subclass representing an Admin user. Simple class that contains an ArrayList of tournaments that the Admin
- * is in charge of organizing.
+ * Admin is a subclass of User that has extra permission within the Application and a ArrayList of tournaments the
+ * Admin organizes.
  */
 public class Admin extends User{
     private ArrayList<Tournament> myTournaments;
 
-    public Admin(String email, String password, String name) {
-        super(email, password, name);
+    public Admin(String name, int age, String email, String password) {
+        super(name, age, email, password);
         this.myTournaments = new ArrayList<>();
     }
 
