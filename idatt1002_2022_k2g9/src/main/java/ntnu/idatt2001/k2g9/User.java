@@ -3,7 +3,6 @@ package ntnu.idatt2001.k2g9;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.Objects;
 
 /**
  * Superclass representing a user. Contains the protected variables: email, password and name.
@@ -11,10 +10,10 @@ import java.util.Objects;
 public class User extends Player{
     protected String email;
     protected String password;
-    private String rank;
-    private int matchesWon;
-    private int matchesLost;
-    private int fideRating;
+    protected String rank;
+    protected int matchesWon;
+    protected int matchesLost;
+    protected int fideRating;
 
     public User(String name, int age, String email, String password) {
         super(name, age);
@@ -94,7 +93,7 @@ public class User extends Player{
     }
 
     /**
-     * Generates a salt to use for encryption.
+     * Generates a salt to use for encryption. NOT IN USE YET.
      * @return
      */
     public byte[] generateSalt() {
@@ -104,6 +103,7 @@ public class User extends Player{
 
     /**
      * Method takes in a salt as a parameter and returns a String with a hashed password using the SHA-256 algorithm.
+     * NOT IN USE YET
      * @param password
      * @param salt
      * @return
