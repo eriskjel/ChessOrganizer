@@ -127,6 +127,10 @@ public class AdminAddTournamentController implements Initializable {
     public void addCompetitor() {
         CompetitorModel competitor = new CompetitorModel(this.inpFullName.getText(), Integer.parseInt(this.inpAge.getText()));
         tableCompetitors.getItems().add(competitor);
+
+        //resets input fields
+        this.inpFullName.setText("");
+        this.inpAge.setText("");
     }
 
     /**
@@ -148,5 +152,9 @@ public class AdminAddTournamentController implements Initializable {
         //will be null if a format is not selected in the application
         String tournamentFormat = this.tournamentFormat;
         LocalDate date = inpDate.getValue();
+
+        //resets input fields
+        this.inpFullName.setText("");
+        this.inpAge.setText("");
     }
 }
