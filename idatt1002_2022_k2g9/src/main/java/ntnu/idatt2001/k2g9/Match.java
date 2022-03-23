@@ -9,6 +9,7 @@ public class Match {
         this.player1 = player1;
         this.player2 = player2;
     }
+    public Match(){}
 
     public void setWinner(Player winner) {
         this.winner = winner;
@@ -32,5 +33,12 @@ public class Match {
 
     public Player getWinner() {
         return winner;
+    }
+
+    @Override
+    public String toString() {
+        return "Match{" +
+                "player1=" + player1.getName() +
+                ", player2=" + player2.getName() + "}";
     }
 }
