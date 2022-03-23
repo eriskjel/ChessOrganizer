@@ -18,7 +18,7 @@ public class CompetitorModel {
         return name.get();
     }
 
-    public void setStudentId(String name) {
+    public void setName(String name) {
         this.name = new SimpleStringProperty(name);
     }
 
@@ -26,7 +26,7 @@ public class CompetitorModel {
         return age.get();
     }
 
-    public void setFirstName(int age) {
+    public void setAge(int age) {
         this.age = new SimpleIntegerProperty(age);
     }
 }
