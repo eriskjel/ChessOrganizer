@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Tournament {
     private PlayerRegistry players;
+    private String name;
     private PlayerRegistry knockedOutPlayers;
     private LocalDate date;
     private ArrayList<Match[]> tournamentRounds;
@@ -11,7 +12,8 @@ public class Tournament {
     private int totalRounds;
     private int currentRound;
 
-    public Tournament(LocalDate date, User organizer, PlayerRegistry players) {
+    public Tournament(String name, LocalDate date, User organizer, PlayerRegistry players) {
+        this.name = name;
         this.date = date;
         this.organizer = organizer;
         this.players = players;
@@ -79,5 +81,22 @@ public class Tournament {
     public void updateTournamentRounds(Match[] round){
         this.tournamentRounds.add(round);
         currentRound++;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Tournament{" +
+                "name='" + name + '\'' +
+                ", date=" + date +
+                ", organizer=" + organizer +
+                '}';
     }
 }
