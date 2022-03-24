@@ -73,7 +73,7 @@ public class TournamentFormat {
                     participants.remove(0);
                 }
             }
-        }gi1qq
+        }
         if (format.equals("Round-robin")) {
 
             //creates a list of participants and shuffles it
@@ -130,8 +130,9 @@ public class TournamentFormat {
                 rounds[i] = new Match(tempPlayers.get(0), tempPlayers.get(1));
                 tempPlayers.remove(0);
                 tempPlayers.remove(0);
+                layout.add(rounds);
             }
-            layout.add(rounds);
+            //layout.add(rounds);
         }
         return layout;
     }
