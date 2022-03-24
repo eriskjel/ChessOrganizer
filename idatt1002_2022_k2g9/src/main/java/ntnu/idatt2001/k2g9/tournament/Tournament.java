@@ -1,8 +1,6 @@
 package ntnu.idatt2001.k2g9.tournament;
 import ntnu.idatt2001.k2g9.player.Player;
 import ntnu.idatt2001.k2g9.player.PlayerRegistry;
-import ntnu.idatt2001.k2g9.player.User;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -13,15 +11,15 @@ public class Tournament {
     private LocalDate date;
     private ArrayList<Match[]> tournamentBracket; //
     private String layout;
-    private User organizer;
+    //private User organizer;
     private int tournamentID;
 
 
     public Tournament(String name, LocalDate date, User organizer, PlayerRegistry players, String layout) {
         this.name = name;
         this.date = date;
-        this.organizer = organizer;
-        this.players = players;
+        //this.organizer = organizer;
+        this.players = new PlayerRegistry();
         this.layout = layout;
     }
 
@@ -32,17 +30,23 @@ public class Tournament {
     public PlayerRegistry getPlayers() {
         return players;
     }
+    public void addFromList(ArrayList<Player> playerList){
+        for(Player p : playerList){
+            p.setPlayerID(players.getSize());
+            players.addPlayerObject(p);
+        }
+    }
 
     public int getTotalRounds() {
         return tournamentBracket.size();
     }
 
-    public User getOrganizer() {
-        return organizer;
-    }
-
     public int getTournamentID() {
         return tournamentID;
+    }
+
+    public void setTournamentID(int tournamentID) {
+        this.tournamentID = tournamentID;
     }
 
     public String getLayout() {
@@ -61,10 +65,12 @@ public class Tournament {
         return name;
     }
 
-
+    /*
     public void setOrganizer(User organizer) {
         this.organizer = organizer;
     }
+
+     */
 
     public void setLayout(String layout) {
         this.layout = layout;
@@ -125,8 +131,8 @@ public class Tournament {
     public String toString() {
         return "Tournament{" +
                 "name='" + name + '\'' +
-                ", date=" + date +
-                ", organizer=" + organizer +
+                ", date=" + date.toString() +
+                ", layout='" + layout + '\'' +
                 '}';
     }
 

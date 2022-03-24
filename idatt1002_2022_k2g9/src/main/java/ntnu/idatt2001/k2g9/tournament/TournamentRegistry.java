@@ -42,6 +42,7 @@ public class TournamentRegistry {
      * @param tournament
      */
     public void addTournaments(Tournament tournament){
+        tournament.setTournamentID(tournaments.size());
          this.tournaments.add(tournament);
     }
 
@@ -50,21 +51,13 @@ public class TournamentRegistry {
      * the tournament already exists.
      * @param name
      * @param date
-     * @param organizer
-     * @param players
-     * @param tournamentID
      * @param layout
      * @return
      */
-    public boolean addTournament(String name, LocalDate date, User organizer, PlayerRegistry players, int tournamentID, String layout){
-        Tournament newT = new Tournament(name,date,organizer,players,layout);
-        if(tournaments.contains(newT)){
-            return false;
-        }
-        else{
+    public void addTournament(String name, LocalDate date, String layout){
+        Tournament newT = new Tournament(name,date,layout);
+            newT.setTournamentID(tournaments.size());
             tournaments.add(newT);
-            return true;
-        }
     }
 
     /**
