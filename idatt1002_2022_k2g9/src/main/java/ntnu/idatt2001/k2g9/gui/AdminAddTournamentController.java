@@ -11,9 +11,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import ntnu.idatt2001.k2g9.player.Player;
+import ntnu.idatt2001.k2g9.player.PlayerRegistry;
+import ntnu.idatt2001.k2g9.tournament.RegistryClient;
+import ntnu.idatt2001.k2g9.tournament.Tournament;
+
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -40,6 +46,7 @@ public class AdminAddTournamentController implements Initializable {
     //list that will be used to feed into table
     ObservableList<CompetitorModel> observableList = FXCollections.observableArrayList();
 
+    ArrayList<Player> players = new ArrayList<>();
 
     /**
      * Method that loads a new fxml file and sets it a the scene
@@ -123,14 +130,21 @@ public class AdminAddTournamentController implements Initializable {
      * Method that adds registered competitor to the table in GUI.
      */
     public void addCompetitor() {
+        //object to be added to table in GUI.
         CompetitorModel competitor = new CompetitorModel(this.inpFullName.getText(), Integer.parseInt(this.inpAge.getText()));
         tableCompetitors.getItems().add(competitor);
+
+
+        Player player = new Player(this.inpFullName.getText(), Integer.parseInt(this.inpAge.getText()));
+
+
+        players.add(player);
+
+
 
         //resets input fields
         this.inpFullName.setText("");
         this.inpAge.setText("");
-
-
     }
 
     /**
@@ -153,9 +167,23 @@ public class AdminAddTournamentController implements Initializable {
         String tournamentFormat = this.tournamentFormat;
         LocalDate date = inpDate.getValue();
 
+
+
+        //RegistryClient.tournamentRegistry.addTournament();
+        Tournament newTournament = new Tournament(tournamentName, date, tournamentFormat);
+        newTournament.addFromList(players);
+
+        RegistryClient.tournamentRegistry.addTournaments(newTournament);
+
+        //clears player arraylist so it can be
+        players.clear();
+
+
         //resets input fields
         this.inpFullName.setText("");
         this.inpAge.setText("");
+
+
 
     }
 }
