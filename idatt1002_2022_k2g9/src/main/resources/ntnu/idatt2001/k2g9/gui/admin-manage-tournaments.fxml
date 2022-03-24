@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="680.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntnu.idatt2001.k2g9.gui.AdminHubController">
+<VBox prefHeight="680.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntnu.idatt2001.k2g9.gui.AdminManageController">
    <children>
       <MenuBar prefHeight="25.0" prefWidth="1217.0" VBox.vgrow="NEVER">
          <menus>
@@ -86,15 +86,16 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <TableView layoutX="149.0" layoutY="90.0" prefHeight="337.0" prefWidth="725.0">
+                  <TableView fx:id="tblTournaments" layoutX="149.0" layoutY="90.0" prefHeight="337.0" prefWidth="725.0">
                     <columns>
-                      <TableColumn prefWidth="125.0" text="Date" />
-                      <TableColumn prefWidth="234.0" text="Tournament name" />
-                        <TableColumn prefWidth="166.0" text="Competitors" />
-                        <TableColumn prefWidth="199.0" text="Format" />
+                      <TableColumn fx:id="colDate" prefWidth="125.0" text="Date" />
+                      <TableColumn fx:id="colName" prefWidth="234.0" text="Tournament name" />
+                        <TableColumn fx:id="colCompetitors" prefWidth="166.0" text="Competitors" />
+                        <TableColumn fx:id="colFormat" prefWidth="199.0" text="Format" />
                     </columns>
                   </TableView>
                   <Button layoutX="768.0" layoutY="478.0" mnemonicParsing="false" onAction="#goToAddTournament" text="New tournament" />
+                  <Button layoutX="628.0" layoutY="478.0" mnemonicParsing="false" onAction="#refreshTable" text="Refresh table" />
                </children>
             </Pane>
          </children>

@@ -2,6 +2,7 @@ package ntnu.idatt2001.k2g9.gui;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import ntnu.idatt2001.k2g9.tournament.Tournament;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -16,7 +17,7 @@ public class TournamentModel {
     /**
      * uses SimpleString and SimpleInt properties. this is to use the correct format in order to add data to the javafx tableview
      */
-    private SimpleDateFormat date;
+    private SimpleStringProperty date;
     private SimpleStringProperty name;
     private SimpleIntegerProperty numCompetitors;
     private SimpleStringProperty format;
@@ -29,18 +30,25 @@ public class TournamentModel {
      * @param format
      */
     public TournamentModel(LocalDate date, String name, Integer numCompetitors, String format) {
-        this.date = new SimpleDateFormat(date.toString());
+        this.date = new SimpleStringProperty(date.toString());
         this.name = new SimpleStringProperty(name);
         this.numCompetitors = new SimpleIntegerProperty(numCompetitors);
         this.format = new SimpleStringProperty(format);
 
     }
 
-    public String getDate(){
-        return this.date.toString();
+    public TournamentModel(Tournament tournament){
+        this.date = new SimpleStringProperty(tournament.getDate().toString());
+        this.name = new SimpleStringProperty(tournament.getName());
+        this.numCompetitors = new SimpleIntegerProperty(tournament.getPlayers().getSize());
+        this.format = new SimpleStringProperty(tournament.getLayout());
     }
 
-    public void setDate(SimpleDateFormat date){
+    public String getDate(){
+        return this.date.get();
+    }
+
+    public void setDate(SimpleStringProperty date){
         this.date = date;
     }
 
