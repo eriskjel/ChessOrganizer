@@ -93,8 +93,8 @@ public class AdminAddTournamentController implements Initializable {
      */
     @FXML
     public void setFormatKnockout() {
-        this.inpTournamentFormat.setText("Knockout");
-        this.tournamentFormat = "Knockout";
+        this.inpTournamentFormat.setText("Knock-Out");
+        this.tournamentFormat = "Knock-Out";
     }
 
     /**
