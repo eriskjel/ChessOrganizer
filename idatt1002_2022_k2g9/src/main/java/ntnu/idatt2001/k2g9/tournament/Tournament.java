@@ -30,6 +30,7 @@ public class Tournament {
     public PlayerRegistry getPlayers() {
         return players;
     }
+
     public void addFromList(ArrayList<Player> playerList){
         for(Player p : playerList){
             p.setPlayerID(players.getSize());
@@ -43,10 +44,6 @@ public class Tournament {
 
     public int getTournamentID() {
         return tournamentID;
-    }
-
-    public void setTournamentID(int tournamentID) {
-        this.tournamentID = tournamentID;
     }
 
     public String getLayout() {
@@ -71,9 +68,16 @@ public class Tournament {
     }
 
      */
+    public void setTournamentID(int tournamentID) {
+        this.tournamentID = tournamentID;
+    }
 
     public void setLayout(String layout) {
         this.layout = layout;
+    }
+
+    public void setPlayers(PlayerRegistry players) {
+        this.players = players;
     }
 
     public void setDate(LocalDate date) {

@@ -16,12 +16,11 @@ public class TournamentTest {
         PlayerRegistry players = new PlayerRegistry();
 
         for(int i = 0 ; i<20 ; i++){
-            players.addPlayerObject(new Player("Erik"+Integer.toString(i),20+i));
+            players.addPlayerObject(new Player("Test"+Integer.toString(i),20+i));
         }
 
-        User user = new User("Erik",20,"eriskje@ntnu.no","123");
-
-        Tournament tournament = new Tournament("test", LocalDate.now(), user, players, "Knock-Out");
+        Tournament tournament = new Tournament("Test", LocalDate.now(), "Knock-Out");
+        tournament.setPlayers(players);
 
         tournament.createTournamentBracket();
 

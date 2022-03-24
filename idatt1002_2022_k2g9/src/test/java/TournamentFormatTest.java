@@ -34,7 +34,7 @@ class TournamentFormatTest {
         PlayerRegistry players = new PlayerRegistry();
 
         for(int i = 0 ; i<20 ; i++){
-            players.addPlayerObject(new Player("Erik"+Integer.toString(i),20+i));
+            players.addPlayerObject(new Player("Test"+Integer.toString(i),20+i));
         }
 
         ArrayList<Match[]> layout = TournamentFormat.createBracket("Knock-Out", players);
