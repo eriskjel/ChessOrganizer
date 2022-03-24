@@ -54,6 +54,10 @@ public class TournamentFormat {
             for (int round = 1 ; round <= log2base ; round++) {
                 tempHolder = new Match[(int) Math.pow(2 , log2base - round)];
                 Arrays.fill(tempHolder, new Match());
+                for (int i = 0; i < tempHolder.length; i++) {
+                    tempHolder[i] = new Match();
+                }
+
                 layout.add(round, tempHolder);
             }
 
