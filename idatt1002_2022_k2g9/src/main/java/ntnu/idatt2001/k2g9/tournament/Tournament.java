@@ -5,6 +5,7 @@ import ntnu.idatt2001.k2g9.player.User;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Tournament {
     private PlayerRegistry players;
@@ -15,8 +16,11 @@ public class Tournament {
     private User organizer;
     private int totalRounds;
     private int currentRound;
+    private String layout;
+    private int tournamentID;
 
-    public Tournament(String name, LocalDate date, User organizer, PlayerRegistry players) {
+
+    public Tournament(String name, LocalDate date, User organizer, PlayerRegistry players,int tournamentID, String layout) {
         this.name = name;
         this.date = date;
         this.organizer = organizer;
@@ -25,6 +29,8 @@ public class Tournament {
         this.totalRounds = (int)Math.ceil(players.getSize()/2);
         this.knockedOutPlayers = new PlayerRegistry();
         this.currentRound = 0;
+        this.tournamentID = tournamentID;
+        this.layout = layout;
 
     }
 
@@ -54,6 +60,14 @@ public class Tournament {
 
     public User getOrganizer() {
         return organizer;
+    }
+
+    public int getTournamentID() {
+        return tournamentID;
+    }
+
+    public String getLayout() {
+        return layout;
     }
 
     public PlayerRegistry getKnockedOutPlayers() {
@@ -102,5 +116,18 @@ public class Tournament {
                 ", date=" + date +
                 ", organizer=" + organizer +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Tournament)) return false;
+        Tournament that = (Tournament) o;
+        return tournamentID == that.tournamentID && Objects.equals(name, that.name) && Objects.equals(date, that.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, date, tournamentID);
     }
 }

@@ -1,5 +1,8 @@
 package ntnu.idatt2001.k2g9.tournament;
 
+import ntnu.idatt2001.k2g9.player.PlayerRegistry;
+import ntnu.idatt2001.k2g9.player.User;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -43,15 +46,35 @@ public class TournamentRegistry {
     }
 
     /**
-     * Returns a Tournament from the parameters listed below. The methods located all Tournaments that match specific
-     * criteria, but only returns a Tournament if only one is found. If several or none are found then null is returned.
+     * Constructor that creates tournament object in this tournamentRegistry instead of outside of it. Checks if
+     * the tournament already exists.
      * @param name
      * @param date
+     * @param organizer
+     * @param players
+     * @param tournamentID
+     * @param layout
      * @return
      */
-    public Tournament getTournament(String name, LocalDate date){
+    public boolean addTournament(String name, LocalDate date, User organizer, PlayerRegistry players, int tournamentID, String layout){
+        Tournament newT = new Tournament(name,date,organizer,players,tournamentID,layout);
+        if(tournaments.contains(newT)){
+            return false;
+        }
+        else{
+            tournaments.add(newT);
+            return true;
+        }
+    }
+
+    /**
+     * Finds a tournament in the Registry using the tournamentID.
+     * @param tournamentID
+     * @return
+     */
+    public Tournament getTournament(int tournamentID){
          ArrayList<Tournament> foundT = tournaments.stream()
-                 .filter(Tournament -> Tournament.getDate().equals(date) && Tournament.getName().equals(name))
+                 .filter(Tournament -> Tournament.getTournamentID() == tournamentID)
                  .collect(Collectors.toCollection(ArrayList::new));
          if(foundT.size()==1){
              return foundT.get(0);
