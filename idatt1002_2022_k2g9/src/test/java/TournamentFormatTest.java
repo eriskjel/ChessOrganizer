@@ -6,11 +6,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-
-/**
- * @author Navid Muradi
- * @project idatt1002_2022_k2g9
- */
 class TournamentFormatTest {
     @Test
     void knockOutLayoutIsAsExpected() {
