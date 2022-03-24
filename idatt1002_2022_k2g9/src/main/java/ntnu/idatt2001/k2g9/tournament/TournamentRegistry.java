@@ -57,7 +57,7 @@ public class TournamentRegistry {
      * @return
      */
     public boolean addTournament(String name, LocalDate date, User organizer, PlayerRegistry players, int tournamentID, String layout){
-        Tournament newT = new Tournament(name,date,organizer,players,tournamentID,layout);
+        Tournament newT = new Tournament(name,date,organizer,players,layout);
         if(tournaments.contains(newT)){
             return false;
         }
