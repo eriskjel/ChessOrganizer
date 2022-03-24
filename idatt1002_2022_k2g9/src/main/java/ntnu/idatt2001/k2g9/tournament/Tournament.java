@@ -24,6 +24,7 @@ public class Tournament {
         this.players = players;
         this.layout = layout;
     }
+
     public ArrayList<Match[]> getTournamentBracket() {
         return tournamentBracket;
     }
@@ -105,7 +106,7 @@ public class Tournament {
         if (matchNo%2 == 0){
             tournamentBracket.get(roundNo+1)[(int)(matchNo/2)].setPlayer1(player);
         } else if (matchNo%2 == 1){
-            tournamentBracket.get(roundNo+1)[(int)(matchNo/2)].setPlayer1(player);
+            tournamentBracket.get(roundNo+1)[(int)(matchNo/2)].setPlayer2(player);
         }
     }
 

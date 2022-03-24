@@ -8,10 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-/**
- * @author Navid Muradi
- * @project idatt1002_2022_k2g9
- */
+
 public class TournamentTest {
 
     @Test
