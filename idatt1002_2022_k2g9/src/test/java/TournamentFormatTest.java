@@ -22,6 +22,11 @@ class TournamentFormatTest {
 
         ArrayList<Match[]> layout = TournamentFormat.createBracket("Knock-Out", players);
 
+        for (Match[] match: layout
+        ) {
+            System.out.println(match);
+        }
+
         Assertions.assertTrue(layout.get(0).length == 4
                                 & layout.get(1).length == 8
                                 & layout.get(2).length == 4
@@ -51,5 +56,19 @@ class TournamentFormatTest {
 
         Assertions.assertTrue(playersPlacedInPreliminary == 8 && playersPlacedInFirstRound == 12);
     }
+
+    @Test
+    void roundRobinLayoutIsAsExpected() {
+        PlayerRegistry players = new PlayerRegistry();
+
+        for(int i = 0 ; i<6 ; i++){
+            players.addPlayerObject(new Player("Erik"+Integer.toString(i+1),20+i));
+        }
+
+        ArrayList<Match[]> layout = TournamentFormat.createBracket("Round-robin", players);
+
+
+    }
+
 
 }
