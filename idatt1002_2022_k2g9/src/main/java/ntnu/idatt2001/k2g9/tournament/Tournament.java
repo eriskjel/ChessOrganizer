@@ -35,7 +35,10 @@ public class Tournament {
         return players;
     }
     public void addFromList(ArrayList<Player> playerList){
-        players.getPlayers().addAll(playerList);
+        for(Player p : playerList){
+            p.setPlayerID(players.getSize());
+            players.addPlayerObject(p);
+        }
     }
 
     public int getCurrentRound() {
