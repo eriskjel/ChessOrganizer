@@ -15,8 +15,11 @@ public class Tournament {
     private User organizer;
     private int totalRounds;
     private int currentRound;
+    private String layout;
+    private int tournamentID;
 
-    public Tournament(String name, LocalDate date, User organizer, PlayerRegistry players) {
+
+    public Tournament(String name, LocalDate date, User organizer, PlayerRegistry players,int tournamentID, String layout) {
         this.name = name;
         this.date = date;
         this.organizer = organizer;
@@ -25,6 +28,8 @@ public class Tournament {
         this.totalRounds = (int)Math.ceil(players.getSize()/2);
         this.knockedOutPlayers = new PlayerRegistry();
         this.currentRound = 0;
+        this.tournamentID = tournamentID;
+        this.layout = layout;
 
     }
 
@@ -54,6 +59,14 @@ public class Tournament {
 
     public User getOrganizer() {
         return organizer;
+    }
+
+    public int getTournamentID() {
+        return tournamentID;
+    }
+
+    public String getLayout() {
+        return layout;
     }
 
     public PlayerRegistry getKnockedOutPlayers() {
