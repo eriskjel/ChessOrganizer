@@ -2,8 +2,12 @@ package ntnu.idatt2001.k2g9.tournament;
 
 import ntnu.idatt2001.k2g9.player.Player;
 import ntnu.idatt2001.k2g9.player.PlayerRegistry;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.stream.IntStream;
 
 /**
  * Class for creating tournament brackets of a given format.
@@ -74,66 +78,41 @@ public class TournamentFormat {
                 }
             }
         }
-        if (format.equals("Round-robin")) {
 
-            //creates a list of participants and shuffles it
+        if (format.equals("Round-Robin")) {
             ArrayList<Player> participants = new ArrayList<>(players.getPlayers());
-            Collections.shuffle(participants);
-            int numOfPlayers = participants.size();
-            String[] evenPairs;
-            // checks if numbers of players is an even number
-            // if it's an odd number it adds a dummy called "Bye"
-            if (numOfPlayers % 2 == 0) {
-                evenPairs = new String[numOfPlayers - 1];
-                for (int i = 0; i < numOfPlayers - 1; i++) {
-                    evenPairs[i] = participants.get(i + 1).getName();
+
+            if (participants.size()%2 == 1)
+                participants.add(new Player("Bye", 0));
+            int matchesPerRound = participants.size()/2;
+
+            int noOfRounds = participants.size()-1;
+
+            //Fills in the layout with Match arrays of correct size containing empty Match objects.
+            Match[] tempHolder;
+            for (int round = 0 ; round < noOfRounds ; round++) {
+                tempHolder = new Match[matchesPerRound];
+                for (int i = 0; i < tempHolder.length; i++) {
+                    tempHolder[i] = new Match();
                 }
-            } else {
-                evenPairs = new String[numOfPlayers];
-                for (int i = 0; i < numOfPlayers - 1; i++) {
-                    evenPairs[i] = participants.get(i + 1).getName();
-                }
-                evenPairs[participants.size() - 1] = "Bye";
+
+                layout.add(round, tempHolder);
             }
 
-            // sorts and sets up the tournament format
-            int pairSize = evenPairs.length; // an even number
-            int total = pairSize; // rounds needed to complete tournament
-            int halfSize = (pairSize + 1) / 2;
-            int count = 0;
-            int totNumberOfMatches = (total*(total-1)) / 2;
-            ArrayList<Player> tempPlayers = new ArrayList<>();
-            Match[] rounds = new Match[totNumberOfMatches];
-            for (int round = total - 1; round >= 0; round--) {
-                int playerIdx = round % pairSize;
-                if (!evenPairs[playerIdx].equals("Bye")) {
-                    tempPlayers.add(participants.get(0));
-                    for (Player player : participants
-                    ) {
-                        if (player.getName().equals(evenPairs[playerIdx])) {
-                            tempPlayers.add(player);
-                        }
-                    }
-                }
-                for (int i = 1; i < halfSize; i++) {
-                    int player1 = (round + i) % pairSize;
-                    int player2 = (round + pairSize - i) % pairSize;
-                    if (!evenPairs[player1].equals("Bye") && !evenPairs[player2].equals("Bye")) {
-                        for (Player player : participants) {
-                            if (player.getName().equals(evenPairs[player1])) tempPlayers.add(player);
-                            if (player.getName().equals(evenPairs[player2])) tempPlayers.add(player);
-                        }
-                    }
-                }
+            ArrayList<Integer> participantOrder = new ArrayList<>(participants.size());
+            for(int i = 0; i < participants.size(); i++){
+                participantOrder.add(i);
             }
-            for (int i = 0; i < totNumberOfMatches; i++) {
-                rounds[i] = new Match(tempPlayers.get(0), tempPlayers.get(1));
-                tempPlayers.remove(0);
-                tempPlayers.remove(0);
-                layout.add(rounds);
+
+            for (int n = 0 ; n < noOfRounds ; n++ ){
+                for (int i = 0 ; i < matchesPerRound ; i ++){
+                    layout.get(n)[i] = new Match(participants.get(participantOrder.get(i)), participants.get(participantOrder.get(participants.size()-i-1)));
+                }
+                participantOrder.add(participantOrder.get(1));
+                participantOrder.remove(1);
             }
-            //layout.add(rounds);
         }
         return layout;
     }
+
 }

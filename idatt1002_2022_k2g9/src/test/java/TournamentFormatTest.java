@@ -70,5 +70,14 @@ class TournamentFormatTest {
 
     }
 
+    @Test
+    void roundRobinBracketFilledCorrectly() {
+        PlayerRegistry players = new PlayerRegistry();
 
+        for (int i = 0; i < 7; i++) {
+            players.addPlayerObject(new Player("Test" + Integer.toString(i) , 20 + i));
+        }
+
+        ArrayList<Match[]> layout = TournamentFormat.createBracket("Round-Robin" , players);
+    }
 }
