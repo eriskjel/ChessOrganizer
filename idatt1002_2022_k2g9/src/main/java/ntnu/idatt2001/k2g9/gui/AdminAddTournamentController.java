@@ -129,6 +129,8 @@ public class AdminAddTournamentController implements Initializable {
         //resets input fields
         this.inpFullName.setText("");
         this.inpAge.setText("");
+
+
     }
 
     /**
@@ -154,5 +156,6 @@ public class AdminAddTournamentController implements Initializable {
         //resets input fields
         this.inpFullName.setText("");
         this.inpAge.setText("");
+
     }
 }
