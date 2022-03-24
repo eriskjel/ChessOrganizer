@@ -1,8 +1,6 @@
 package ntnu.idatt2001.k2g9.tournament;
 import ntnu.idatt2001.k2g9.player.Player;
 import ntnu.idatt2001.k2g9.player.PlayerRegistry;
-import ntnu.idatt2001.k2g9.player.User;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -13,23 +11,22 @@ public class Tournament {
     private PlayerRegistry knockedOutPlayers;
     private LocalDate date;
     private ArrayList<Match[]> tournamentRounds;
-    private User organizer;
+    //private User organizer;
     private int totalRounds;
     private int currentRound;
     private String layout;
     private int tournamentID;
 
 
-    public Tournament(String name, LocalDate date, User organizer, PlayerRegistry players,int tournamentID, String layout) {
+    public Tournament(String name, LocalDate date, String layout) {
         this.name = name;
         this.date = date;
-        this.organizer = organizer;
-        this.players = players;
+        //this.organizer = organizer;
+        this.players = new PlayerRegistry();
         this.tournamentRounds = new ArrayList<>();
         this.totalRounds = (int)Math.ceil(players.getSize()/2);
         this.knockedOutPlayers = new PlayerRegistry();
         this.currentRound = 0;
-        this.tournamentID = tournamentID;
         this.layout = layout;
 
     }
@@ -58,12 +55,18 @@ public class Tournament {
         return totalRounds;
     }
 
-    public User getOrganizer() {
+    /*public User getOrganizer() {
         return organizer;
     }
 
+     */
+
     public int getTournamentID() {
         return tournamentID;
+    }
+
+    public void setTournamentID(int tournamentID) {
+        this.tournamentID = tournamentID;
     }
 
     public String getLayout() {
@@ -77,10 +80,13 @@ public class Tournament {
     public void setDate(LocalDate date) {
         this.date = date;
     }
-
+    /*
     public void setOrganizer(User organizer) {
         this.organizer = organizer;
     }
+
+     */
+
     public boolean addPlayer(Player player){
         if(players.getPlayers().contains(player)){
             return false;
@@ -113,8 +119,8 @@ public class Tournament {
     public String toString() {
         return "Tournament{" +
                 "name='" + name + '\'' +
-                ", date=" + date +
-                ", organizer=" + organizer +
+                ", date=" + date.toString() +
+                ", layout='" + layout + '\'' +
                 '}';
     }
 

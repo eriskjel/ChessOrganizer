@@ -17,17 +17,19 @@ public class TournamentRegistryTest {
         players.addPlayerObject(new Player("Erik2",20));
         players.addPlayerObject(new Player("Erik3",20));
         players.addPlayerObject(new Player("Erik4",20));;
-        Admin organizer = new Admin("Daniel",19,"daniesky@ntnu.no","123");
-        Tournament testT1 = new Tournament("Tournament 1", LocalDate.parse("2022-03-23"), organizer, players,1,"Knock-out");
-        Tournament testT2 = new Tournament("Tournament 2", LocalDate.parse("2022-03-22"), organizer, players,2,"Knock-out");
-        Tournament testT3 = new Tournament("Tournament 3", LocalDate.parse("2022-03-21"), organizer, players,3,"Knock-out");
+        Tournament testT1 = new Tournament("Tournament 1", LocalDate.parse("2022-03-23"),"Knock-out");
+        Tournament testT2 = new Tournament("Tournament 2", LocalDate.parse("2022-03-22"),"Knock-out");
+        Tournament testT3 = new Tournament("Tournament 3", LocalDate.parse("2022-03-21"),"Knock-out");
         testReg.addTournaments(testT1);
         testReg.addTournaments(testT2);
         testReg.addTournaments(testT3);
-        Tournament foundT = testReg.getTournament(1);
+        Tournament foundT = testReg.getTournament(0);
         Assertions.assertEquals(testT1,foundT);
         Assertions.assertNotEquals(testT2,foundT);
         System.out.println(testReg.toString());
+        for(Tournament T : testReg.getTournaments()){
+            System.out.println(T.getTournamentID() + T.toString());
+        }
 
     }
 }
