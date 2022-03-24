@@ -28,13 +28,15 @@ public class PlayerRegistry {
     }
 
 
-    public void addPlayerObject(Player player){
+    public boolean addPlayerObject(Player player){
         try{
-                player.setPlayerID(players.size());
-                players.add(player);
+            player.setPlayerID(players.size());
+            players.add(player);
+            return true;
         }
         catch(IllegalArgumentException e){
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -43,14 +45,16 @@ public class PlayerRegistry {
      * @param name
      * @param age
      */
-    public void addPlayer(String name, int age) {
+    public boolean addPlayer(String name, int age) {
         try {
             Player player = new Player(name, age);
             player.setPlayerID(players.size());
             players.add(player);
+            return true;
 
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
