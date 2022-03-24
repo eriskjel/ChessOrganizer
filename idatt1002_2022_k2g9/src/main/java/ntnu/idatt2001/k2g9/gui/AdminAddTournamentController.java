@@ -46,7 +46,8 @@ public class AdminAddTournamentController implements Initializable {
     //list that will be used to feed into table
     ObservableList<CompetitorModel> observableList = FXCollections.observableArrayList();
 
-    ArrayList<Player> players = new ArrayList<>();
+    //ArrayList<Player> players = new ArrayList<>();
+    PlayerRegistry playerRegistry = new PlayerRegistry();
 
     /**
      * Method that loads a new fxml file and sets it a the scene
@@ -130,15 +131,11 @@ public class AdminAddTournamentController implements Initializable {
      * Method that adds registered competitor to the table in GUI.
      */
     public void addCompetitor() {
-        //object to be added to table in GUI.
-        CompetitorModel competitor = new CompetitorModel(this.inpFullName.getText(), Integer.parseInt(this.inpAge.getText()));
-        tableCompetitors.getItems().add(competitor);
-
-
         Player player = new Player(this.inpFullName.getText(), Integer.parseInt(this.inpAge.getText()));
-
-
-        players.add(player);
+        playerRegistry.addPlayerObject(player);
+        //object to be added to table in GUI.
+        CompetitorModel competitor = new CompetitorModel(this.inpFullName.getText(), Integer.parseInt(this.inpAge.getText()), player.getPlayerID());
+        tableCompetitors.getItems().add(competitor);
 
 
 
@@ -171,12 +168,12 @@ public class AdminAddTournamentController implements Initializable {
 
         //RegistryClient.tournamentRegistry.addTournament();
         Tournament newTournament = new Tournament(tournamentName, date, tournamentFormat);
-        newTournament.addFromList(players);
+        newTournament.addFromList(playerRegistry.getPlayers());
 
         RegistryClient.tournamentRegistry.addTournaments(newTournament);
 
         //clears player arraylist so it can be
-        players.clear();
+        playerRegistry.getPlayers().clear();
 
 
         //resets input fields

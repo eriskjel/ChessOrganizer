@@ -21,6 +21,7 @@ public class TournamentModel {
     private SimpleStringProperty name;
     private SimpleIntegerProperty numCompetitors;
     private SimpleStringProperty format;
+    private int tournamentID;
 
     /**
      * constructor for tournament model
@@ -42,6 +43,11 @@ public class TournamentModel {
         this.name = new SimpleStringProperty(tournament.getName());
         this.numCompetitors = new SimpleIntegerProperty(tournament.getPlayers().getSize());
         this.format = new SimpleStringProperty(tournament.getLayout());
+        this.tournamentID = tournament.getTournamentID();
+    }
+
+    public int getTournamentID(){
+        return this.tournamentID;
     }
 
     public String getDate(){

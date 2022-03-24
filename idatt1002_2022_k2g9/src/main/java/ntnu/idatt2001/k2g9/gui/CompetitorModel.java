@@ -2,6 +2,7 @@ package ntnu.idatt2001.k2g9.gui;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import ntnu.idatt2001.k2g9.player.Player;
 
 /**
  * Class that represents a Competitor. This is solely used to add data to the table, used in "AdminAddTournamentController".
@@ -15,16 +16,27 @@ public class CompetitorModel {
      */
     private SimpleStringProperty name;
     private SimpleIntegerProperty age;
+    private int competitorID;
 
     /**
      * constructor for competitormodel
      * @param name
      * @param age
      */
-    public CompetitorModel(String name, int age) {
+    public CompetitorModel(String name, int age, int competitorID) {
         this.name = new SimpleStringProperty(name);
         this.age = new SimpleIntegerProperty(age);
+        this.competitorID = competitorID;
+    }
 
+    public CompetitorModel(Player player) {
+        this.name = new SimpleStringProperty(player.getName());
+        this.age = new SimpleIntegerProperty((player.getAge()));
+        this.competitorID = player.getPlayerID();
+    }
+
+    public int getCompetitorID(){
+        return this.competitorID;
     }
 
     /**

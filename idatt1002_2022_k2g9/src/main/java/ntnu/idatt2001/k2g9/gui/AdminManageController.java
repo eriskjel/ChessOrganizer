@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import ntnu.idatt2001.k2g9.tournament.RegistryClient;
 import ntnu.idatt2001.k2g9.tournament.Tournament;
@@ -32,6 +33,7 @@ public class AdminManageController implements Initializable {
     public TableColumn colCompetitors;
     public TableColumn colFormat;
     public TableView tblTournaments;
+    public TableView tableCompetitors;
     //list that will be used to feed into table
     ObservableList<CompetitorModel> observableList = FXCollections.observableArrayList();
 
@@ -113,5 +115,49 @@ public class AdminManageController implements Initializable {
         }
         tblTournaments.getItems().addAll(tournamentModels);
 
+    }
+
+    /*
+    public void getTournament(){
+        ObservableList<TournamentModel> selectedTournament;
+        selectedTournament = tblTournaments.getSelectionModel().getSelectedItems();
+
+    }
+
+    @FXML
+    public void clickMouse(MouseEvent event){
+        ObservableList<TournamentModel> allCompetitors, singleTournament;
+        allCompetitors = tblTournaments.getItems();
+        singleTournament = tblTournaments.getSelectionModel().getSelectedItems();
+        System.out.println(singleTournament);
+
+    }
+
+     */
+
+    public void getTournamentID(ActionEvent actionEvent) throws IOException {
+        //get selected tournament
+        ObservableList<TournamentModel> singleTournament;
+        singleTournament = tblTournaments.getSelectionModel().getSelectedItems();
+
+        //get selected tournament ID
+        int tournamentID = singleTournament.get(0).getTournamentID();
+        AdminEditTournament.setTournamentID(tournamentID);
+
+        //load new fxml file
+        goToSpecificTournament(actionEvent);
+
+    }
+
+
+    private void goToSpecificTournament(ActionEvent actionEvent) throws IOException {
+        //load new fxml file
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("admin-edit-tournament.fxml"));
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
+
+        stage.setTitle("Edit tournament");
+        stage.setScene(scene);
+        stage.show();
     }
 }
