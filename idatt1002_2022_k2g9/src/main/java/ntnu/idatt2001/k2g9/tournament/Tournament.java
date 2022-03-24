@@ -15,7 +15,7 @@ public class Tournament {
     private int tournamentID;
 
 
-    public Tournament(String name, LocalDate date, User organizer, PlayerRegistry players, String layout) {
+    public Tournament(String name, LocalDate date, String layout) {
         this.name = name;
         this.date = date;
         //this.organizer = organizer;
