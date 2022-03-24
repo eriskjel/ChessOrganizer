@@ -34,6 +34,9 @@ public class Tournament {
     public PlayerRegistry getPlayers() {
         return players;
     }
+    public void addFromList(ArrayList<Player> playerList){
+        players.getPlayers().addAll(playerList);
+    }
 
     public int getCurrentRound() {
         return currentRound;
