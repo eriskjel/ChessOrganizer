@@ -8,9 +8,12 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <VBox prefHeight="680.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntnu.idatt2001.k2g9.gui.AdminViewBracketController">
    <children>
@@ -87,36 +90,46 @@
                   </Label>
                   <Pane layoutY="59.0" prefHeight="512.0" prefWidth="1100.0">
                      <children>
-                        <Button onAction="#setWinnerKnockout" layoutX="82.0" layoutY="30.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x000" />
-                        <Button onAction="#setWinnerKnockout" layoutX="82.0" layoutY="150.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x010" />
-                        <Button onAction="#setWinnerKnockout" layoutX="82.0" layoutY="70.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x001" />
-                        <Button onAction="#setWinnerKnockout" layoutX="82.0" layoutY="270.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x020" />
-                        <Button onAction="#setWinnerKnockout" layoutX="212.0" layoutY="95.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x100" />
-                        <Button onAction="#setWinnerKnockout" layoutX="324.0" layoutY="245.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x201" />
-                        <Button onAction="#setWinnerKnockout" layoutX="82.0" layoutY="430.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x031" />
-                        <Button onAction="#setWinnerKnockout" layoutX="82.0" layoutY="190.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x011" />
-                        <Button onAction="#setWinnerKnockout" layoutX="82.0" layoutY="310.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x021" />
-                        <Button onAction="#setWinnerKnockout" layoutX="82.0" layoutY="390.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x030" />
-                        <Button onAction="#setWinnerKnockout" layoutX="212.0" layoutY="125.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x101" />
-                        <Button onAction="#setWinnerKnockout" layoutX="324.0" layoutY="215.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x200" />
-                        <Button onAction="#setWinnerKnockout" layoutX="212.0" layoutY="365.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x111" />
-                        <Button onAction="#setWinnerKnockout" layoutX="212.0" layoutY="335.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x110" />
-                        <Button onAction="#setWinnerKnockout" layoutX="946.0" layoutY="30.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x040" />
-                        <Button onAction="#setWinnerKnockout" layoutX="946.0" layoutY="150.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x050" />
-                        <Button onAction="#setWinnerKnockout" layoutX="946.0" layoutY="70.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x041" />
-                        <Button onAction="#setWinnerKnockout" layoutX="946.0" layoutY="270.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x060" />
-                        <Button onAction="#setWinnerKnockout" layoutX="946.0" layoutY="430.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x071" />
-                        <Button onAction="#setWinnerKnockout" layoutX="946.0" layoutY="190.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x051" />
-                        <Button onAction="#setWinnerKnockout" layoutX="946.0" layoutY="310.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x061" />
-                        <Button onAction="#setWinnerKnockout" layoutX="946.0" layoutY="390.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x070" />
-                        <Button onAction="#setWinnerKnockout" layoutX="802.0" layoutY="95.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x120" />
-                        <Button onAction="#setWinnerKnockout" layoutX="802.0" layoutY="125.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x121" />
-                        <Button onAction="#setWinnerKnockout" layoutX="802.0" layoutY="365.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x131" />
-                        <Button onAction="#setWinnerKnockout" layoutX="802.0" layoutY="335.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x130" />
-                        <Button onAction="#setWinnerKnockout" layoutX="698.0" layoutY="215.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x210" />
-                        <Button onAction="#setWinnerKnockout" layoutX="698.0" layoutY="245.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x211" />
-                        <Button onAction="#setWinnerKnockout" layoutX="459.0" layoutY="230.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x300" />
-                        <Button onAction="#setWinnerKnockout" layoutX="550.0" layoutY="230.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x301" />
+                        <Button layoutX="82.0" layoutY="30.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x000" />
+                        <Button layoutX="82.0" layoutY="150.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x010" />
+                        <Button layoutX="82.0" layoutY="70.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x001" />
+                        <Button layoutX="82.0" layoutY="270.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x020" />
+                        <Button layoutX="212.0" layoutY="95.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x100" />
+                        <Button layoutX="324.0" layoutY="245.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x201" />
+                        <Button layoutX="82.0" layoutY="430.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x031" />
+                        <Button layoutX="82.0" layoutY="190.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x011" />
+                        <Button layoutX="82.0" layoutY="310.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x021" />
+                        <Button layoutX="82.0" layoutY="390.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x030" />
+                        <Button layoutX="212.0" layoutY="125.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x101" />
+                        <Button layoutX="324.0" layoutY="215.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x200" />
+                        <Button layoutX="212.0" layoutY="365.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x111" />
+                        <Button layoutX="212.0" layoutY="335.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x110" />
+                        <Button layoutX="946.0" layoutY="30.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x040" />
+                        <Button layoutX="946.0" layoutY="150.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x050" />
+                        <Button layoutX="946.0" layoutY="70.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x041" />
+                        <Button layoutX="946.0" layoutY="270.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x060" />
+                        <Button layoutX="946.0" layoutY="430.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x071" />
+                        <Button layoutX="946.0" layoutY="190.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x051" />
+                        <Button layoutX="946.0" layoutY="310.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x061" />
+                        <Button layoutX="946.0" layoutY="390.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x070" />
+                        <Button layoutX="802.0" layoutY="95.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x120" />
+                        <Button layoutX="802.0" layoutY="125.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x121" />
+                        <Button layoutX="802.0" layoutY="365.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x131" />
+                        <Button layoutX="802.0" layoutY="335.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x130" />
+                        <Button layoutX="698.0" layoutY="215.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x210" />
+                        <Button layoutX="698.0" layoutY="245.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x211" />
+                        <Button layoutX="459.0" layoutY="230.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x300" />
+                        <Button layoutX="550.0" layoutY="230.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x301" />
+                        <TextField fx:id="tournamentWinner" editable="false" layoutX="451.0" layoutY="144.0" prefHeight="36.0" prefWidth="174.0">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </TextField>
+                        <Text layoutX="438.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament Winner" textAlignment="CENTER" wrappingWidth="200.0">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
                      </children>
                   </Pane>
                </children>

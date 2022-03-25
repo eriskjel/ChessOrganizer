@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import ntnu.idatt2001.k2g9.player.Player;
 import ntnu.idatt2001.k2g9.tournament.Match;
@@ -27,7 +28,7 @@ import java.util.ResourceBundle;
 public class AdminViewBracketController implements Initializable {
 
     HashMap<String, Button> buttonHashMap;
-
+    public TextField tournamentWinner;
     public Button x000;
     public Button x010;
     public Button x001;
@@ -144,50 +145,59 @@ public class AdminViewBracketController implements Initializable {
         String fxid = button.getId();
 
         //get round, match and winner player info
-        int round = Integer.parseInt(fxid.substring(1,2));
-        int match = Integer.parseInt(fxid.substring(2,3));
-        int player = Integer.parseInt(fxid.substring(3,4));
+        int roundIndex = Integer.parseInt(fxid.substring(1,2));
+        int matchIndex = Integer.parseInt(fxid.substring(2,3));
+        int playerIndex = Integer.parseInt(fxid.substring(3,4));
 
         Tournament tournament = RegistryClient.tournamentRegistry.getTournament(tournamentID);
         ArrayList<Match[]> bracket = tournament.getTournamentBracket();
 
 
 
-        //If there is an opponent assigned, the current player that is pressed will be moved to next bracket instead.
-        if(player == 0) {
-            if(buttonHashMap.get("x" + round + match + (player + 1)).getText().isEmpty()){
+        if (roundIndex+1 == tournament.getTotalRounds()){
+            if (playerIndex == 0 && !buttonHashMap.get("x" + roundIndex + matchIndex + (playerIndex + 1)).getText().isEmpty()){
+                bracket.get(roundIndex)[matchIndex].setWinner(bracket.get(roundIndex)[matchIndex].getPlayer1());
+                tournamentWinner.setText(bracket.get(roundIndex)[matchIndex].getWinner().getName());
+            }
+            else if(playerIndex == 1 && !buttonHashMap.get("x" + roundIndex + matchIndex + (playerIndex - 1)).getText().isEmpty()){
+                bracket.get(roundIndex)[matchIndex].setWinner(bracket.get(roundIndex)[matchIndex].getPlayer2());
+                tournamentWinner.setText(bracket.get(roundIndex)[matchIndex].getWinner().getName());
+            }
+        }
+        else if(playerIndex == 0) {
+            if(buttonHashMap.get("x" + roundIndex + matchIndex + (playerIndex + 1)).getText().isEmpty()){
                 //If a player1 is clicked while player2 of match hasn't been assigned, player1 will be moved back.
                 button.setText("");
-                bracket.get(round-1)[match*2+player].setWinner(null);
+                bracket.get(roundIndex-1)[matchIndex*2+playerIndex].setWinner(null);
             }
-            else if (match%2 == 0){
+            else if (matchIndex%2 == 0){
                 //If player 1 is the winner, and they're in an even match, they get sent to the match in next round as player 1
-                bracket.get(round)[match].setWinner(bracket.get(round)[match].getPlayer1());
-                bracket.get(round+1)[(int) (match/2)].setPlayer1(bracket.get(round)[match].getPlayer1());
+                bracket.get(roundIndex)[matchIndex].setWinner(bracket.get(roundIndex)[matchIndex].getPlayer1());
+                bracket.get(roundIndex+1)[(int) (matchIndex/2)].setPlayer1(bracket.get(roundIndex)[matchIndex].getPlayer1());
             }
             else {//If player 1 is the winner, and they're in an even match, they get sent to the match in next round as player 2
-                bracket.get(round)[match].setWinner(bracket.get(round)[match].getPlayer1());
-                bracket.get(round + 1)[(int) ( match / 2 )].setPlayer2(bracket.get(round)[match].getPlayer1());
+                bracket.get(roundIndex)[matchIndex].setWinner(bracket.get(roundIndex)[matchIndex].getPlayer1());
+                bracket.get(roundIndex + 1)[(int) ( matchIndex / 2 )].setPlayer2(bracket.get(roundIndex)[matchIndex].getPlayer1());
             }
-            buttonHashMap.get("x"+(round+1)+ "" + (int) (match/2) + "" + match%2).setText(button.getText());
+            buttonHashMap.get("x"+(roundIndex+1)+ "" + (int) (matchIndex/2) + "" + matchIndex%2).setText(button.getText());
         }
-        else if(player == 1) {
-            if(buttonHashMap.get("x" + round + match + (player - 1)).getText().isEmpty()){
+        else if(playerIndex == 1) {
+            if(buttonHashMap.get("x" + roundIndex + matchIndex + (playerIndex - 1)).getText().isEmpty()){
                 //If a player2 is clicked while player1 of match hasn't been assigned, player2 will be moved back.
                 button.setText("");
-                bracket.get(round-1)[match*2+player].setWinner(null);
+                bracket.get(roundIndex-1)[matchIndex*2+playerIndex].setWinner(null);
             }
-            else if (match%2 == 0){
+            else if (matchIndex%2 == 0){
                 //If player 2 is the winner, and they're in an even match, they get sent to the match in next round as player 1
-                bracket.get(round)[match].setWinner(bracket.get(round)[match].getPlayer2());
-                bracket.get(round+1)[(int) (match/2)].setPlayer1(bracket.get(round)[match].getPlayer2());
+                bracket.get(roundIndex)[matchIndex].setWinner(bracket.get(roundIndex)[matchIndex].getPlayer2());
+                bracket.get(roundIndex+1)[(int) (matchIndex/2)].setPlayer1(bracket.get(roundIndex)[matchIndex].getPlayer2());
             }
             else {
                 //If player 2 is the winner, and they're in an odd match, they get sent to the match in next round as player 2
-                bracket.get(round)[match].setWinner(bracket.get(round)[match].getPlayer2());
-                bracket.get(round+1)[(int) (match/2)].setPlayer2(bracket.get(round)[match].getPlayer2());
+                bracket.get(roundIndex)[matchIndex].setWinner(bracket.get(roundIndex)[matchIndex].getPlayer2());
+                bracket.get(roundIndex+1)[(int) (matchIndex/2)].setPlayer2(bracket.get(roundIndex)[matchIndex].getPlayer2());
             }
-            buttonHashMap.get("x"+(round+1)+ "" + (int) (match/2) + "" + match%2).setText(button.getText());
+            buttonHashMap.get("x"+(roundIndex+1)+ "" + (int) (matchIndex/2) + "" + matchIndex%2).setText(button.getText());
         }
 
 
