@@ -95,8 +95,8 @@
                     </columns>
                   </TableView>
                   <Button layoutX="768.0" layoutY="478.0" mnemonicParsing="false" onAction="#goToAddTournament" text="New tournament" />
-                  <Button layoutX="149.0" layoutY="478.0" mnemonicParsing="false" onAction="#getTournamentID" text="Edit tournament" />
-                  <Button layoutX="584.0" layoutY="478.0" mnemonicParsing="false" onAction="#gotoAdminViewBracket" text="New tournament" />
+                  <Button layoutX="149.0" layoutY="491.0" mnemonicParsing="false" onAction="#getTournamentID" prefHeight="25.0" prefWidth="107.0" text="Edit tournament" />
+                  <Button layoutX="149.0" layoutY="444.0" mnemonicParsing="false" onAction="#gotoAdminViewBracket" prefHeight="25.0" prefWidth="107.0" text="View tournament" />
                </children>
             </Pane>
          </children>
