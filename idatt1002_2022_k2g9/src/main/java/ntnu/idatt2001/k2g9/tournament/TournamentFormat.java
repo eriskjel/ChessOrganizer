@@ -77,6 +77,9 @@ public class TournamentFormat {
                     participants.remove(0);
                 }
             }
+
+            if(noOfPreliminaryMatches == 0)
+                layout.remove(0);
         }
 
         if (format.equals("Round-Robin")) {
