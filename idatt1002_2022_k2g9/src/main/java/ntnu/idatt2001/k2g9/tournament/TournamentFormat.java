@@ -2,8 +2,12 @@ package ntnu.idatt2001.k2g9.tournament;
 
 import ntnu.idatt2001.k2g9.player.Player;
 import ntnu.idatt2001.k2g9.player.PlayerRegistry;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.stream.IntStream;
 
 /**
  * Class for creating tournament brackets of a given format.
@@ -73,7 +77,45 @@ public class TournamentFormat {
                     participants.remove(0);
                 }
             }
+
+            if(noOfPreliminaryMatches == 0)
+                layout.remove(0);
+        }
+
+        if (format.equals("Round-Robin")) {
+            ArrayList<Player> participants = new ArrayList<>(players.getPlayers());
+
+            if (participants.size()%2 == 1)
+                participants.add(new Player("Bye", 0));
+            int matchesPerRound = participants.size()/2;
+
+            int noOfRounds = participants.size()-1;
+
+            //Fills in the layout with Match arrays of correct size containing empty Match objects.
+            Match[] tempHolder;
+            for (int round = 0 ; round < noOfRounds ; round++) {
+                tempHolder = new Match[matchesPerRound];
+                for (int i = 0; i < tempHolder.length; i++) {
+                    tempHolder[i] = new Match();
+                }
+
+                layout.add(round, tempHolder);
+            }
+
+            ArrayList<Integer> participantOrder = new ArrayList<>(participants.size());
+            for(int i = 0; i < participants.size(); i++){
+                participantOrder.add(i);
+            }
+
+            for (int n = 0 ; n < noOfRounds ; n++ ){
+                for (int i = 0 ; i < matchesPerRound ; i ++){
+                    layout.get(n)[i] = new Match(participants.get(participantOrder.get(i)), participants.get(participantOrder.get(participants.size()-i-1)));
+                }
+                participantOrder.add(participantOrder.get(1));
+                participantOrder.remove(1);
+            }
         }
         return layout;
     }
+
 }
