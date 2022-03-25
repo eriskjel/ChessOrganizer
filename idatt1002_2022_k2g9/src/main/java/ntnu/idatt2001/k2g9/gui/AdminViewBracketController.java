@@ -156,9 +156,6 @@ public class AdminViewBracketController implements Initializable {
         Tournament tournament = RegistryClient.tournamentRegistry.getTournament(tournamentID);
         tournament.createTournamentBracket();
 
-
-
-
         //all buttons
         Button[] buttons = {
                 this.x000,
@@ -193,9 +190,17 @@ public class AdminViewBracketController implements Initializable {
                 this.x301
         };
 
-        for (int i = 0; i < buttons.length; i++) {
 
+        int buttonIndex = 0;
+        for (int i = 0; i < tournament.getTournamentBracket().get(0).length*2; i++) {
+            if (buttonIndex%2 == 0)
+                buttons[buttonIndex].setText(tournament.getTournamentBracket().get(0)[i/2].getPlayer1().getName());
+            else
+                buttons[buttonIndex].setText(tournament.getTournamentBracket().get(0)[i/2].getPlayer2().getName());
+            buttonIndex++;
         }
+
+        System.out.println("Running initialize");
 
 
     }
