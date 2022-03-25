@@ -4,6 +4,7 @@ package ntnu.idatt2001.k2g9.gui;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import ntnu.idatt2001.k2g9.tournament.RegistryClient;
@@ -33,7 +35,6 @@ public class AdminManageController implements Initializable {
     public TableColumn colCompetitors;
     public TableColumn colFormat;
     public TableView tblTournaments;
-    public TableView tableCompetitors;
     //list that will be used to feed into table
     ObservableList<CompetitorModel> observableList = FXCollections.observableArrayList();
 
@@ -99,6 +100,28 @@ public class AdminManageController implements Initializable {
         this.colFormat.setCellValueFactory(new PropertyValueFactory<>("Format"));
         this.tblTournaments.setItems(observableList);
         refreshTable();
+
+        //add events listener to tournament table
+        /*
+        this.tblTournaments.setOnMouseClicked(mouseEvent -> {
+            TournamentModel selectedTournament = (TournamentModel) this.tblTournaments.getSelectionModel().getSelectedItem();
+            if (selectedTournament != null) {
+                System.out.println(selectedTournament.getTournamentID());
+            }
+        });
+
+         */
+
+        this.tblTournaments.setOnMouseClicked((EventHandler<MouseEvent>) mouseEvent -> {
+            TournamentModel selectedTournament = (TournamentModel) this.tblTournaments.getSelectionModel().getSelectedItem();
+            if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+                if(mouseEvent.getClickCount() == 2){
+                    if (selectedTournament != null){
+                        System.out.println(selectedTournament.toString());
+                    }
+                }
+            }
+        });
     }
 
     /**
@@ -163,5 +186,18 @@ public class AdminManageController implements Initializable {
         stage.setTitle("Edit tournament");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void goToTournament(){
+        tblTournaments.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+                    if(mouseEvent.getClickCount() == 2){
+                        System.out.println("Double clicked");
+                    }
+                }
+            }
+        });
     }
 }

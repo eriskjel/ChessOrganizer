@@ -158,7 +158,7 @@ public class AdminAddTournamentController implements Initializable {
      * Method that gets all the data from the input field when a user clicks the add tournament button
      */
     @FXML
-    public void addTournament() {
+    public void addTournament(ActionEvent event) throws IOException {
         String tournamentName = inpTournamentName.getText();
         //will be null if a format is not selected in the application
         String tournamentFormat = this.tournamentFormat;
@@ -175,10 +175,19 @@ public class AdminAddTournamentController implements Initializable {
         //clears player arraylist so it can be
         playerRegistry.getPlayers().clear();
 
+        //clear competitor table
+        ObservableList<CompetitorModel> allCompetitors;
+        allCompetitors = tableCompetitors.getItems();
+        allCompetitors.clear();
+
 
         //resets input fields
         this.inpFullName.setText("");
         this.inpAge.setText("");
+        this.inpTournamentName.setText("");
+        this.inpTournamentFormat.setText("");
+        this.inpDate.getEditor().setText("");
+        gotoAdminManageTournament(event);
 
 
 
