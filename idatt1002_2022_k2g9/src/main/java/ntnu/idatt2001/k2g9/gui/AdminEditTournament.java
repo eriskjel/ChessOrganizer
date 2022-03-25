@@ -114,7 +114,7 @@ public class AdminEditTournament implements Initializable {
         stage.show();
     }
 
-    public void refreshData(ActionEvent actionEvent) {
+    public void refreshData() {
         //clear table beforehand
         ObservableList<CompetitorModel> allCompetitors;
         allCompetitors = this.tableCompetitors.getItems();
@@ -178,12 +178,15 @@ public class AdminEditTournament implements Initializable {
         this.tblName.setCellValueFactory(new PropertyValueFactory<>("Name"));
         this.tblAge.setCellValueFactory(new PropertyValueFactory<>("Age"));
         this.tableCompetitors.setItems(observableList);
+        refreshData();
     }
 
     public void updateTurnamentInfo(){
         this.inpTournamentName.setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getName());
         this.inpTournamentFormat.setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout());
-        this.inpDate.getEditor().setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getDate().toString());
+        //this.inpDate.getEditor().setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getDate().toString());
+        //this.inpDate.getEditor().setPromptText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getDate().toString());
+        this.inpDate.setPromptText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getDate().toString());
     }
 
     /**
@@ -212,6 +215,9 @@ public class AdminEditTournament implements Initializable {
         //will be null if a format is not selected in the application
         String tournamentFormat = this.tournamentFormat;
         LocalDate date = inpDate.getValue();
+        if (date == null){
+            date = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getDate();
+        }
 
         RegistryClient.tournamentRegistry.getTournament(tournamentID).setName(tournamentName);
         RegistryClient.tournamentRegistry.getTournament(tournamentID).setDate(date);

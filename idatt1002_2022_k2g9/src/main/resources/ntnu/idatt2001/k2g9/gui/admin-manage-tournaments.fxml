@@ -95,7 +95,6 @@
                     </columns>
                   </TableView>
                   <Button layoutX="768.0" layoutY="478.0" mnemonicParsing="false" onAction="#goToAddTournament" text="New tournament" />
-                  <Button layoutX="628.0" layoutY="478.0" mnemonicParsing="false" onAction="#refreshTable" text="Refresh table" />
                   <Button layoutX="149.0" layoutY="478.0" mnemonicParsing="false" onAction="#getTournamentID" text="Edit tournament" />
                </children>
             </Pane>

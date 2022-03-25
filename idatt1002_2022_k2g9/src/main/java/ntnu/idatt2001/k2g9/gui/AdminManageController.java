@@ -98,9 +98,13 @@ public class AdminManageController implements Initializable {
         this.colCompetitors.setCellValueFactory(new PropertyValueFactory<>("numCompetitors"));
         this.colFormat.setCellValueFactory(new PropertyValueFactory<>("Format"));
         this.tblTournaments.setItems(observableList);
+        refreshTable();
     }
 
-    public void refreshTable(ActionEvent actionEvent) {
+    /**
+     * clear all data from table, and updates and inserts data from the Registryclient
+     */
+    public void refreshTable() {
         //clear table beforehand
         ObservableList<TournamentModel> allTournaments;
         allTournaments = tblTournaments.getItems();

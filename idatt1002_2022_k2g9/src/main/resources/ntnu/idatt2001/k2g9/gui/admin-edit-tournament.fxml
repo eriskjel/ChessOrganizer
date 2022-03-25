@@ -131,7 +131,6 @@
                   <DatePicker id="inpDate" fx:id="inpDate" layoutX="803.0" layoutY="261.0" prefHeight="25.0" prefWidth="181.0" showWeekNumbers="true" />
                   <Label layoutX="667.0" layoutY="261.0" prefHeight="21.0" prefWidth="132.0" styleClass="p" stylesheets="@styles.css" text="Pick date:" />
                   <Button layoutX="667.0" layoutY="449.0" mnemonicParsing="false" onAction="#goToBrackets" text="View tournament bracket" />
-                  <Button layoutX="518.0" layoutY="449.0" mnemonicParsing="false" onAction="#refreshData" text="Refresh data" />
                   <Button layoutX="872.0" layoutY="373.0" mnemonicParsing="false" onAction="#saveTournament" prefHeight="51.0" prefWidth="132.0" text="Save tournament" />
                </children>
             </Pane>
