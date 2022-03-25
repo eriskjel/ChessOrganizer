@@ -63,13 +63,13 @@ class TournamentFormatTest {
         ArrayList<Match[]> layout = TournamentFormat.createBracket("Round-Robin", players);
 
         //test to see how many rounds will be played
-        //should be participants.size()-1, which is 7 with 7 competitors + 1 dummy "Bye"
+        //should be participants.size()-1, which is 7, with (7 competitors + 1 dummy "Bye") - 1
         Assertions.assertEquals(layout.size(),7);
         Assertions.assertNotEquals(layout.size(),8);
         Assertions.assertNotEquals(layout.size(),5);
 
         //test to see how many matches there'll be in each round
-        //should be participants.size()/2, which is 4 since there's 7 competitors + 1 dummy "Bye"
+        //should be participants.size()/2, which is 4 in each round, since there's (7 competitors + 1 dummy "Bye")/2
         Assertions.assertTrue(layout.get(0).length == 4
                                     && layout.get(1).length == 4
                                     && layout.get(2).length == 4
