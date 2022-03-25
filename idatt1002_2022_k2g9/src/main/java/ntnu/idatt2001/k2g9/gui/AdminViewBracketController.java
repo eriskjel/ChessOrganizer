@@ -153,17 +153,40 @@ public class AdminViewBracketController implements Initializable {
         ArrayList<Match[]> bracket = tournament.getTournamentBracket();
 
 
-
+        //Checks if the current player is in the final round.
         if (roundIndex+1 == tournament.getTotalRounds()){
-            if (playerIndex == 0 && !buttonHashMap.get("x" + roundIndex + matchIndex + (playerIndex + 1)).getText().isEmpty()){
-                bracket.get(roundIndex)[matchIndex].setWinner(bracket.get(roundIndex)[matchIndex].getPlayer1());
-                tournamentWinner.setText(bracket.get(roundIndex)[matchIndex].getWinner().getName());
+            if (bracket.get(roundIndex)[matchIndex].getWinner() != null && bracket.get(roundIndex)[matchIndex].getWinner().getName() == button.getText()) {
+                tournamentWinner.setText("");
+                bracket.get(roundIndex)[matchIndex].setWinner(null);
             }
-            else if(playerIndex == 1 && !buttonHashMap.get("x" + roundIndex + matchIndex + (playerIndex - 1)).getText().isEmpty()){
-                bracket.get(roundIndex)[matchIndex].setWinner(bracket.get(roundIndex)[matchIndex].getPlayer2());
-                tournamentWinner.setText(bracket.get(roundIndex)[matchIndex].getWinner().getName());
+            else if (playerIndex == 0){
+                if (buttonHashMap.get("x" + roundIndex + matchIndex + (playerIndex + 1)).getText().isEmpty()){
+                    button.setText("");
+                    bracket.get(roundIndex-1)[matchIndex*2+playerIndex].setWinner(null);
+                }
+                else {
+                    bracket.get(roundIndex)[matchIndex].setWinner(bracket.get(roundIndex)[matchIndex].getPlayer1());
+                    tournamentWinner.setText(bracket.get(roundIndex)[matchIndex].getWinner().getName());
+                }
+            }
+            else if(playerIndex == 1){
+                if(buttonHashMap.get("x" + roundIndex + matchIndex + (playerIndex - 1)).getText().isEmpty()){
+                    button.setText("");
+                    bracket.get(roundIndex-1)[matchIndex*2+playerIndex].setWinner(null);
+                }
+                else {
+                    bracket.get(roundIndex)[matchIndex].setWinner(bracket.get(roundIndex)[matchIndex].getPlayer2());
+                    tournamentWinner.setText(bracket.get(roundIndex)[matchIndex].getWinner().getName());
+                }
             }
         }
+        //Checks if winner for that round is already assigned. If it is, it'll instead move the player back to previous bracket.
+        else if (!(bracket.get(roundIndex)[matchIndex].getWinner()==null)
+                && bracket.get(roundIndex)[matchIndex].getWinner().getName().equals(button.getText())){
+            bracket.get(roundIndex)[matchIndex].setWinner(null);
+            buttonHashMap.get("x"+(roundIndex+1)+ "" + (int) (matchIndex/2) + "" + matchIndex%2).setText("");
+        }
+
         else if(playerIndex == 0) {
             if(buttonHashMap.get("x" + roundIndex + matchIndex + (playerIndex + 1)).getText().isEmpty()){
                 //If a player1 is clicked while player2 of match hasn't been assigned, player1 will be moved back.
