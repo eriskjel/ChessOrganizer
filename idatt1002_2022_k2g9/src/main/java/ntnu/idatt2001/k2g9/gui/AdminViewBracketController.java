@@ -152,6 +152,37 @@ public class AdminViewBracketController implements Initializable {
         ArrayList<Match[]> bracket = tournament.getTournamentBracket();
 
 
+
+        //If there is an opponent assigned, the current player that is pressed will be moved to next bracket instead.
+        if(player == 0) {
+            if (match%2 == 0){
+                //If player 1 is the winner, and they're in an even match, they get sent to the match in next round as player 1
+                bracket.get(round)[match].setWinner(bracket.get(round)[match].getPlayer1());
+                bracket.get(round+1)[(int) (match/2)].setPlayer1(bracket.get(round)[match].getPlayer1());
+            }
+            else {//If player 1 is the winner, and they're in an even match, they get sent to the match in next round as player 2
+                bracket.get(round)[match].setWinner(bracket.get(round)[match].getPlayer1());
+                bracket.get(round + 1)[(int) ( match / 2 )].setPlayer2(bracket.get(round)[match].getPlayer1());
+            }
+            buttonHashMap.get("x"+(round+1)+ "" + (int) (match/2) + "" + match%2).setText(button.getText());
+        }
+        else if(player == 1) {
+            if (match%2 == 0){
+                //If player 2 is the winner, and they're in an even match, they get sent to the match in next round as player 1
+                bracket.get(round)[match].setWinner(bracket.get(round)[match].getPlayer2());
+                bracket.get(round+1)[(int) (match/2)].setPlayer1(bracket.get(round)[match].getPlayer2());
+            }
+            else {
+                //If player 2 is the winner, and they're in an odd match, they get sent to the match in next round as player 2
+                bracket.get(round)[match].setWinner(bracket.get(round)[match].getPlayer2());
+                bracket.get(round+1)[(int) (match/2)].setPlayer2(bracket.get(round)[match].getPlayer2());
+            }
+            buttonHashMap.get("x"+(round+1)+ "" + (int) (match/2) + "" + match%2).setText(button.getText());
+        }
+
+
+
+
     }
 
     @Override
