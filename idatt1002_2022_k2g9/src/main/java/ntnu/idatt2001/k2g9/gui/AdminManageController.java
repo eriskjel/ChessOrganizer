@@ -200,4 +200,15 @@ public class AdminManageController implements Initializable {
             }
         });
     }
+
+    public void gotoAdminViewBracket(ActionEvent actionEvent) throws IOException {
+        //load new fxml file
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("admin-view-bracket.fxml"));
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
+
+        stage.setTitle("View brackets tournament");
+        stage.setScene(scene);
+        stage.show();
+    }
 }

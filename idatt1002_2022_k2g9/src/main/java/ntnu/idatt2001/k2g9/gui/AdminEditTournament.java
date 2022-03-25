@@ -170,7 +170,15 @@ public class AdminEditTournament implements Initializable {
         this.inpAge.setText("");
     }
 
-    public void goToBrackets(ActionEvent actionEvent) {
+    public void goToBrackets(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("admin-view-bracket.fxml"));
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
+        AdminViewBracketController.setTournamentID(tournamentID);
+
+        stage.setTitle("Tournament hub");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @Override
