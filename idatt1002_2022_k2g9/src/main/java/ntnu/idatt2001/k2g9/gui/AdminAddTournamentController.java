@@ -169,6 +169,7 @@ public class AdminAddTournamentController implements Initializable {
         //RegistryClient.tournamentRegistry.addTournament();
         Tournament newTournament = new Tournament(tournamentName, date, tournamentFormat);
         newTournament.addFromList(playerRegistry.getPlayers());
+        newTournament.createTournamentBracket();
 
         RegistryClient.tournamentRegistry.addTournaments(newTournament);
 
