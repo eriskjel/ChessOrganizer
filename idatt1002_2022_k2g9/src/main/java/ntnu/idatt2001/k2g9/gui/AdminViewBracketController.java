@@ -155,7 +155,12 @@ public class AdminViewBracketController implements Initializable {
 
         //If there is an opponent assigned, the current player that is pressed will be moved to next bracket instead.
         if(player == 0) {
-            if (match%2 == 0){
+            if(buttonHashMap.get("x" + round + match + (player + 1)).getText().isEmpty()){
+                //If a player1 is clicked while player2 of match hasn't been assigned, player1 will be moved back.
+                button.setText("");
+                bracket.get(round-1)[match*2+player].setWinner(null);
+            }
+            else if (match%2 == 0){
                 //If player 1 is the winner, and they're in an even match, they get sent to the match in next round as player 1
                 bracket.get(round)[match].setWinner(bracket.get(round)[match].getPlayer1());
                 bracket.get(round+1)[(int) (match/2)].setPlayer1(bracket.get(round)[match].getPlayer1());
@@ -167,7 +172,12 @@ public class AdminViewBracketController implements Initializable {
             buttonHashMap.get("x"+(round+1)+ "" + (int) (match/2) + "" + match%2).setText(button.getText());
         }
         else if(player == 1) {
-            if (match%2 == 0){
+            if(buttonHashMap.get("x" + round + match + (player - 1)).getText().isEmpty()){
+                //If a player2 is clicked while player1 of match hasn't been assigned, player2 will be moved back.
+                button.setText("");
+                bracket.get(round-1)[match*2+player].setWinner(null);
+            }
+            else if (match%2 == 0){
                 //If player 2 is the winner, and they're in an even match, they get sent to the match in next round as player 1
                 bracket.get(round)[match].setWinner(bracket.get(round)[match].getPlayer2());
                 bracket.get(round+1)[(int) (match/2)].setPlayer1(bracket.get(round)[match].getPlayer2());
