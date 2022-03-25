@@ -190,6 +190,7 @@ public class AdminViewBracketController implements Initializable {
                 this.x301
         };
 
+        //Sets all buttons visible and enabled again in case they were disabled on last init.
         for (int i = 0 ; i < buttons.length ; i++){
             buttons[i].setVisible(true);
             buttons[i].setDisable(false);
@@ -200,11 +201,8 @@ public class AdminViewBracketController implements Initializable {
         tournament.createTournamentBracket();
         ArrayList<Match[]> bracket = tournament.getTournamentBracket();
         int totalRounds = tournament.getTotalRounds();
-
-        int currentRound = tournament.getTotalRounds();
-        int currentMatch = 0;
-        int currentPlayer = 1;
-
+        
+        
         /**
          * This loop overwrites the statically assigned ids of the bracket layout with dynamically reassigned ones.
          * The loop reassigns the ids to the buttons in a way that makes all matches meet in the middle.
@@ -214,6 +212,9 @@ public class AdminViewBracketController implements Initializable {
          * Rather than having 3 player tournaments placed in the upper left corner, they will meet in the middle.
          *
          */
+        int currentRound = tournament.getTotalRounds();
+        int currentMatch = 0;
+        int currentPlayer = 1;
         for (int i = buttons.length-1 ; i >= 0 ; i--){
              if (currentRound > 0){
                  buttons[i].setId("x"
@@ -234,14 +235,17 @@ public class AdminViewBracketController implements Initializable {
                  buttons[i].setId("x0");
              }
         }
-
+        /**
+         * Creates hashmap of the buttons that will be used, any button with id x0 will be ignored.
+         */
         buttonHashMap = new HashMap<>();
         for (Button button : buttons) {
             if (!button.getId().equals("x0")){
                 buttonHashMap.put(button.getId() , button);
         }
         }
-
+        
+        //Fills in the bracket using the button hashmap.
         for (int i = 0 ; i < totalRounds ; i++){
             int matchesInRound = bracket.get(i).length;
             for (int n = 0 ; n < matchesInRound ; n++){
@@ -257,7 +261,8 @@ public class AdminViewBracketController implements Initializable {
                     buttonHashMap.get("x"+i+n+1).setText(bracket.get(i)[n].getPlayer2().getName());
             }
         }
-
+        
+        //Sets all buttons no longer in use invisible.
         for (int i = 0 ; i < buttons.length ; i++){
             if (buttons[i].getText().equals("Player 1")) {
                 buttons[i].setVisible(false);
