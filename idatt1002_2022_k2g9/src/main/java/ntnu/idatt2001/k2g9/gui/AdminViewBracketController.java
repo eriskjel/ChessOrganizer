@@ -26,6 +26,7 @@ import java.util.ResourceBundle;
  */
 public class AdminViewBracketController implements Initializable {
 
+    HashMap<String, Button> buttonHashMap;
 
     public Button x000;
     public Button x010;
@@ -139,8 +140,8 @@ public class AdminViewBracketController implements Initializable {
 
     public void setWinnerKnockout(ActionEvent event) {
         //get fx id from button clicked
-        Button label = (Button) event.getSource();
-        String fxid = label.getId();
+        Button button = (Button) event.getSource();
+        String fxid = button.getId();
 
         //get round, match and winner player info
         int round = Integer.parseInt(fxid.substring(1,2));
@@ -148,19 +149,13 @@ public class AdminViewBracketController implements Initializable {
         int player = Integer.parseInt(fxid.substring(3,4));
 
         Tournament tournament = RegistryClient.tournamentRegistry.getTournament(tournamentID);
-
+        ArrayList<Match[]> bracket = tournament.getTournamentBracket();
 
 
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //get tournament
-        Tournament tournament = RegistryClient.tournamentRegistry.getTournament(tournamentID);
-        for (int a = 0; a< 10; a++){
-            tournament.getPlayers().addPlayer("abc"+Integer.toString(a),1);
-        }
-        tournament.createTournamentBracket();
         //all buttons
         Button[] buttons = {
                 this.x000,
@@ -195,13 +190,57 @@ public class AdminViewBracketController implements Initializable {
                 this.x301
         };
 
-        HashMap<String, Button> buttonHashMap = new HashMap<>();
-        for (Button button : buttons){
-            buttonHashMap.put(button.getId(), button);
+        for (int i = 0 ; i < buttons.length ; i++){
+            buttons[i].setVisible(true);
+            buttons[i].setDisable(false);
         }
+
+        //Gets tournament and bracket.
+        Tournament tournament = RegistryClient.tournamentRegistry.getTournament(tournamentID);
+        tournament.createTournamentBracket();
         ArrayList<Match[]> bracket = tournament.getTournamentBracket();
         int totalRounds = tournament.getTotalRounds();
 
+        int currentRound = tournament.getTotalRounds();
+        int currentMatch = 0;
+        int currentPlayer = 1;
+
+        /**
+         * This loop overwrites the statically assigned ids of the bracket layout with dynamically reassigned ones.
+         * The loop reassigns the ids to the buttons in a way that makes all matches meet in the middle.
+         * Since the ids are reassigned to the buttons dynamically, they will always meet in the middle of the screen,
+         * regardless of the number of matches and number of players.
+         * This fixes the problem of the bracket filling in from the upper left corner.
+         * Rather than having 3 player tournaments placed in the upper left corner, they will meet in the middle.
+         *
+         */
+        for (int i = buttons.length-1 ; i >= 0 ; i--){
+             if (currentRound > 0){
+                 buttons[i].setId("x"
+                         + Integer.toString(currentRound-1)
+                         + Integer.toString(currentMatch)
+                         + Integer.toString(currentPlayer));
+
+                 if(currentPlayer == 0) currentMatch--;
+
+                 currentPlayer = (currentPlayer == 1 ? 0 : 1);
+
+                 if(currentMatch < 0){
+                    currentRound--;
+                    currentMatch = (int) Math.pow(2, totalRounds-currentRound)-1;
+                 }
+             }
+             else {
+                 buttons[i].setId("x0");
+             }
+        }
+
+        buttonHashMap = new HashMap<>();
+        for (Button button : buttons) {
+            if (!button.getId().equals("x0")){
+                buttonHashMap.put(button.getId() , button);
+        }
+        }
 
         for (int i = 0 ; i < totalRounds ; i++){
             int matchesInRound = bracket.get(i).length;
@@ -221,7 +260,6 @@ public class AdminViewBracketController implements Initializable {
 
         for (int i = 0 ; i < buttons.length ; i++){
             if (buttons[i].getText().equals("Player 1")) {
-                System.out.println("Found button");
                 buttons[i].setVisible(false);
                 buttons[i].setDisable(true);
             }
