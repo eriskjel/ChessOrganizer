@@ -10,12 +10,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import ntnu.idatt2001.k2g9.player.Player;
+import ntnu.idatt2001.k2g9.tournament.Match;
 import ntnu.idatt2001.k2g9.tournament.RegistryClient;
 import ntnu.idatt2001.k2g9.tournament.Tournament;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 /**
@@ -154,8 +157,10 @@ public class AdminViewBracketController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //get tournament
         Tournament tournament = RegistryClient.tournamentRegistry.getTournament(tournamentID);
+        for (int a = 0; a< 10; a++){
+            tournament.getPlayers().addPlayer("abc"+Integer.toString(a),1);
+        }
         tournament.createTournamentBracket();
-
         //all buttons
         Button[] buttons = {
                 this.x000,
@@ -190,18 +195,36 @@ public class AdminViewBracketController implements Initializable {
                 this.x301
         };
 
+        HashMap<String, Button> buttonHashMap = new HashMap<>();
+        for (Button button : buttons){
+            buttonHashMap.put(button.getId(), button);
+        }
+        ArrayList<Match[]> bracket = tournament.getTournamentBracket();
+        int totalRounds = tournament.getTotalRounds();
 
-        int buttonIndex = 0;
-        for (int i = 0; i < tournament.getTournamentBracket().get(0).length*2; i++) {
-            if (buttonIndex%2 == 0)
-                buttons[buttonIndex].setText(tournament.getTournamentBracket().get(0)[i/2].getPlayer1().getName());
-            else
-                buttons[buttonIndex].setText(tournament.getTournamentBracket().get(0)[i/2].getPlayer2().getName());
-            buttonIndex++;
+
+        for (int i = 0 ; i < totalRounds ; i++){
+            int matchesInRound = bracket.get(i).length;
+            for (int n = 0 ; n < matchesInRound ; n++){
+                if (i > 0) {
+                    buttonHashMap.get("x" + i + n + 0).setText("");
+                    buttonHashMap.get("x" + i + n + 1).setText("");
+                }
+
+                if (!(tournament.getTournamentBracket().get(i)[n].getPlayer1() == null))
+                    buttonHashMap.get("x"+i+n+0).setText(bracket.get(i)[n].getPlayer1().getName());
+
+                if (!(tournament.getTournamentBracket().get(i)[n].getPlayer2() == null))
+                    buttonHashMap.get("x"+i+n+1).setText(bracket.get(i)[n].getPlayer2().getName());
+            }
         }
 
-        System.out.println("Running initialize");
-
-
+        for (int i = 0 ; i < buttons.length ; i++){
+            if (buttons[i].getText().equals("Player 1")) {
+                System.out.println("Found button");
+                buttons[i].setVisible(false);
+                buttons[i].setDisable(true);
+            }
+        }
     }
 }
