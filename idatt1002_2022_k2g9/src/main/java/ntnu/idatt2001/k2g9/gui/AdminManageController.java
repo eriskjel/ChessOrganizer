@@ -38,10 +38,23 @@ public class AdminManageController implements Initializable {
     //list that will be used to feed into table
     ObservableList<CompetitorModel> observableList = FXCollections.observableArrayList();
 
-    /**
-     * stage of application
-     */
+    //javafx stage
     private Stage stage;
+
+    /**
+     * Method that loads a new fxml file and sets it as the current scene
+     * @param actionEvent event
+     * @throws IOException
+     */
+    public void adminLogOut(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("login.fxml"));
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
+
+        stage.setTitle("Chess tournament organizer");
+        stage.setScene(scene);
+        stage.show();
+    }
 
     /**
      * Method that loads a new fxml file and sets it as the current scene
@@ -77,21 +90,12 @@ public class AdminManageController implements Initializable {
         stage.show();
     }
 
+
     /**
-     * Method that loads a new fxml file and sets it as the current scene
-     * @param actionEvent event
-     * @throws IOException
+     * method that runs as soon as the fxml file loads. this particular override account for filling in the table with the tournament data registered
+     * @param url url
+     * @param resourceBundle bundle
      */
-    public void adminLogOut(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("login.fxml"));
-        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
-
-        stage.setTitle("Chess tournament organizer");
-        stage.setScene(scene);
-        stage.show();
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.colDate.setCellValueFactory(new PropertyValueFactory<>("Date"));
@@ -112,16 +116,20 @@ public class AdminManageController implements Initializable {
 
          */
 
-        this.tblTournaments.setOnMouseClicked((EventHandler<MouseEvent>) mouseEvent -> {
+        /*
+        this.tblTournaments.setOnMouseClicked(mouseEvent -> {
             TournamentModel selectedTournament = (TournamentModel) this.tblTournaments.getSelectionModel().getSelectedItem();
             if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
                 if(mouseEvent.getClickCount() == 2){
                     if (selectedTournament != null){
-                        System.out.println(selectedTournament.toString());
+                        this.path = "admin-view-bracket.fxml";
+                        this.getTournamentID();
                     }
                 }
             }
         });
+
+         */
     }
 
     /**
@@ -162,7 +170,7 @@ public class AdminManageController implements Initializable {
 
      */
 
-    public void getTournamentID(ActionEvent actionEvent) throws IOException {
+    public void getTournamentID(ActionEvent event) throws IOException {
         //get selected tournament
         ObservableList<TournamentModel> singleTournament;
         singleTournament = tblTournaments.getSelectionModel().getSelectedItems();
@@ -172,7 +180,7 @@ public class AdminManageController implements Initializable {
         AdminEditTournament.setTournamentID(tournamentID);
 
         //load new fxml file
-        goToSpecificTournament(actionEvent);
+        goToSpecificTournament(event);
 
     }
 
@@ -186,19 +194,6 @@ public class AdminManageController implements Initializable {
         stage.setTitle("Edit tournament");
         stage.setScene(scene);
         stage.show();
-    }
-
-    public void goToTournament(){
-        tblTournaments.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
-                    if(mouseEvent.getClickCount() == 2){
-                        System.out.println("Double clicked");
-                    }
-                }
-            }
-        });
     }
 
     public void gotoAdminViewBracket(ActionEvent actionEvent) throws IOException {
