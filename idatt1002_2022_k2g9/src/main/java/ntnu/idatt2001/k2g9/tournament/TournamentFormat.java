@@ -115,6 +115,41 @@ public class TournamentFormat {
                 participantOrder.remove(1);
             }
         }
+
+        if (format.equals("Swiss-System")){
+            ArrayList<Player> participants = new ArrayList<>(players.getPlayers());
+
+            if (participants.size() % 2 == 1)
+                participants.add(new Player("Bye", 0));
+            int matchesPerRound = participants.size()/2;
+
+            //Calculating the number of rounds there will be.
+            int log2base = (int) (Math.log(participants.size()) / Math.log(2));
+
+            //Fills in the layout with Match arrays of correct size containing empty Match objects.
+            Match[] tempHolder;
+            for (int round = 0 ; round < log2base ; round++) {
+                tempHolder = new Match[matchesPerRound];
+                for (int i = 0; i < tempHolder.length; i++) {
+                    tempHolder[i] = new Match();
+                }
+
+                layout.add(round, tempHolder);
+            }
+
+            ArrayList<Integer> participantOrder = new ArrayList<>(participants.size());
+            for(int i = 0; i < participants.size(); i++){
+                participantOrder.add(i);
+            }
+
+            for (int n = 0 ; n < log2base ; n++ ){
+                for (int i = 0 ; i < matchesPerRound ; i ++){
+                    layout.get(n)[i] = new Match(participants.get(participantOrder.get(i)), participants.get(participantOrder.get(participants.size()-i-1)));
+                }
+                participantOrder.add(participantOrder.get(1));
+                participantOrder.remove(1);
+            }
+        }
         return layout;
     }
 
