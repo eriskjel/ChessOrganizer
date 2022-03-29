@@ -102,4 +102,58 @@ class TournamentFormatTest {
         Assertions.assertEquals(playersInRoundOne, playersInRoundTwo);
 
     }
+
+    @Test
+    void swissSystemLayoutIsAsExpected() {
+        PlayerRegistry players = new PlayerRegistry();
+        int log2base = 0;
+        int matches = 0;
+
+        for(int i = 0 ; i<15 ; i++){
+            players.addPlayerObject(new Player("Erik"+Integer.toString(i+1),20+i));
+        }
+
+        //if amount of players % == 0, adds one dummy to the sum of players
+        // when calculating amount of rounds and matches
+        if (players.getSize() % 2 == 0){
+            log2base = (int) (Math.log(players.getSize()) / Math.log(2));
+            matches = players.getSize()/2;
+        }else {
+            log2base = (int) (Math.log(players.getSize()+1) / Math.log(2));
+            matches = (players.getSize()+1)/2;
+        }
+
+        ArrayList<Match[]> layout = TournamentFormat.createBracket("Swiss-System", players);
+
+        Assertions.assertEquals(layout.size(),log2base);
+        Assertions.assertNotEquals(layout.size(),log2base + 1);
+        Assertions.assertNotEquals(layout.size(),log2base - 1);
+
+        for (int i = 0; i < log2base; i++) {
+            Assertions.assertEquals(layout.get(i).length, matches);
+        }
+
+    }
+
+    @Test
+    void swissSystemBracketFilledCorrectly() {
+        PlayerRegistry players = new PlayerRegistry();
+
+        for (int i = 0; i < 33; i++) {
+            players.addPlayerObject(new Player("Test" + Integer.toString(i) , 20 + i));
+        }
+
+        ArrayList<Match[]> layout = TournamentFormat.createBracket("Swiss-System" , players);
+
+        int playersInRoundOne = 0;
+        for (int i = 0; i <layout.get(0).length ; i++) {
+            playersInRoundOne += layout.get(0)[i].playersInitialized();
+        }
+        int playersInRoundTwo = 0;
+        for (int i = 0; i <layout.get(0).length ; i++) {
+            playersInRoundTwo += layout.get(1)[i].playersInitialized();
+        }
+        Assertions.assertEquals(playersInRoundOne, playersInRoundTwo);
+
+    }
 }
