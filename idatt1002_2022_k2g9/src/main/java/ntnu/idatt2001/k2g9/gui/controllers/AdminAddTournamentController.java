@@ -1,4 +1,4 @@
-package ntnu.idatt2001.k2g9.gui;
+package ntnu.idatt2001.k2g9.gui.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,6 +11,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import ntnu.idatt2001.k2g9.gui.application.Application;
+import ntnu.idatt2001.k2g9.gui.models.CompetitorModel;
 import ntnu.idatt2001.k2g9.player.Player;
 import ntnu.idatt2001.k2g9.player.PlayerRegistry;
 import ntnu.idatt2001.k2g9.tournament.RegistryClient;
@@ -19,7 +21,6 @@ import ntnu.idatt2001.k2g9.tournament.Tournament;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**

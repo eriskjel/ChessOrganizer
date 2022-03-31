@@ -1,4 +1,4 @@
-package ntnu.idatt2001.k2g9.gui;
+package ntnu.idatt2001.k2g9.gui.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,6 +11,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import ntnu.idatt2001.k2g9.gui.application.Application;
+import ntnu.idatt2001.k2g9.gui.models.CompetitorModel;
 import ntnu.idatt2001.k2g9.player.Player;
 import ntnu.idatt2001.k2g9.tournament.RegistryClient;
 import java.io.IOException;
@@ -19,7 +21,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class AdminEditTournament implements Initializable {
+public class AdminEditTournamentController implements Initializable {
 
     @FXML
     public static int tournamentID;
@@ -130,7 +132,7 @@ public class AdminEditTournament implements Initializable {
 
         tableCompetitors.getItems().addAll(competitorModels);
 
-        this.updateTurnamentInfo();
+        this.updateTournamentInfo();
         this.lblTournamentName.setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getName());
 
 
@@ -151,6 +153,10 @@ public class AdminEditTournament implements Initializable {
 
     }
 
+    /**
+     * adds competitor to GUI table and to tournament
+     * @param actionEvent event
+     */
     public void addCompetitor(ActionEvent actionEvent) {
         Player player = new Player(this.inpFullName.getText(), Integer.parseInt(this.inpAge.getText()));
         RegistryClient.tournamentRegistry.getTournament(getTournamentID()).addPlayer(player);
@@ -189,11 +195,12 @@ public class AdminEditTournament implements Initializable {
         refreshData();
     }
 
-    public void updateTurnamentInfo(){
+    /**
+     *
+     */
+    public void updateTournamentInfo(){
         this.inpTournamentName.setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getName());
         this.inpTournamentFormat.setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout());
-        //this.inpDate.getEditor().setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getDate().toString());
-        //this.inpDate.getEditor().setPromptText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getDate().toString());
         this.inpDate.setPromptText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getDate().toString());
     }
 
@@ -217,18 +224,36 @@ public class AdminEditTournament implements Initializable {
         this.tournamentFormat = "Swiss";
     }
 
+    /**
+     * Saves a tournament. If values are not changed in the application, they will be read as null. However if so
+     * the method just uses the already registered data from the already registered tournament.
+     * This will make sure that only new values will be added, and old values that are not to be changed stays the same
+     * @param event event
+     * @throws IOException exception
+     */
     @FXML
-    public void saveTournament(){
+    public void saveTournament(ActionEvent event) throws IOException {
         String tournamentName = inpTournamentName.getText();
-        //will be null if a format is not selected in the application
-        String tournamentFormat = this.tournamentFormat;
-        LocalDate date = inpDate.getValue();
+
+        String newTournamentFormat = this.inpTournamentFormat.getText();
+        //will be null if not altered with in application, is so the program uses the already registered format
+        if (newTournamentFormat == null){
+            newTournamentFormat = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout();
+        }
+
+
+        //will be null if not altered with in application, is so the program uses the already registered date
+        LocalDate date = this.inpDate.getValue();
         if (date == null){
             date = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getDate();
         }
 
+        //updates with fresh info
         RegistryClient.tournamentRegistry.getTournament(tournamentID).setName(tournamentName);
         RegistryClient.tournamentRegistry.getTournament(tournamentID).setDate(date);
-        RegistryClient.tournamentRegistry.getTournament(tournamentID).setLayout(tournamentFormat);
+        RegistryClient.tournamentRegistry.getTournament(tournamentID).setLayout(newTournamentFormat);
+
+        //loads new fxml file
+        this.gotoAdminManageTournament(event);
     }
 }
