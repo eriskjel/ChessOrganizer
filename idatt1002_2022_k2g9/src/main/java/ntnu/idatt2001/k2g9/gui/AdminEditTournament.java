@@ -151,6 +151,10 @@ public class AdminEditTournament implements Initializable {
 
     }
 
+    /**
+     * adds competitor to GUI table and to tournament
+     * @param actionEvent event
+     */
     public void addCompetitor(ActionEvent actionEvent) {
         Player player = new Player(this.inpFullName.getText(), Integer.parseInt(this.inpAge.getText()));
         RegistryClient.tournamentRegistry.getTournament(getTournamentID()).addPlayer(player);

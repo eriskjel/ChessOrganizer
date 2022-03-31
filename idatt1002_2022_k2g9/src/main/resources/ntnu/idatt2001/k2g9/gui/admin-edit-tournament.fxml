@@ -86,7 +86,7 @@
             </Pane>
             <Pane id="tblCompetitors" layoutX="200.0" layoutY="86.0" prefHeight="570.0" prefWidth="1051.0" styleClass="table" stylesheets="@styles.css">
                <children>
-                  <Label layoutX="369.0" layoutY="29.0" prefHeight="51.0" prefWidth="89.0" styleClass="header" stylesheets="@styles.css" text="Edit">
+                  <Label layoutX="369.0" layoutY="29.0" prefHeight="51.0" prefWidth="89.0" styleClass="header" stylesheets="@styles.css" text="Edit:">
                      <padding>
                         <Insets left="10.0" />
                      </padding>
