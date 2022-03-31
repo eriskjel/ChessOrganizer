@@ -1,4 +1,4 @@
-package ntnu.idatt2001.k2g9.gui;
+package ntnu.idatt2001.k2g9.gui.models;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;

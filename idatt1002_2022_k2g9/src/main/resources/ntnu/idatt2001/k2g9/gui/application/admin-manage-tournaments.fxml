@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="680.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntnu.idatt2001.k2g9.gui.AdminManageController">
+<VBox prefHeight="680.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntnu.idatt2001.k2g9.gui.controllers.AdminManageController">
    <children>
       <MenuBar prefHeight="25.0" prefWidth="1217.0" VBox.vgrow="NEVER">
          <menus>
@@ -57,31 +57,31 @@
       </MenuBar>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="739.0" prefWidth="1251.0" VBox.vgrow="ALWAYS">
          <children>
-            <Pane layoutY="86.0" prefHeight="570.0" prefWidth="200.0" styleClass="top-bar" stylesheets="@styles.css">
+            <Pane layoutY="86.0" prefHeight="570.0" prefWidth="200.0" styleClass="top-bar" stylesheets="@../styles.css">
                <children>
-                  <Button mnemonicParsing="false" onAction="#goToAdminTournamentHub" prefHeight="62.0" prefWidth="200.0" style="-fx-text-alignment: left;" styleClass="button-menu" stylesheets="@styles.css" text="Tournament hub" />
-                  <Button layoutY="62.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" stylesheets="@styles.css" text="Manage tournaments">
+                  <Button mnemonicParsing="false" onAction="#goToAdminTournamentHub" prefHeight="62.0" prefWidth="200.0" style="-fx-text-alignment: left;" styleClass="button-menu" stylesheets="@../styles.css" text="Tournament hub" />
+                  <Button layoutY="62.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" stylesheets="@../styles.css" text="Manage tournaments">
                      <styleClass>
                         <String fx:value="button-menu" />
                         <String fx:value="activeBtn" />
                      </styleClass></Button>
-                  <Button layoutY="124.0" mnemonicParsing="false" onAction="#goToAddTournament" prefHeight="62.0" prefWidth="200.0" styleClass="button-menu" stylesheets="@styles.css" text="Add tournament" />
-                  <Button layoutY="186.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" styleClass="button-menu" stylesheets="@styles.css" text="Admin settings" />
+                  <Button layoutY="124.0" mnemonicParsing="false" onAction="#goToAddTournament" prefHeight="62.0" prefWidth="200.0" styleClass="button-menu" stylesheets="@../styles.css" text="Add tournament" />
+                  <Button layoutY="186.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" styleClass="button-menu" stylesheets="@../styles.css" text="Admin settings" />
                </children>
             </Pane>
-            <Pane prefHeight="86.0" prefWidth="1300.0" styleClass="top-bar" stylesheets="@styles.css">
+            <Pane prefHeight="86.0" prefWidth="1300.0" styleClass="top-bar" stylesheets="@../styles.css">
                <children>
-                  <Label layoutY="29.0" prefHeight="30.0" prefWidth="286.0" styleClass="p-header" stylesheets="@styles.css" text="Chess tournament organizer">
+                  <Label layoutY="29.0" prefHeight="30.0" prefWidth="286.0" styleClass="p-header" stylesheets="@../styles.css" text="Chess tournament organizer">
                      <padding>
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <Button layoutX="1156.0" layoutY="32.0" mnemonicParsing="false" onAction="#adminLogOut" styleClass="button-logout" stylesheets="@styles.css" text="Admin, log out" />
+                  <Button layoutX="1156.0" layoutY="32.0" mnemonicParsing="false" onAction="#adminLogOut" styleClass="button-logout" stylesheets="@../styles.css" text="Admin, log out" />
                </children>
             </Pane>
-            <Pane id="tblCompetitors" layoutX="200.0" layoutY="86.0" prefHeight="570.0" prefWidth="1051.0" styleClass="table" stylesheets="@styles.css">
+            <Pane id="tblCompetitors" layoutX="200.0" layoutY="86.0" prefHeight="570.0" prefWidth="1051.0" styleClass="table" stylesheets="@../styles.css">
                <children>
-                  <Label layoutX="293.0" layoutY="26.0" prefHeight="51.0" prefWidth="465.0" styleClass="header" stylesheets="@styles.css" text="Edit and view tournaments">
+                  <Label layoutX="293.0" layoutY="26.0" prefHeight="51.0" prefWidth="465.0" styleClass="header" stylesheets="@../styles.css" text="Edit and view tournaments">
                      <padding>
                         <Insets left="10.0" />
                      </padding>

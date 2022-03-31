@@ -67,7 +67,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>ChessTournament/ntnu.idatt2001.k2g9.gui.Application</mainClass>
+                            <mainClass>ChessTournament/ntnu.idatt2001.k2g9.gui.application.Application</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
@@ -97,7 +97,7 @@
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <!-- TODO: Add your main-class here, with full package prefix. From the example above: the MyJavaFXApplicationMain-class -->
-                                    <mainClass>ntnu.idatt2001.k2g9.gui.ApplicationMain</mainClass>
+                                    <mainClass>ntnu.idatt2001.k2g9.gui.application.ApplicationMain</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

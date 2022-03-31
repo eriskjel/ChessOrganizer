@@ -1,10 +1,9 @@
-package ntnu.idatt2001.k2g9.gui;
+package ntnu.idatt2001.k2g9.gui.controllers;
 
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,12 +12,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import ntnu.idatt2001.k2g9.gui.application.Application;
+import ntnu.idatt2001.k2g9.gui.models.CompetitorModel;
+import ntnu.idatt2001.k2g9.gui.models.TournamentModel;
 import ntnu.idatt2001.k2g9.tournament.RegistryClient;
 import ntnu.idatt2001.k2g9.tournament.Tournament;
-import ntnu.idatt2001.k2g9.tournament.TournamentRegistry;
 
 import java.io.IOException;
 import java.net.URL;
@@ -177,7 +176,7 @@ public class AdminManageController implements Initializable {
 
         //get selected tournament ID
         int tournamentID = singleTournament.get(0).getTournamentID();
-        AdminEditTournament.setTournamentID(tournamentID);
+        AdminEditTournamentController.setTournamentID(tournamentID);
 
         //load new fxml file
         goToSpecificTournament(event);
