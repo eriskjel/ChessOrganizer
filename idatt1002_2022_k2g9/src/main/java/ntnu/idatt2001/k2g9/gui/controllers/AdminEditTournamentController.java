@@ -21,6 +21,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * Class that handles the interaction between the fxml file "admin-edit-tournament.fxml" and the backend.
+ * This class houses all the methods and variables needed to perform the tasks
+ */
 public class AdminEditTournamentController implements Initializable {
 
     @FXML
@@ -34,7 +38,7 @@ public class AdminEditTournamentController implements Initializable {
     public MenuItem formatKnockout;
     public DatePicker inpDate;
     public MenuButton inpTournamentFormat;
-    public String tournamentFormat;
+    //public String tournamentFormat;
     public Label lblTournamentName;
 
     ObservableList<CompetitorModel> observableList = FXCollections.observableArrayList();
@@ -116,6 +120,9 @@ public class AdminEditTournamentController implements Initializable {
         stage.show();
     }
 
+    /**
+     * refreshes data in tables in application. clears table and fills the table with the players registered in selected tournament
+     */
     public void refreshData() {
         //clear table beforehand
         ObservableList<CompetitorModel> allCompetitors;
@@ -135,8 +142,16 @@ public class AdminEditTournamentController implements Initializable {
         this.updateTournamentInfo();
         this.lblTournamentName.setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getName());
 
+    }
 
-
+    /**
+     * updates tournament info on the application. In other words, displays the already registered tournament info, so the user
+     * can see what the tournament info already is.
+     */
+    public void updateTournamentInfo(){
+        this.inpTournamentName.setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getName());
+        this.inpTournamentFormat.setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout());
+        this.inpDate.setPromptText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getDate().toString());
     }
 
     //TODO: does not work
@@ -195,14 +210,6 @@ public class AdminEditTournamentController implements Initializable {
         refreshData();
     }
 
-    /**
-     *
-     */
-    public void updateTournamentInfo(){
-        this.inpTournamentName.setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getName());
-        this.inpTournamentFormat.setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout());
-        this.inpDate.setPromptText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getDate().toString());
-    }
 
     /**
      *
@@ -211,7 +218,7 @@ public class AdminEditTournamentController implements Initializable {
     @FXML
     public void setFormatKnockout() {
         this.inpTournamentFormat.setText("Knock-Out");
-        this.tournamentFormat = "Knock-Out";
+        //this.tournamentFormat = "Knock-Out";
     }
 
     /**
@@ -221,7 +228,7 @@ public class AdminEditTournamentController implements Initializable {
     @FXML
     public void formatSwiss() {
         this.inpTournamentFormat.setText("Swiss");
-        this.tournamentFormat = "Swiss";
+        //this.tournamentFormat = "Swiss";
     }
 
     /**
