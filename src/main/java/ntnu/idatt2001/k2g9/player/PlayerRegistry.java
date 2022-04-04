@@ -27,8 +27,10 @@ public class PlayerRegistry {
         return players;
     }
 
-
-    public boolean addPlayerObject(Player player){
+    /**
+     * Method for adding a player to the PlayerRegistry. Sets playerID from size of registry.
+     */
+    public boolean addPlayer(Player player){
         try{
             player.setPlayerID(players.size());
             players.add(player);
@@ -40,59 +42,6 @@ public class PlayerRegistry {
         }
     }
 
-    /**
-     * Method for adding a player to the PlayerRegistry. Sets playerID from size of registry.
-     * @param name
-     * @param age
-     */
-    public boolean addPlayer(String name, int age) {
-        try {
-            Player player = new Player(name, age);
-            player.setPlayerID(players.size());
-            players.add(player);
-            return true;
-
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    /**
-     * Method for adding a user to the PlayerRegistry. Sets playerID from size of registry.
-     * @param name
-     * @param age
-     * @param email
-     * @param password
-     */
-    public void addUser(String name, int age, String email, String password) {
-        try {
-            User user = new User(name,age,email,password);
-            user.setPlayerID(players.size());
-            players.add(user);
-
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Method for adding an admin to the PlayerRegistry. Sets playerID from size of registry.
-     * @param name
-     * @param age
-     * @param email
-     * @param password
-     */
-    public void addAdmin(String name, int age, String email, String password) {
-        try {
-            Admin admin = new Admin(name,age,email,password);
-            admin.setPlayerID(players.size());
-            players.add(admin);
-
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        }
-    }
     @Override
     public String toString() {
         return "PlayerRegistry{" +
@@ -104,12 +53,20 @@ public class PlayerRegistry {
         return players.size();
     }
 
-    public void removePlayer(Player player){
+    public boolean removePlayer(Player player){
         try {
-            players.remove(player);
+            if(players.contains(player)) {
+                players.remove(player);
+                return true;
+            }
+            else{
+                return false;
+            }
+
         }
-        catch(IndexOutOfBoundsException e){
+        catch(IllegalArgumentException e){
             e.printStackTrace();
+            return false;
         }
     }
 
