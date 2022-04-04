@@ -30,6 +30,9 @@ public class Tournament {
     public ArrayList<Player> getPlayers() {
         return players.getPlayers();
     }
+    public PlayerRegistry getPlayerRegistry(){
+        return this.players;
+    }
     public int getTotalRounds() {
         return tournamentBracket.size();
     }

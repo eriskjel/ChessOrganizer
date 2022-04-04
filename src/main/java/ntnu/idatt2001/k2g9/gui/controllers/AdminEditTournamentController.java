@@ -166,9 +166,9 @@ public class AdminEditTournamentController implements Initializable {
         //removes from tournament
         Player player = new Player(singleCompetitor.get(0).getName(), singleCompetitor.get(0).getAge());
         player.setPlayerID(singleCompetitor.get(0).getCompetitorID());
-        RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayers().removePlayer(player);
+        RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayerRegistry().removePlayer(player);
 
-        RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayers().resetPlayerIDs();
+        RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayerRegistry().resetPlayerIDs();
     }
 
     /**
