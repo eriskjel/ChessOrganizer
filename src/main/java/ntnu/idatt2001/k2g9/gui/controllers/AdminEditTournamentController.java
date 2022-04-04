@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import ntnu.idatt2001.k2g9.gui.application.Application;
 import ntnu.idatt2001.k2g9.gui.models.CompetitorModel;
 import ntnu.idatt2001.k2g9.player.Player;
+import ntnu.idatt2001.k2g9.player.PlayerRegistry;
 import ntnu.idatt2001.k2g9.tournament.RegistryClient;
 import java.io.IOException;
 import java.net.URL;
@@ -164,8 +165,10 @@ public class AdminEditTournamentController implements Initializable {
 
         //removes from tournament
         Player player = new Player(singleCompetitor.get(0).getName(), singleCompetitor.get(0).getAge());
+        player.setPlayerID(singleCompetitor.get(0).getCompetitorID());
         RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayers().removePlayer(player);
 
+        RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayers().resetPlayerIDs();
     }
 
     /**

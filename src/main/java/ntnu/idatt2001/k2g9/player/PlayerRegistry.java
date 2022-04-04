@@ -1,5 +1,7 @@
 package ntnu.idatt2001.k2g9.player;
 
+import ntnu.idatt2001.k2g9.tournament.RegistryClient;
+
 import java.util.ArrayList;
 
 /**
@@ -91,6 +93,13 @@ public class PlayerRegistry {
 
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
+        }
+    }
+    
+    public void resetPlayerIDs(){
+        //resets players with new player IDs
+        for (int i = 0; i < this.getSize(); i++) {
+            this.getPlayers().get(i).setPlayerID(i);
         }
     }
     @Override
