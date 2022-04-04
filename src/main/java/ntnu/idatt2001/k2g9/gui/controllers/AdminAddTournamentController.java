@@ -72,7 +72,7 @@ public class AdminAddTournamentController implements Initializable {
      * Method that loads a new fxml file and sets it as the current scene
      * This particular methods is called when the Manage tournaments button is pressed, sending user to the admin manage fxml file
      * @param actionEvent event
-     * @throws IOException
+     * @throws IOException exception
      */
     @FXML
     public void gotoAdminManageTournament(ActionEvent actionEvent) throws IOException {
@@ -89,7 +89,7 @@ public class AdminAddTournamentController implements Initializable {
      * Method that loads a new fxml file and sets it as the current scene
      * This particular methods is called when the Admin log out button is pressed, sending user to main page of application
      * @param actionEvent event
-     * @throws IOException
+     * @throws IOException exception
      */
     public void adminLogOut(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("login.fxml"));
