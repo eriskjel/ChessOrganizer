@@ -1,5 +1,4 @@
 package ntnu.idatt2001.k2g9.tournament;
-
 import ntnu.idatt2001.k2g9.player.PlayerRegistry;
 import ntnu.idatt2001.k2g9.player.User;
 

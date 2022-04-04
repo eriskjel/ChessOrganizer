@@ -15,8 +15,7 @@ public class Admin{
     private ArrayList<Tournament> myTournaments;
     protected String email;
     protected String password;
-    protected String name;
-    protected int age;
+
 
     public Admin(String email, String password) {
         this.email = email;
@@ -35,18 +34,6 @@ public class Admin{
     public void setPassword(String password) {
         this.password = password;
     }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public int getAge() {
-        return age;
-    }
-    public void setAge(int age) {
-        this.age = age;
-    }
     public ArrayList<Tournament> getMyTournaments() {
         return myTournaments;
     }
@@ -56,13 +43,12 @@ public class Admin{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Admin admin = (Admin) o;
-        return age == admin.age && Objects.equals(email, admin.email) && Objects.equals(password, admin.password) && Objects.equals(name, admin.name);
+        return Objects.equals(email, admin.email) && Objects.equals(password, admin.password);
     }
-
 
     @Override
     public int hashCode() {
-        return Objects.hash(email, password, name, age);
+        return Objects.hash(email, password);
     }
 
     /**
@@ -77,11 +63,8 @@ public class Admin{
     @Override
     public String toString() {
         return "Admin{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-
                 '}';
     }
 
