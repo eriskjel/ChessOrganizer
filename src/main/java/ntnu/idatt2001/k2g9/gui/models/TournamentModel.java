@@ -41,7 +41,7 @@ public class TournamentModel {
     public TournamentModel(Tournament tournament){
         this.date = new SimpleStringProperty(tournament.getDate().toString());
         this.name = new SimpleStringProperty(tournament.getName());
-        this.numCompetitors = new SimpleIntegerProperty(tournament.getPlayers().getSize());
+        this.numCompetitors = new SimpleIntegerProperty(tournament.getPlayers().size());
         this.format = new SimpleStringProperty(tournament.getLayout());
         this.tournamentID = tournament.getTournamentID();
     }

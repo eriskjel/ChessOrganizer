@@ -133,7 +133,7 @@ public class AdminAddTournamentController implements Initializable {
      */
     public void addCompetitor() {
         Player player = new Player(this.inpFullName.getText(), Integer.parseInt(this.inpAge.getText()));
-        playerRegistry.addPlayerObject(player);
+        playerRegistry.addPlayer(player);
         //object to be added to table in GUI.
         CompetitorModel competitor = new CompetitorModel(this.inpFullName.getText(), Integer.parseInt(this.inpAge.getText()), player.getPlayerID());
         tableCompetitors.getItems().add(competitor);
