@@ -103,8 +103,8 @@
                   </Label>
                   <TableView id="tableCompetitors" fx:id="tableCompetitors" layoutX="48.0" layoutY="179.0" prefHeight="210.0" prefWidth="279.0" styleClass="table" stylesheets="@../styles.css">
                      <columns>
-                        <TableColumn fx:id="tblName" prefWidth="141.0" text="Name" />
-                        <TableColumn fx:id="tblAge" prefWidth="137.0" text="Age" />
+                        <TableColumn fx:id="tblName" prefWidth="141.0" styleClass="column" text="Name" />
+                        <TableColumn fx:id="tblAge" prefWidth="137.0" styleClass="column" text="Age" />
                      </columns>
                   </TableView>
                   <Button layoutX="48.0" layoutY="449.0" mnemonicParsing="false" onAction="#removeCompetitor" text="Remove competitor" />

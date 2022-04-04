@@ -29,14 +29,15 @@ import java.util.ResourceBundle;
 public class AdminAddTournamentController implements Initializable {
 
     //fxml variables
-    @FXML
     public TextField inpTournamentName;
     public DatePicker inpDate;
     public MenuButton inpTournamentFormat;
     public MenuItem formatKnockout;
     public TextField inpFullName;
     public TextField inpAge;
+    @FXML
     private Stage stage;
+    @FXML
     private String tournamentFormat;
 
 
@@ -51,9 +52,10 @@ public class AdminAddTournamentController implements Initializable {
     PlayerRegistry playerRegistry = new PlayerRegistry();
 
     /**
-     * Method that loads a new fxml file and sets it a the scene
+     * Method that loads a new fxml file and sets it as the current scene
+     * This particular methods is called when the tournament hub button is pressed, sending user to the admin tournament hub fxml file
      * @param actionEvent event
-     * @throws IOException
+     * @throws IOException exception
      */
     @FXML
     public void goToAdminTournamentHub(ActionEvent actionEvent) throws IOException {
@@ -67,10 +69,12 @@ public class AdminAddTournamentController implements Initializable {
     }
 
     /**
-     * Method that loads a new fxml and sets it as a new scene
+     * Method that loads a new fxml file and sets it as the current scene
+     * This particular methods is called when the Manage tournaments button is pressed, sending user to the admin manage fxml file
      * @param actionEvent event
      * @throws IOException
      */
+    @FXML
     public void gotoAdminManageTournament(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("admin-manage-tournaments.fxml"));
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -82,7 +86,8 @@ public class AdminAddTournamentController implements Initializable {
     }
 
     /**
-     *Method that changed the scene to  a new fxml page
+     * Method that loads a new fxml file and sets it as the current scene
+     * This particular methods is called when the Admin log out button is pressed, sending user to main page of application
      * @param actionEvent event
      * @throws IOException
      */
@@ -97,8 +102,7 @@ public class AdminAddTournamentController implements Initializable {
     }
 
     /**
-     *
-     *Method that sets tournament format variable based on what is chosen in the selection menu
+     * Sets current tournament format to knockout, which will be stored and used for registration
      */
     @FXML
     public void setFormatKnockout() {
@@ -107,8 +111,7 @@ public class AdminAddTournamentController implements Initializable {
     }
 
     /**
-     *
-     *Method that sets tournament format variable based on what is chosen in the selection menu
+     * Sets current tournament format to Swiss, which will be stored and used for registration
      */
     @FXML
     public void formatSwiss() {
@@ -117,7 +120,8 @@ public class AdminAddTournamentController implements Initializable {
     }
 
     /**
-     * Method that initializes the method that can edit the competitor table
+     * Method that runs when fxml file is loaded
+     * This particular override
      * @param url url
      * @param resourceBundle url
      */

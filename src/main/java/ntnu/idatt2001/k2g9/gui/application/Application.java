@@ -6,15 +6,16 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * Application class of the project.
- */
+    /**
+     * Application class of the project.
+     */
     public class Application extends javafx.application.Application {
 
     /**
      * start method which loads a fxml file, and shows it to the user in an application window
+     * also sets title
      * @param stage stage
-     * @throws IOException
+     * @throws IOException exception
      */
     @Override
     public void start(Stage stage) throws IOException {
