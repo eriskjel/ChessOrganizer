@@ -22,7 +22,7 @@ stages:          # List of stages for jobs, and their order of execution
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
   script:
-    -mvn compile
+    - $MAVEN_HOME/bin/mvn clean compile
     - echo "Compiling the code..."
     - echo "Compile complete."
 
@@ -46,3 +46,4 @@ deploy-job:      # This job runs in the deploy stage.
   script:
     - echo "Deploying application..."
     - echo "Application successfully deployed."
+    - $MAVEN_HOME/bin/mvn clean deploy
