@@ -26,5 +26,6 @@ public class TournamentRegistryTest {
         Tournament foundT = testReg.getTournament(0);
         Assertions.assertEquals(testT1,foundT);
         Assertions.assertNotEquals(testT2,foundT);
+        Assertions.assertEquals(0,1);
     }
 }

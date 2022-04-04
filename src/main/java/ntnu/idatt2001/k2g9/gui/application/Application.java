@@ -23,11 +23,10 @@ import java.io.IOException;
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
-
     }
 
     /**
-     * main method which does not not extend any other classes. this method just calls for the application to boot up
+     * main method which does not extend any other classes. this method just calls for the application to boot up
      * @param args args
      */
     public static void main(String[] args) {
