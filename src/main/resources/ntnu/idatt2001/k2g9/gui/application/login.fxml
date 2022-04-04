@@ -13,10 +13,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="680.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntnu.idatt2001.k2g9.gui.controllers.AdminHubController">
+<VBox prefHeight="680.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntnu.idatt2001.k2g9.gui.controllers.AdminHubController">
    <children>
       <MenuBar VBox.vgrow="NEVER">
          <menus>
@@ -76,30 +75,19 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <Button layoutX="1156.0" layoutY="32.0" mnemonicParsing="false" stylesheets="@../styles.css" text="Log in">
-                     <styleClass>
-                        <String fx:value="button-logout" />
-                        <String fx:value="button" />
-                     </styleClass>
-                  </Button>
                </children>
 
             </Pane>
-            <TextField fx:id="inpUsername" layoutX="367.0" layoutY="288.0" stylesheets="@../styles.css" />
-            <TextField fx:id="inpPassword" layoutX="367.0" layoutY="389.0" stylesheets="@../styles.css" />
-            <Text layoutX="373.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email adress:" />
-            <Text layoutX="367.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
-            <Text layoutX="373.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
-               <font>
-                  <Font size="41.0" />
-               </font>
-            </Text>
-            <Button layoutX="367.0" layoutY="465.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="68.0" styleClass="btnHub" stylesheets="@../styles.css" text="Log In" />
+            <TextField fx:id="inpUsername" layoutX="361.0" layoutY="288.0" stylesheets="@../styles.css" />
+            <TextField fx:id="inpPassword" layoutX="361.0" layoutY="377.0" stylesheets="@../styles.css" />
+            <Text layoutX="361.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email adress:" />
+            <Text layoutX="359.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
             <ButtonBar layoutX="694.0" layoutY="369.0" prefHeight="40.0" prefWidth="200.0" />
-            <Text layoutX="361.0" layoutY="546.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" />
-            <Label layoutX="367.0" layoutY="424.0" styleClass="anchor" stylesheets="@../styles.css" text="Forgot your password?" />
-            <Label layoutX="489.0" layoutY="533.0" styleClass="anchor" stylesheets="@../styles.css" text="Register here!" />
-            <Button layoutX="451.0" layoutY="465.0" mnemonicParsing="false" onAction="#goToAdminTournamentHub" prefHeight="40.0" prefWidth="110.0" styleClass="btnHub" stylesheets="@../styles.css" text="admin login" />
+            <Text layoutX="360.0" layoutY="536.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" />
+            <Label layoutX="361.0" layoutY="428.0" styleClass="anchor" stylesheets="@../styles.css" text="Forgot your password?" />
+            <Label layoutX="490.0" layoutY="523.0" styleClass="anchor" stylesheets="@../styles.css" text="Register here!" />
+            <Button layoutX="359.0" layoutY="462.0" mnemonicParsing="false" onAction="#goToAdminTournamentHub" prefHeight="40.0" prefWidth="110.0" styleClass="btnHub" stylesheets="@../styles.css" text="Log in" />
+            <Label layoutX="361.0" layoutY="194.0" styleClass="header" stylesheets="@../styles.css" text="Login" />
          </children>
       </AnchorPane>
    </children>

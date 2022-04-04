@@ -92,12 +92,12 @@
                         <String fx:value="button-menu" />
                         <String fx:value="activeBtn" />
                      </styleClass></Button>
-                  <Button layoutY="62.0" mnemonicParsing="false" onAction="#gotoAdminManageTournament" prefHeight="62.0" prefWidth="200.0" stylesheets="@../styles.css" text="Manage tournaments">
+                  <Button layoutY="124.0" mnemonicParsing="false" onAction="#gotoAdminManageTournament" prefHeight="62.0" prefWidth="200.0" stylesheets="@../styles.css" text="Manage tournaments">
                      <styleClass>
                         <String fx:value="button-menu" />
                         <String fx:value="button" />
                      </styleClass></Button>
-                  <Button layoutY="124.0" mnemonicParsing="false" onAction="#goToAddTournament" prefHeight="62.0" prefWidth="200.0" stylesheets="@../styles.css" text="Add tournament">
+                  <Button layoutY="62.0" mnemonicParsing="false" onAction="#goToAddTournament" prefHeight="62.0" prefWidth="200.0" stylesheets="@../styles.css" text="Add tournament">
                      <styleClass>
                         <String fx:value="button-menu" />
                         <String fx:value="button" />

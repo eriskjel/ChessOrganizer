@@ -98,8 +98,8 @@
             <Pane layoutY="86.0" prefHeight="570.0" prefWidth="200.0" styleClass="top-bar" stylesheets="@../styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="86.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#goToAdminTournamentHub" prefHeight="62.0" prefWidth="200.0" style="-fx-text-alignment: left;" styleClass="button-menu" stylesheets="@../styles.css" text="Tournament hub" />
-                  <Button layoutY="62.0" mnemonicParsing="false" onAction="#gotoAdminManageTournament" prefHeight="62.0" prefWidth="200.0" styleClass="button-menu" stylesheets="@../styles.css" text="Manage tournaments" />
-                  <Button layoutY="124.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" stylesheets="@../styles.css" text="Add tournament">
+                  <Button layoutY="124.0" mnemonicParsing="false" onAction="#gotoAdminManageTournament" prefHeight="62.0" prefWidth="200.0" styleClass="button-menu" stylesheets="@../styles.css" text="Manage tournaments" />
+                  <Button layoutY="62.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" stylesheets="@../styles.css" text="Add tournament">
                      <styleClass>
                         <String fx:value="button-menu" />
                         <String fx:value="activeBtn" />
