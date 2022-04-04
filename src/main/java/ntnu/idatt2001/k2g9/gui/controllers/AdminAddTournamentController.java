@@ -152,6 +152,11 @@ public class AdminAddTournamentController implements Initializable {
         ObservableList<CompetitorModel> allCompetitors, singleCompetitor;
         allCompetitors = tableCompetitors.getItems();
         singleCompetitor = tableCompetitors.getSelectionModel().getSelectedItems();
+
+        Player player = new Player(singleCompetitor.get(0).getName(), singleCompetitor.get(0).getAge());
+        player.setPlayerID(singleCompetitor.get(0).getCompetitorID());
+
+        playerRegistry.removePlayer(player);
         singleCompetitor.forEach(allCompetitors::remove);
     }
 
