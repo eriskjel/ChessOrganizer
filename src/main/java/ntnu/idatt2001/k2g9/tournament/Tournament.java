@@ -1,4 +1,5 @@
 package ntnu.idatt2001.k2g9.tournament;
+import ntnu.idatt2001.k2g9.player.Admin;
 import ntnu.idatt2001.k2g9.player.Player;
 import ntnu.idatt2001.k2g9.player.PlayerRegistry;
 import java.time.LocalDate;
@@ -11,7 +12,7 @@ public class Tournament {
     private LocalDate date;
     private ArrayList<Match[]> tournamentBracket; //
     private String layout;
-    //private User organizer;
+    private Admin organizer;
     private int tournamentID;
 
 
@@ -26,69 +27,49 @@ public class Tournament {
     public ArrayList<Match[]> getTournamentBracket() {
         return tournamentBracket;
     }
-
-    public PlayerRegistry getPlayers() {
-        return players;
+    public ArrayList<Player> getPlayers() {
+        return players.getPlayers();
+    }
+    public int getTotalRounds() {
+        return tournamentBracket.size();
+    }
+    public int getTournamentID() {
+        return tournamentID;
+    }
+    public String getLayout() {
+        return layout;
+    }
+    public LocalDate getDate() {
+        return date;
+    }
+    public void getPlayers(PlayerRegistry players) {
+        this.players = players;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setTournamentID(int tournamentID) {
+        this.tournamentID = tournamentID;
+    }
+    public void setLayout(String layout) {
+        this.layout = layout;
+    }
+    public void setPlayers(PlayerRegistry players) {
+        this.players = players;
+    }
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void addFromList(ArrayList<Player> playerList){
         for(Player p : playerList){
             p.setPlayerID(players.getSize());
-            players.addPlayerObject(p);
+            players.addPlayer(p);
         }
     }
-
-    public int getTotalRounds() {
-        return tournamentBracket.size();
-    }
-
-    public int getTournamentID() {
-        return tournamentID;
-    }
-
-    public String getLayout() {
-        return layout;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void getPlayers(PlayerRegistry players) {
-        this.players = players;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    /*
-    public void setOrganizer(User organizer) {
-        this.organizer = organizer;
-    }
-
-     */
-    public void setTournamentID(int tournamentID) {
-        this.tournamentID = tournamentID;
-    }
-
-    public void setLayout(String layout) {
-        this.layout = layout;
-    }
-
-    public void setPlayers(PlayerRegistry players) {
-        this.players = players;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
     /**
      * Adds player to participate in the tournament.
      * Checks if the player already is added to the tournament before trying to add.
@@ -97,7 +78,11 @@ public class Tournament {
      * @return  True if player is added, false otherwise.
      */
     public boolean addPlayer(Player player){
-        return !players.getPlayers().contains(player) && players.addPlayerObject(player);
+        return !players.getPlayers().contains(player) && players.addPlayer(player);
+    }
+
+    public boolean removePlayer(Player player){
+        return players.removePlayer(player);
     }
 
     /**
@@ -153,3 +138,4 @@ public class Tournament {
         return Objects.hash(name, date, tournamentID);
     }
 }
+
