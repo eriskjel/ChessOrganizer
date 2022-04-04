@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import ntnu.idatt2001.k2g9.gui.application.Application;
@@ -26,6 +27,7 @@ import java.util.ResourceBundle;
  */
 public class AdminViewBracketController implements Initializable {
 
+    public Label lblTournamentName;
     HashMap<String, Button> buttonHashMap;
     public TextField tournamentWinner;
     public Button x000;
@@ -229,6 +231,10 @@ public class AdminViewBracketController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        //sets header with correct tournament name
+        this.lblTournamentName.setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getName());
+
         //all buttons
         Button[] buttons = {
                 this.x000,
