@@ -50,6 +50,10 @@
     -fx-font-size: 15px;
 }
 
+.blueBtn{
+    -fx-background-color: #2B78E4;
+}
+
 .btnHub{
     -fx-border-color: #2B78E4;
     -fx-border-width: 3px;
@@ -61,6 +65,13 @@
 
 .btnHub:hover{
     -fx-text-fill: white;
-    -fx-font-size: 12px;
     -fx-background-color: #2B78E4;
+}
+
+.anchor{
+    -fx-text-fill: blue;
+}
+
+.anchor:hover{
+    -fx-underline: true;
 }
