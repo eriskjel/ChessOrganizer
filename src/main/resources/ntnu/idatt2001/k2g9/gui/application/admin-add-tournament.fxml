@@ -54,7 +54,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="680.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntnu.idatt2001.k2g9.gui.controllers.AdminAddTournamentController">
+<VBox prefHeight="680.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntnu.idatt2001.k2g9.gui.controllers.AdminAddTournamentController">
   <children>
     <MenuBar prefHeight="25.0" prefWidth="1217.0" VBox.vgrow="NEVER">
       <menus>
@@ -95,11 +95,11 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="739.0" prefWidth="1251.0" VBox.vgrow="ALWAYS">
       <children>
-            <Pane layoutY="86.0" prefHeight="570.0" prefWidth="200.0" styleClass="top-bar" stylesheets="@../styles.css">
+            <Pane layoutY="86.0" prefHeight="570.0" prefWidth="200.0" styleClass="top-bar" stylesheets="@../styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="86.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#goToAdminTournamentHub" prefHeight="62.0" prefWidth="200.0" style="-fx-text-alignment: left;" styleClass="button-menu" stylesheets="@../styles.css" text="Tournament hub" />
-                  <Button layoutY="62.0" mnemonicParsing="false" onAction="#gotoAdminManageTournament" prefHeight="62.0" prefWidth="200.0" styleClass="button-menu" stylesheets="@../styles.css" text="Manage tournaments" />
-                  <Button layoutY="124.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" stylesheets="@../styles.css" text="Add tournament">
+                  <Button layoutY="124.0" mnemonicParsing="false" onAction="#gotoAdminManageTournament" prefHeight="62.0" prefWidth="200.0" styleClass="button-menu" stylesheets="@../styles.css" text="Manage tournaments" />
+                  <Button layoutY="62.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" stylesheets="@../styles.css" text="Add tournament">
                      <styleClass>
                         <String fx:value="button-menu" />
                         <String fx:value="activeBtn" />
@@ -107,26 +107,21 @@
                   <Button layoutY="186.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" styleClass="button-menu" stylesheets="@../styles.css" text="Admin settings" />
                </children>
             </Pane>
-            <Pane prefHeight="86.0" prefWidth="1300.0" styleClass="top-bar" stylesheets="@../styles.css">
+            <Pane prefHeight="86.0" prefWidth="1300.0" styleClass="top-bar" stylesheets="@../styles.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <Label layoutY="29.0" prefHeight="30.0" prefWidth="286.0" styleClass="p-header" stylesheets="@../styles.css" text="Chess tournament organizer">
                      <padding>
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <Button layoutX="1156.0" layoutY="32.0" mnemonicParsing="false" onAction="#adminLogOut" styleClass="button-logout" stylesheets="@../styles.css" text="Admin, log out" />
+                  <Button layoutX="1157.0" layoutY="32.0" mnemonicParsing="false" onAction="#adminLogOut" styleClass="button-logout" stylesheets="@../styles.css" text="Admin, log out" />
                </children>
             </Pane>
-            <Pane id="tblCompetitors" layoutX="200.0" layoutY="86.0" prefHeight="570.0" prefWidth="1051.0" styleClass="table" stylesheets="@../styles.css">
+            <Pane id="tblCompetitors" layoutX="200.0" layoutY="86.0" prefHeight="570.0" prefWidth="1100.0" styleClass="table" stylesheets="@../styles.css">
                <children>
-                  <Label layoutX="378.0" layoutY="20.0" prefHeight="51.0" prefWidth="296.0" styleClass="header" stylesheets="@../styles.css" text="Add tournament">
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </Label>
-                  <Pane layoutX="42.0" layoutY="92.0" prefHeight="444.0" prefWidth="967.0">
+                  <Pane layoutX="42.0" layoutY="92.0" prefHeight="444.0" prefWidth="1058.0">
                      <children>
-                        <Button layoutX="698.0" layoutY="372.0" mnemonicParsing="false" onAction="#addTournament" prefHeight="51.0" prefWidth="132.0" text="Add tournament" />
+                        <Button layoutX="694.0" layoutY="386.0" mnemonicParsing="false" onAction="#addTournament" prefHeight="51.0" prefWidth="132.0" styleClass="btnHub" stylesheets="@../styles.css" text="Add tournament" />
                         <Label layoutX="6.0" layoutY="111.0" prefHeight="21.0" prefWidth="132.0" styleClass="p" stylesheets="@../styles.css" text="Full name:" />
                         <Label layoutY="14.0" prefHeight="51.0" prefWidth="253.0" styleClass="h2" stylesheets="@../styles.css" text="Register competitors">
                            <padding>
@@ -136,28 +131,28 @@
                         <TextField id="inpTournamentName" fx:id="inpFullName" layoutX="6.0" layoutY="140.0" prefHeight="25.0" prefWidth="181.0" />
                         <Label layoutX="6.0" layoutY="193.0" prefHeight="21.0" prefWidth="41.0" styleClass="p" stylesheets="@../styles.css" text="Age:" />
                         <TextField id="inpTournamentName" fx:id="inpAge" layoutX="6.0" layoutY="223.0" prefHeight="25.0" prefWidth="181.0" />
-                        <Button layoutX="6.0" layoutY="340.0" mnemonicParsing="false" onAction="#addCompetitor" text="Add competitor" />
-                        <Label layoutX="359.0" layoutY="14.0" prefHeight="51.0" prefWidth="229.0" styleClass="h2" stylesheets="@../styles.css" text="Current competitors">
+                        <Button layoutX="6.0" layoutY="315.0" mnemonicParsing="false" onAction="#addCompetitor" styleClass="button-logout" stylesheets="@../styles.css" text="Add competitor" />
+                        <Label layoutX="290.0" layoutY="14.0" prefHeight="51.0" prefWidth="229.0" styleClass="h2" stylesheets="@../styles.css" text="Current competitors">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
                         </Label>
                         <Separator layoutX="250.0" orientation="VERTICAL" prefHeight="444.0" prefWidth="8.0" />
                         <Separator layoutX="667.0" layoutY="-3.0" orientation="VERTICAL" prefHeight="451.0" prefWidth="8.0" />
-                        <TableView id="tableCompetitors" fx:id="tableCompetitors" layoutX="309.0" layoutY="83.0" prefHeight="210.0" prefWidth="279.0" styleClass="table" stylesheets="@../styles.css">
+                        <TableView id="tableCompetitors" fx:id="tableCompetitors" layoutX="290.0" layoutY="82.0" prefHeight="208.0" prefWidth="348.0" styleClass="table" stylesheets="@../styles.css">
                           <columns>
-                            <TableColumn fx:id="tblName" prefWidth="141.0" text="Name" />
-                            <TableColumn fx:id="tblAge" prefWidth="137.0" text="Age" />
+                            <TableColumn fx:id="tblName" prefWidth="174.0" text="Name" />
+                            <TableColumn fx:id="tblAge" prefWidth="173.0" text="Age" />
                           </columns>
                         </TableView>
-                        <Button layoutX="359.0" layoutY="340.0" mnemonicParsing="false" onAction="#removeCompetitor" text="Remove competitor" />
+                        <Button layoutX="290.0" layoutY="315.0" mnemonicParsing="false" onAction="#removeCompetitor" styleClass="button-logout" stylesheets="@../styles.css" text="Remove competitor" />
                         <Label layoutX="697.0" layoutY="112.0" prefHeight="21.0" prefWidth="132.0" styleClass="p" stylesheets="@../styles.css" text="Tournament name:" />
                         <TextField id="inpTournamentName" fx:id="inpTournamentName" layoutX="697.0" layoutY="143.0" prefHeight="25.0" prefWidth="181.0" />
                         <Label layoutX="694.0" layoutY="279.0" prefHeight="21.0" prefWidth="139.0" styleClass="p" stylesheets="@../styles.css" text="Tournament format:" />
-                        <MenuButton id="inpTournamentFormat" fx:id="inpTournamentFormat" layoutX="697.0" layoutY="327.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" styleClass="menuButton" stylesheets="@../styles.css" text="Select format">
+                        <MenuButton id="inpTournamentFormat" fx:id="inpTournamentFormat" layoutX="694.0" layoutY="315.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" styleClass="button-logout" stylesheets="@../styles.css" text="Select format">
                           <items>
-                            <MenuItem fx:id="formatKnockout" mnemonicParsing="false" onAction="#setFormatKnockout" text="Knockout" />
-                            <MenuItem mnemonicParsing="false" onAction="#formatSwiss" text="Swiss-system (not implemented)" />
+                            <MenuItem fx:id="formatKnockout" mnemonicParsing="false" onAction="#setFormatKnockout" styleClass="menuItem" text="Knockout" />
+                            <MenuItem mnemonicParsing="false" onAction="#formatSwiss" styleClass="menuItem" text="Swiss-system (not implemented)" />
                           </items>
                         </MenuButton>
                         <DatePicker id="inpDate" fx:id="inpDate" layoutX="697.0" layoutY="226.0" prefHeight="25.0" prefWidth="181.0" showWeekNumbers="true" />
@@ -169,6 +164,11 @@
                         </Label>
                      </children>
                   </Pane>
+                  <Label layoutX="402.0" layoutY="25.0" prefHeight="51.0" prefWidth="296.0" styleClass="header" stylesheets="@../styles.css" text="Add tournament">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
                </children>
             </Pane>
       </children>

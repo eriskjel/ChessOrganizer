@@ -61,13 +61,13 @@
             <Pane layoutY="86.0" prefHeight="570.0" prefWidth="200.0" styleClass="top-bar" stylesheets="@../styles.css">
                <children>
                   <Button mnemonicParsing="false" onAction="#goToAdminTournamentHub" prefHeight="62.0" prefWidth="200.0" style="-fx-text-alignment: left;" styleClass="button-menu" stylesheets="@../styles.css" text="Tournament hub" />
-                  <Button layoutY="62.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" stylesheets="@../styles.css" text="Manage tournaments">
+                  <Button layoutY="124.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" stylesheets="@../styles.css" text="Manage tournaments">
                      <styleClass>
                         <String fx:value="button-menu" />
                         <String fx:value="activeBtn" />
                      </styleClass>
                   </Button>
-                  <Button layoutY="124.0" mnemonicParsing="false" onAction="#goToAddTournament" prefHeight="62.0" prefWidth="200.0" styleClass="button-menu" stylesheets="@../styles.css" text="Add tournament" />
+                  <Button layoutY="62.0" mnemonicParsing="false" onAction="#goToAddTournament" prefHeight="62.0" prefWidth="200.0" styleClass="button-menu" stylesheets="@../styles.css" text="Add tournament" />
                   <Button layoutY="186.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" styleClass="button-menu" stylesheets="@../styles.css" text="Admin settings" />
                </children>
             </Pane>
@@ -83,7 +83,7 @@
             </Pane>
             <Pane id="tblCompetitors" layoutX="200.0" layoutY="86.0" prefHeight="570.0" prefWidth="1100.0" stylesheets="@../styles.css">
                <children>
-                  <Label layoutX="197.0" layoutY="14.0" prefHeight="51.0" prefWidth="299.0" styleClass="header" stylesheets="@../styles.css" text="View bracket for:">
+                  <Label layoutX="251.0" layoutY="14.0" prefHeight="51.0" prefWidth="299.0" styleClass="header" stylesheets="@../styles.css" text="View bracket for:">
                      <padding>
                         <Insets left="10.0" />
                      </padding>
@@ -132,7 +132,7 @@
                         </Text>
                      </children>
                   </Pane>
-                  <Label fx:id="lblTournamentName" layoutX="504.0" layoutY="14.0" prefHeight="51.0" prefWidth="354.0" styleClass="header" stylesheets="@../styles.css">
+                  <Label fx:id="lblTournamentName" layoutX="572.0" layoutY="14.0" prefHeight="51.0" prefWidth="354.0" styleClass="header" stylesheets="@../styles.css">
                      <padding>
                         <Insets left="10.0" />
                      </padding>

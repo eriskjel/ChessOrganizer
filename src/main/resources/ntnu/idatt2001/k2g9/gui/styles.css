@@ -3,13 +3,13 @@
 }
 
 .p-header{
-    -fx-text-fill: #DCDDCE;
+    -fx-text-fill: white;
     -fx-font-size: 20px;
 
 }
 
 .header{
-    -fx-text-fill: black;
+    -fx-text-fill: #2B78E4;
     -fx-font-size: 35px;
     -fx-font-weight: bold;
 }
@@ -22,10 +22,45 @@
 
 .button:hover{
     -fx-cursor: hand;
+    -fx-text-fill: white;
 }
 
 .menuButton:hover{
     -fx-cursor: hand;
+}
+
+.date-picker > .arrow-button {
+    -fx-background-color:  #2B78E4;
+}
+
+.date-picker > .arrow-button:hover {
+    -fx-background-color: #5090ec;
+}
+
+.menu-button .label{
+    -fx-text-fill: white;
+}
+
+.menu-button > .arrow-button > .arrow {
+    -fx-text-fill: white;
+}
+
+.button-logout .menuItem .label{
+    -fx-text-fill: #2B78E4;
+}
+
+.button-logout .menuItem:focused{
+    -fx-background-color: #2B78E4;
+    -fx-text-fill: white !important;
+}
+
+.button-logout .menuItem:focused .label{
+    -fx-background-color: #2B78E4;
+    -fx-text-fill: white !important;
+}
+
+.menu-button .arrow-button .arrow{
+    -fx-background-color: white;
 }
 
 .button-menu{
@@ -40,10 +75,16 @@
     -fx-text-fill: white
 }
 
-.button-logout{
+.button-logoutd{
     -fx-text-fill: #2B78E4;
     -fx-font-weight: bold;
     -fx-background-color: white;
+}
+
+.button-logout{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-color: #2B78E4;
 }
 
 .p{
@@ -83,8 +124,6 @@
 .table-view .corner {
     -fx-background-color: transparent;
 }
-
-
 
 .table-view .column-header {
     -fx-background-color: #2B78E4;

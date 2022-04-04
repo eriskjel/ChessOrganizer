@@ -44,7 +44,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="680.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntnu.idatt2001.k2g9.gui.controllers.AdminHubController">
+<VBox prefHeight="680.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntnu.idatt2001.k2g9.gui.controllers.AdminHubController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -85,19 +85,19 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="656.0" prefWidth="1300.0" VBox.vgrow="ALWAYS">
       <children>
-            <Pane layoutY="86.0" prefHeight="570.0" prefWidth="200.0" styleClass="top-bar" stylesheets="@../styles.css">
+            <Pane layoutY="86.0" prefHeight="570.0" prefWidth="200.0" styleClass="top-bar" stylesheets="@../styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="86.0">
                <children>
                   <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" style="-fx-text-alignment: left;" stylesheets="@../styles.css" text="Tournament hub">
                      <styleClass>
                         <String fx:value="button-menu" />
                         <String fx:value="activeBtn" />
                      </styleClass></Button>
-                  <Button layoutY="62.0" mnemonicParsing="false" onAction="#gotoAdminManageTournament" prefHeight="62.0" prefWidth="200.0" stylesheets="@../styles.css" text="Manage tournaments">
+                  <Button layoutY="124.0" mnemonicParsing="false" onAction="#gotoAdminManageTournament" prefHeight="62.0" prefWidth="200.0" stylesheets="@../styles.css" text="Manage tournaments">
                      <styleClass>
                         <String fx:value="button-menu" />
                         <String fx:value="button" />
                      </styleClass></Button>
-                  <Button layoutY="124.0" mnemonicParsing="false" onAction="#goToAddTournament" prefHeight="62.0" prefWidth="200.0" stylesheets="@../styles.css" text="Add tournament">
+                  <Button layoutY="62.0" mnemonicParsing="false" onAction="#goToAddTournament" prefHeight="62.0" prefWidth="200.0" stylesheets="@../styles.css" text="Add tournament">
                      <styleClass>
                         <String fx:value="button-menu" />
                         <String fx:value="button" />
@@ -110,7 +110,7 @@
                   </Button>
                </children>
             </Pane>
-            <Pane prefHeight="86.0" prefWidth="1300.0" styleClass="top-bar" stylesheets="@../styles.css">
+            <Pane prefHeight="86.0" prefWidth="1301.0" styleClass="top-bar" stylesheets="@../styles.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <Label layoutY="29.0" prefHeight="30.0" prefWidth="286.0" styleClass="p-header" stylesheets="@../styles.css" text="Chess tournament organizer">
                      <padding>
@@ -124,16 +124,27 @@
                      </styleClass></Button>
                </children>
             </Pane>
-            <Button layoutX="461.0" layoutY="273.0" mnemonicParsing="false" onAction="#goToAddTournament" prefHeight="110.0" prefWidth="155.0" stylesheets="@../styles.css" text="Add tournament">
-               <styleClass>
-                  <String fx:value="btnHub" />
-                  <String fx:value="button" />
-               </styleClass></Button>
-            <Button layoutX="850.0" layoutY="273.0" mnemonicParsing="false" onAction="#gotoAdminManageTournament" prefHeight="110.0" prefWidth="155.0" stylesheets="@../styles.css" text="Manage tournaments">
-               <styleClass>
-                  <String fx:value="btnHub" />
-                  <String fx:value="button" />
-               </styleClass></Button>
+            <Pane layoutX="199.0" layoutY="86.0" prefHeight="570.0" prefWidth="1102.0">
+               <children>
+                  <Label layoutX="334.0" layoutY="25.0" prefHeight="51.0" prefWidth="434.0" styleClass="header" stylesheets="@../styles.css" text="What do you want to do?">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <Button layoutX="257.0" layoutY="207.0" mnemonicParsing="false" onAction="#goToAddTournament" prefHeight="110.0" prefWidth="155.0" stylesheets="@../styles.css" text="Add a tournament">
+                     <styleClass>
+                        <String fx:value="btnHub" />
+                        <String fx:value="button" />
+                     </styleClass>
+                  </Button>
+                  <Button layoutX="683.0" layoutY="207.0" mnemonicParsing="false" onAction="#gotoAdminManageTournament" prefHeight="110.0" prefWidth="170.0" stylesheets="@../styles.css" text="Manage my tournaments">
+                     <styleClass>
+                        <String fx:value="btnHub" />
+                        <String fx:value="button" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </Pane>
       </children>
     </AnchorPane>
   </children>
