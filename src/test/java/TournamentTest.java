@@ -1,7 +1,5 @@
 import ntnu.idatt2001.k2g9.player.Player;
 import ntnu.idatt2001.k2g9.player.PlayerRegistry;
-import ntnu.idatt2001.k2g9.player.User;
-import ntnu.idatt2001.k2g9.tournament.Match;
 import ntnu.idatt2001.k2g9.tournament.Tournament;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -16,7 +14,7 @@ public class TournamentTest {
         PlayerRegistry players = new PlayerRegistry();
 
         for(int i = 0 ; i<20 ; i++){
-            players.addPlayerObject(new Player("Test"+Integer.toString(i),20+i));
+            players.addPlayer(new Player("Test"+Integer.toString(i),20+i));
         }
 
         Tournament tournament = new Tournament("Test", LocalDate.now(), "Knock-Out");

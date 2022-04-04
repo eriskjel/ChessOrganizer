@@ -12,7 +12,7 @@ class TournamentFormatTest {
         PlayerRegistry players = new PlayerRegistry();
 
         for(int i = 0 ; i<20 ; i++){
-            players.addPlayerObject(new Player("Erik"+Integer.toString(i),20+i));
+            players.addPlayer(new Player("Erik"+Integer.toString(i),20+i));
         }
 
         ArrayList<Match[]> layout = TournamentFormat.createBracket("Knock-Out", players);
@@ -34,7 +34,7 @@ class TournamentFormatTest {
         PlayerRegistry players = new PlayerRegistry();
 
         for(int i = 0 ; i<20 ; i++){
-            players.addPlayerObject(new Player("Test"+Integer.toString(i),20+i));
+            players.addPlayer(new Player("Test"+Integer.toString(i),20+i));
         }
 
         ArrayList<Match[]> layout = TournamentFormat.createBracket("Knock-Out", players);
@@ -57,7 +57,7 @@ class TournamentFormatTest {
         PlayerRegistry players = new PlayerRegistry();
 
         for(int i = 0 ; i<7 ; i++){
-            players.addPlayerObject(new Player("Erik"+Integer.toString(i+1),20+i));
+            players.addPlayer(new Player("Erik"+Integer.toString(i+1),20+i));
         }
 
         ArrayList<Match[]> layout = TournamentFormat.createBracket("Round-Robin", players);
@@ -84,7 +84,7 @@ class TournamentFormatTest {
         PlayerRegistry players = new PlayerRegistry();
 
         for (int i = 0; i < 7; i++) {
-            players.addPlayerObject(new Player("Test" + Integer.toString(i) , 20 + i));
+            players.addPlayer(new Player("Test" + Integer.toString(i) , 20 + i));
         }
 
         ArrayList<Match[]> layout = TournamentFormat.createBracket("Round-Robin" , players);
@@ -110,7 +110,7 @@ class TournamentFormatTest {
         int matches = 0;
 
         for(int i = 0 ; i<15 ; i++){
-            players.addPlayerObject(new Player("Erik"+Integer.toString(i+1),20+i));
+            players.addPlayer(new Player("Erik"+Integer.toString(i+1),20+i));
         }
 
         //if amount of players % == 0, adds one dummy to the sum of players
@@ -140,7 +140,7 @@ class TournamentFormatTest {
         PlayerRegistry players = new PlayerRegistry();
 
         for (int i = 0; i < 33; i++) {
-            players.addPlayerObject(new Player("Test" + Integer.toString(i) , 20 + i));
+            players.addPlayer(new Player("Test" + Integer.toString(i) , 20 + i));
         }
 
         ArrayList<Match[]> layout = TournamentFormat.createBracket("Swiss-System" , players);

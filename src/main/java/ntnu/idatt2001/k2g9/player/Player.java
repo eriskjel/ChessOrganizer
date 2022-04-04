@@ -10,9 +10,6 @@ public class Player{
     protected String name;
     protected int age;
     protected int playerID;
-
-
-
     /**
      * Constructor for Player class. Checks parameters and throws exception if illegal values found.
      * @param name
@@ -30,22 +27,19 @@ public class Player{
     public int getAge() {
         return age;
     }
-
     public String getName() {
         return name;
     }
-
     public void setAge(int age) {
         this.age = age;
     }
-
     public int getPlayerID() {
         return playerID;
     }
-
     public void setPlayerID(int playerID) {
         this.playerID = playerID;
     }
+
 
     @Override
     public String toString() {
@@ -56,6 +50,7 @@ public class Player{
                 '}';
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -63,6 +58,7 @@ public class Player{
         Player player = (Player) o;
         return age == player.age && playerID == player.playerID && Objects.equals(name, player.name);
     }
+
 
     @Override
     public int hashCode() {

@@ -131,7 +131,7 @@ public class AdminEditTournamentController implements Initializable {
         allCompetitors.clear();
 
 
-        ArrayList<Player> competitors = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayers().getPlayers();
+        ArrayList<Player> competitors = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayers();
         ArrayList<CompetitorModel> competitorModels = new ArrayList<>();
         for (Player player : competitors){
             CompetitorModel competitorModel = new CompetitorModel(player);
