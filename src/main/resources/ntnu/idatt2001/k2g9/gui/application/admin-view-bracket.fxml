@@ -78,7 +78,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <Button layoutX="1156.0" layoutY="32.0" mnemonicParsing="false" onAction="#adminLogOut" styleClass="button-logout" stylesheets="@../styles.css" text="Admin, log out" />
+                  <Button layoutX="1190.0" layoutY="32.0" mnemonicParsing="false" onAction="#adminLogOut" styleClass="button-logout" stylesheets="@../styles.css" text="Log out"/>
                </children>
             </Pane>
             <Pane id="tblCompetitors" layoutX="200.0" layoutY="86.0" prefHeight="570.0" prefWidth="1100.0" stylesheets="@../styles.css">
