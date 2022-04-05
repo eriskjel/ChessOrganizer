@@ -121,7 +121,7 @@ public class AdminManageController implements Initializable {
             if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
                 if(mouseEvent.getClickCount() == 2){
                     if (selectedTournament != null){
-                        this.path = "admin-view-bracket.fxml";
+                        this.path = "knockout-admin-view-bracket.fxml";
                         this.getTournamentID();
                     }
                 }
@@ -169,7 +169,16 @@ public class AdminManageController implements Initializable {
 
      */
 
-    public void getTournamentID(ActionEvent event) throws IOException {
+    public int getTournamentID(){
+        //get selected tournament
+        ObservableList<TournamentModel> singleTournament;
+        singleTournament = tblTournaments.getSelectionModel().getSelectedItems();
+
+        //get selected tournament ID
+        return singleTournament.get(0).getTournamentID();
+    }
+
+    public void editTournament(ActionEvent event) throws IOException {
         //get selected tournament
         ObservableList<TournamentModel> singleTournament;
         singleTournament = tblTournaments.getSelectionModel().getSelectedItems();
@@ -195,14 +204,65 @@ public class AdminManageController implements Initializable {
         stage.show();
     }
 
+    /*
     public void gotoAdminViewBracket(ActionEvent actionEvent) throws IOException {
         //load new fxml file
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("admin-view-bracket.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("knockout-admin-view-bracket.fxml"));
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
 
         stage.setTitle("View brackets tournament");
         stage.setScene(scene);
         stage.show();
+    }
+
+     */
+
+    public void goToKnockoutBracket(ActionEvent actionEvent) throws IOException {
+        //load new fxml file
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("knockout-admin-view-bracket.fxml"));
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
+
+        stage.setTitle("View bracket for tournament");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void goToRoundRobinBracket(ActionEvent actionEvent) throws IOException {
+        //load new fxml file
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("robin-admin-view-bracket.fxml"));
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
+
+        stage.setTitle("View bracket for tournament");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void goToSwissBracket(ActionEvent actionEvent) throws IOException {
+        //load new fxml file
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("swiss-admin-view-bracket.fxml"));
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
+
+        stage.setTitle("View bracket for tournament");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void goToBracket(ActionEvent actionEvent) throws IOException {
+        if (RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout().equals("Knock-Out")){
+            goToKnockoutBracket(actionEvent);
+        }
+        else if(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout().equals("Round-Robin")){
+            goToRoundRobinBracket(actionEvent);
+        }
+        else if (RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout().equals("Swiss-System")){
+            goToSwissBracket(actionEvent);
+        }
+        else{
+            System.err.println("something went wrong");
+        }
     }
 }

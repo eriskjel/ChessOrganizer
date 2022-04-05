@@ -115,8 +115,8 @@ public class AdminAddTournamentController implements Initializable {
      */
     @FXML
     public void formatSwiss() {
-        this.inpTournamentFormat.setText("Swiss");
-        this.tournamentFormat = "Swiss";
+        this.inpTournamentFormat.setText("Swiss-System");
+        this.tournamentFormat = "Swiss-System";
     }
 
     /**

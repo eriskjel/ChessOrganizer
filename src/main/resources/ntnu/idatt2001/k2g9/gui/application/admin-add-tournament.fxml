@@ -114,7 +114,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                   <Button layoutX="1190.0" layoutY="32.0" mnemonicParsing="false" onAction="#adminLogOut" styleClass="button-logout" stylesheets="@../styles.css" text="Log out"/>
+                   <Button layoutX="1190.0" layoutY="32.0" mnemonicParsing="false" onAction="#adminLogOut" styleClass="button-logout" stylesheets="@../styles.css" text="Log out" />
                </children>
             </Pane>
             <Pane id="tblCompetitors" layoutX="200.0" layoutY="86.0" prefHeight="570.0" prefWidth="1100.0" styleClass="table" stylesheets="@../styles.css">
@@ -152,7 +152,7 @@
                         <MenuButton id="inpTournamentFormat" fx:id="inpTournamentFormat" layoutX="694.0" layoutY="315.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" styleClass="button-logout" stylesheets="@../styles.css" text="Select format">
                           <items>
                             <MenuItem fx:id="formatKnockout" mnemonicParsing="false" onAction="#setFormatKnockout" styleClass="menuItem" text="Knockout" />
-                            <MenuItem mnemonicParsing="false" onAction="#formatSwiss" styleClass="menuItem" text="Swiss-system (not implemented)" />
+                            <MenuItem mnemonicParsing="false" onAction="#formatSwiss" styleClass="menuItem" text="Swiss-System" />
                           </items>
                         </MenuButton>
                         <DatePicker id="inpDate" fx:id="inpDate" layoutX="697.0" layoutY="226.0" prefHeight="25.0" prefWidth="181.0" showWeekNumbers="true" />
