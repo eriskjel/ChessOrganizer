@@ -32,22 +32,20 @@ public class FileHandlerTest {
 
 
          */
-        Tournament tournament1 = new Tournament("suck ya mum danielski", LocalDate.now(), "Swiss-System");
+        Tournament tournament1 = new Tournament("test", LocalDate.now(), "Swiss-System");
         tournament1.setPlayers(players);
         tournament1.createTournamentBracket();
-
-        /*
         fileHandler.writeTournamentToFile(tournament1);
 
-         */
+
     }
 
-    /*
+
     @Test
     public void readFromFile() throws IOException {
         FileHandler fileHandler = new FileHandler();
         fileHandler.readTournamentFromFile();
     }
 
-     */
+
 }

@@ -1,5 +1,7 @@
 package ntnu.idatt2001.k2g9.file;
 
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import ntnu.idatt2001.k2g9.player.Player;
@@ -16,8 +18,8 @@ public class FileHandler {
 
 
     public void readTournamentFromFile() throws IOException {
-        mapper = JsonMapper.builder().findAndAddModules().build();
-        Tournament tournament = mapper.readValue(new File("src/main/resources/ntnu/idatt2001/k2g9/gui/tournaments/Test0.json"), Tournament.class);
+        ObjectMapper mapper = new ObjectMapper();
+        Tournament tournament = mapper.readValue(new File("src/main/resources/ntnu/idatt2001/k2g9/gui/registry/tournamentstest0.json"), Tournament.class);
         System.out.println(tournament);
 
     }
@@ -26,7 +28,7 @@ public class FileHandler {
     public void writeTournamentToFile(Tournament object) throws IOException {
 
         String path = object.getName() + object.getTournamentID() + ".json";
-        mapper.writeValue(new File("src/main/resources/ntnu/idatt2001/k2g9/gui/tournaments/" + path.replaceAll(" ", "")), object);
+        mapper.writeValue(new File("src/main/resources/ntnu/idatt2001/k2g9/gui/registry/tournaments" + path.replaceAll(" ", "")), object);
     }
 
     public Player readCompetitorFromFile(){
