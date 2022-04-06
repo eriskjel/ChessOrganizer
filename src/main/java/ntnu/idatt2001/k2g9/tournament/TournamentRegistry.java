@@ -43,19 +43,6 @@ public class TournamentRegistry {
          this.tournaments.add(tournament);
     }
 
-    /**
-     * Constructor that creates tournament object in this tournamentRegistry instead of outside of it. Checks if
-     * the tournament already exists.
-     * @param name
-     * @param date
-     * @param layout
-     * @return
-     */
-    public void addTournament(String name, LocalDate date, String layout){
-        Tournament newT = new Tournament(name,date,layout);
-            newT.setTournamentID(tournaments.size());
-            tournaments.add(newT);
-    }
 
     /**
      * Finds a tournament in the Registry using the tournamentID.
@@ -74,6 +61,10 @@ public class TournamentRegistry {
          }
     }
 
+    /**
+     * to string method
+     * @return string format of tournaments
+     */
     @Override
     public String toString() {
         StringBuilder string = new StringBuilder();
