@@ -33,7 +33,10 @@ public class FileHandlerTest {
         tournament1.setPlayers(players);
         tournament1.createTournamentBracket();
 
+        /*
         fileHandler.writeTournamentToFile(tournament1);
+
+         */
     }
 
     /*
