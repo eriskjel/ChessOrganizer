@@ -14,21 +14,19 @@ import java.io.IOException;
 public class FileHandler {
 
     ObjectMapper mapper = new ObjectMapper();
+    private String defaultPath = "src/main/resources/ntnu/idatt2001/k2g9/gui/registry/tournaments/";
 
 
 
-    public void readTournamentFromFile() throws IOException {
+    public Tournament readTournamentFromFile(String fileName) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        Tournament tournament = mapper.readValue(new File("src/main/resources/ntnu/idatt2001/k2g9/gui/registry/tournamentstest0.json"), Tournament.class);
-        System.out.println(tournament);
+        return mapper.readValue(new File(defaultPath + fileName), Tournament.class);
 
     }
 
 
-    public void writeTournamentToFile(Tournament object) throws IOException {
-
-        String path = object.getName() + object.getTournamentID() + ".json";
-        mapper.writeValue(new File("src/main/resources/ntnu/idatt2001/k2g9/gui/registry/tournaments" + path.replaceAll(" ", "")), object);
+    public void writeTournamentToFile(Tournament tournament) throws IOException {
+        mapper.writeValue(new File(defaultPath + this.getTournamentFilePath(tournament).replaceAll(" ", "")), tournament);
     }
 
     public Player readCompetitorFromFile(){
@@ -37,6 +35,10 @@ public class FileHandler {
 
     public void writeCompetitorToFile(){
         //fd
+    }
+
+    public String getTournamentFilePath(Tournament tournament){
+        return tournament.getName() + tournament.getTournamentID() + ".json";
     }
 
 
