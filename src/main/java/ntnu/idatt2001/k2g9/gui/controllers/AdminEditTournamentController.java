@@ -131,7 +131,7 @@ public class AdminEditTournamentController implements Initializable {
         allCompetitors.clear();
 
 
-        ArrayList<Player> competitors = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayers();
+        ArrayList<Player> competitors = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayerRegistry().getPlayers();
         ArrayList<CompetitorModel> competitorModels = new ArrayList<>();
         for (Player player : competitors){
             CompetitorModel competitorModel = new CompetitorModel(player);
@@ -166,7 +166,8 @@ public class AdminEditTournamentController implements Initializable {
         //removes from tournament
         Player player = new Player(singleCompetitor.get(0).getName(), singleCompetitor.get(0).getAge());
         player.setPlayerID(singleCompetitor.get(0).getCompetitorID());
-        RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayerRegistry().removePlayer(player);
+        //RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayerRegistry().removePlayer(player);
+        RegistryClient.tournamentRegistry.getTournament(getTournamentID()).removePlayer(player);
 
         RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayerRegistry().resetPlayerIDs();
     }

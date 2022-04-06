@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Tournament {
     private PlayerRegistry players;
     private String name;
-    private LocalDate date;
+    public LocalDate date;
     private ArrayList<Match[]> tournamentBracket; //
     private String layout;
     private Admin organizer;
@@ -27,12 +27,20 @@ public class Tournament {
     public ArrayList<Match[]> getTournamentBracket() {
         return tournamentBracket;
     }
+    /*
     public ArrayList<Player> getPlayers() {
         return players.getPlayers();
     }
+
+     */
+
     public PlayerRegistry getPlayerRegistry(){
         return this.players;
     }
+
+
+
+
     public int getTotalRounds() {
         return tournamentBracket.size();
     }
@@ -44,9 +52,6 @@ public class Tournament {
     }
     public LocalDate getDate() {
         return date;
-    }
-    public void getPlayers(PlayerRegistry players) {
-        this.players = players;
     }
     public String getName() {
         return name;
