@@ -1,5 +1,8 @@
 package ntnu.idatt2001.k2g9.player;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import ntnu.idatt2001.k2g9.file.PlayerDeserializer;
+import ntnu.idatt2001.k2g9.file.PlayerRegistryDeserializer;
 import ntnu.idatt2001.k2g9.tournament.RegistryClient;
 
 import java.util.ArrayList;
@@ -7,6 +10,7 @@ import java.util.ArrayList;
 /**
  * Class representing a registry of Players.
  */
+@JsonDeserialize(using = PlayerRegistryDeserializer.class)
 public class PlayerRegistry {
     private ArrayList<Player> players;
 
