@@ -36,9 +36,12 @@ public class FileHandlerTest {
         fileHandler.writeTournamentToFile(tournament1);
     }
 
+    /*
     @Test
     public void readFromFile() throws IOException {
         FileHandler fileHandler = new FileHandler();
         fileHandler.readTournamentFromFile();
     }
+
+     */
 }
