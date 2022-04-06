@@ -10,7 +10,7 @@ public class FileHandler {
 
 
     public Tournament readTournamentFromFile(){
-        //dd
+        return null;
     }
 
 
@@ -19,7 +19,7 @@ public class FileHandler {
     }
 
     public Player readCompetitorFromFile(){
-        //dd
+        return null;
     }
 
     public void writeCompetitorToFile(){
