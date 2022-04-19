@@ -46,7 +46,7 @@ public class FXMLLoaderClass {
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
 
-        stage.setTitle("Tournament hub");
+        stage.setTitle("Manage tournament");
         stage.setScene(scene);
         stage.show();
     }
@@ -64,6 +64,38 @@ public class FXMLLoaderClass {
         Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
 
         stage.setTitle("Chess tournament organizer");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    /**
+     * Method that loads a new fxml file and sets it as the current scene
+     * @param actionEvent event
+     * @throws IOException
+     */
+    @FXML
+    public void goToAddTournament(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("admin-add-tournament.fxml"));
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
+
+
+        stage.setTitle("Add tournament!");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    /**
+     * Method that loads a new fxml file and sets it as the current scene
+     * @param actionEvent actionevent
+     * @throws IOException exception
+     */
+    public void goToBrackets(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("knockout-admin-view-bracket.fxml"));
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
+
+        stage.setTitle("Bracket for tournament");
         stage.setScene(scene);
         stage.show();
     }
