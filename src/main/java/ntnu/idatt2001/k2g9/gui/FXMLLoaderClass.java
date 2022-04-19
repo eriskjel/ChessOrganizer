@@ -7,9 +7,12 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ntnu.idatt2001.k2g9.gui.application.Application;
-
 import java.io.IOException;
 
+/**
+ * class that handles all fxml loading. this increases cohesion and code quality. This also removes the alternatively big chunk of duplicate lines of code,
+ * in each controller. instead, this class only has one method for one new fxml file, and each controller can just call on this class to load a new file
+ */
 public class FXMLLoaderClass {
 
 
@@ -69,9 +72,10 @@ public class FXMLLoaderClass {
     }
 
     /**
-     * Method that loads a new fxml file and sets it as the current scene
-     * @param actionEvent event
-     * @throws IOException
+     * method that loads a new fxml file and sets it as the current scene
+     * this particular loads the admin-add-tournament.fxml
+     * @param actionEvent actionevent
+     * @throws IOException exception
      */
     @FXML
     public void goToAddTournament(ActionEvent actionEvent) throws IOException {
@@ -86,7 +90,8 @@ public class FXMLLoaderClass {
     }
 
     /**
-     * Method that loads a new fxml file and sets it as the current scene
+     * method that loads a new fxml file and sets it as the current scene
+     * this particular loads the knockout-admin-view-bracket.fxml
      * @param actionEvent actionevent
      * @throws IOException exception
      */
@@ -102,6 +107,7 @@ public class FXMLLoaderClass {
 
     /**
      * method that loads a new fxml file and sets it as the current scene
+     * this particular loads the admin-edit-tournament.fxml
      * @param actionEvent actionevent
      * @throws IOException exception
      */
@@ -117,9 +123,10 @@ public class FXMLLoaderClass {
     }
 
     /**
-     *
-     * @param actionEvent
-     * @throws IOException
+     * method that loads a new fxml file and sets it as the current scene
+     * this particular loads the knockout-admin-view-bracket.fxml
+     * @param actionEvent actionevent
+     * @throws IOException exception
      */
     public void goToKnockoutBracket(ActionEvent actionEvent) throws IOException {
         //load new fxml file
@@ -132,6 +139,12 @@ public class FXMLLoaderClass {
         stage.show();
     }
 
+    /**
+     * method that loads a new fxml file and sets it as the current scene
+     * this particular lods the robin-admin-view-bracket.fxml
+     * @param actionEvent actionevent
+     * @throws IOException exception
+     */
     public void goToRoundRobinBracket(ActionEvent actionEvent) throws IOException {
         //load new fxml file
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("robin-admin-view-bracket.fxml"));
@@ -143,6 +156,12 @@ public class FXMLLoaderClass {
         stage.show();
     }
 
+    /**
+     * method that loads a new fxml file and sets it as the current scene
+     * this particular loads the swiss-admin-view-bracket.fxml
+     * @param actionEvent actionevent
+     * @throws IOException exception
+     */
     public void goToSwissBracket(ActionEvent actionEvent) throws IOException {
         //load new fxml file
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("swiss-admin-view-bracket.fxml"));
