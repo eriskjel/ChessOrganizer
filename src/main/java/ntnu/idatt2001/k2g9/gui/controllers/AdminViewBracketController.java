@@ -27,41 +27,41 @@ import java.util.ResourceBundle;
  */
 public class AdminViewBracketController implements Initializable {
 
-    public Label lblTournamentName;
-    HashMap<String, Button> buttonHashMap;
-    public TextField tournamentWinner;
-    public Button x000;
-    public Button x010;
-    public Button x001;
-    public Button x020;
-    public Button x100;
-    public Button x201;
-    public Button x031;
-    public Button x011;
-    public Button x021;
-    public Button x030;
-    public Button x101;
-    public Button x200;
-    public Button x111;
-    public Button x110;
-    public Button x040;
-    public Button x050;
-    public Button x041;
-    public Button x060;
-    public Button x071;
-    public Button x051;
-    public Button x061;
-    public Button x070;
-    public Button x120;
-    public Button x121;
-    public Button x131;
-    public Button x130;
-    public Button x210;
-    public Button x211;
-    public Button x300;
-    public Button x301;
 
-    public static int tournamentID;
+    private HashMap<String, Button> buttonHashMap;
+    @FXML private Label lblTournamentName;
+    @FXML private TextField tournamentWinner;
+    @FXML private Button x000;
+    @FXML private Button x010;
+    @FXML private Button x001;
+    @FXML private Button x020;
+    @FXML private Button x100;
+    @FXML private Button x201;
+    @FXML private Button x031;
+    @FXML private Button x011;
+    @FXML private Button x021;
+    @FXML private Button x030;
+    @FXML private Button x101;
+    @FXML private Button x200;
+    @FXML private Button x111;
+    @FXML private Button x110;
+    @FXML private Button x040;
+    @FXML private Button x050;
+    @FXML private Button x041;
+    @FXML private Button x060;
+    @FXML private Button x071;
+    @FXML private Button x051;
+    @FXML private Button x061;
+    @FXML private Button x070;
+    @FXML private Button x120;
+    @FXML private Button x121;
+    @FXML private Button x131;
+    @FXML private Button x130;
+    @FXML private Button x210;
+    @FXML private Button x211;
+    @FXML private Button x300;
+    @FXML private Button x301;
+    private static int tournamentID;
 
     public static void setTournamentID(int id){
         tournamentID = id;
@@ -70,10 +70,7 @@ public class AdminViewBracketController implements Initializable {
     public int getTournamentID(){
         return tournamentID;
     }
-    /**
-     * stage of application
-     */
-    private Stage stage;
+
 
     /**
      * method that calls on the fxmlloaderClass to load the tournament hub fxml file
@@ -240,8 +237,8 @@ public class AdminViewBracketController implements Initializable {
         tournament.createTournamentBracket();
         ArrayList<Match[]> bracket = tournament.getTournamentBracket();
         int totalRounds = tournament.getTotalRounds();
-        
-        
+
+
         /**
          * This loop overwrites the statically assigned ids of the bracket layout with dynamically reassigned ones.
          * The loop reassigns the ids to the buttons in a way that makes all matches meet in the middle.
