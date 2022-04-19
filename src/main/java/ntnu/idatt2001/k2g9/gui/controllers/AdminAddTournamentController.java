@@ -51,12 +51,15 @@ public class AdminAddTournamentController implements Initializable {
     //ArrayList<Player> players = new ArrayList<>();
     PlayerRegistry playerRegistry = new PlayerRegistry();
 
+    public static FXMLLoader  FXMLLoader = new FXMLLoader();
+
     /**
      * Method that loads a new fxml file and sets it as the current scene
      * This particular methods is called when the tournament hub button is pressed, sending user to the admin tournament hub fxml file
-     * @param actionEvent event
+     * @param  event
      * @throws IOException exception
      */
+    /*
     @FXML
     public void goToAdminTournamentHub(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("admin-hub.fxml"));
@@ -66,6 +69,12 @@ public class AdminAddTournamentController implements Initializable {
         stage.setTitle("Tournament hub");
         stage.setScene(scene);
         stage.show();
+    }
+
+     */
+
+    public void goToAdminTournamentHub(ActionEvent event) throws IOException {
+        RegistryClient.fxmlLoaderClass.goToAdminTournamentHub(event);
     }
 
     /**
