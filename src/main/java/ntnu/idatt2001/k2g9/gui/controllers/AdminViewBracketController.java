@@ -76,70 +76,33 @@ public class AdminViewBracketController implements Initializable {
     private Stage stage;
 
     /**
-     * Method that loads a new fxml file and sets it as the current scene
-     * @param actionEvent event
-     * @throws IOException
+     * method that calls on the fxmlloaderClass to load the tournament hub fxml file
+     * @param actionEvent action event
+     * @throws IOException io exception
      */
-    @FXML
     public void goToAddTournament(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("admin-add-tournament.fxml"));
-        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
-
-        //this.addTournamentBtnTournamentHub.setStyle("-fx-background-color: #2B78E4 !important;");
-        //this.addTournamentBtnTournamentHub.setStyle("-fx-text-fill: red");
-        stage.setTitle("Add tournament!");
-        stage.setScene(scene);
-        stage.show();
+        RegistryClient.fxmlLoaderClass.goToAddTournament(actionEvent);
     }
 
     /**
-     * Method that loads a new fxml file and sets it as the current scene
-     * @param actionEvent event
-     * @throws IOException
+     * method that calls on the fxmlloaderClass to load the tournament hub fxml file
+     * @param actionEvent action event
+     * @throws IOException io exception
      */
-    @FXML
     public void goToAdminTournamentHub(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("admin-hub.fxml"));
-        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
-
-        stage.setTitle("Tournament hub");
-        stage.setScene(scene);
-        stage.show();
+        RegistryClient.fxmlLoaderClass.goToAdminTournamentHub(actionEvent);
     }
 
     /**
-     * Method that loads a new fxml file and sets it as the current scene
-     * @param actionEvent event
-     * @throws IOException
+     * method that calls on the fxmlloaderClass to load the login fxml file
+     * @param actionEvent action event
+     * @throws IOException io exception
      */
     public void adminLogOut(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("login.fxml"));
-        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
-
-        stage.setTitle("Chess tournament organizer");
-        stage.setScene(scene);
-        stage.show();
+        RegistryClient.fxmlLoaderClass.adminLogOut(actionEvent);
     }
 
-    /**
-     * Method that loads a new fxml file and sets it as the current scene
-     * @param actionEvent event
-     * @throws IOException
-     */
-    public void gotoAdminManageTournament(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("admin-manage-tournaments.fxml"));
-        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
-
-        stage.setTitle("Tournament hub");
-        stage.setScene(scene);
-        stage.show();
-    }
-
-
+    //TODO: add javadoc
     public void setWinnerKnockout(ActionEvent event) {
         //get fx id from button clicked
         Button button = (Button) event.getSource();
@@ -223,12 +186,9 @@ public class AdminViewBracketController implements Initializable {
             }
             buttonHashMap.get("x"+(roundIndex+1)+ "" + (int) (matchIndex/2) + "" + matchIndex%2).setText(button.getText());
         }
-
-
-
-
     }
 
+    //TODO: add javadoc
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
