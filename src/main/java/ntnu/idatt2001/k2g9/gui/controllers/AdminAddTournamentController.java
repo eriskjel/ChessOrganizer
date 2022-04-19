@@ -24,90 +24,48 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 /**
- * Controller that administers the fxml file "admin-add-tournaments" and handels all the events on said fxml file
+ * Controller that administers the fxml file "admin-add-tournaments" and handles all the events on said fxml file
  */
 public class AdminAddTournamentController implements Initializable {
 
-    //fxml variables
-    public TextField inpTournamentName;
-    public DatePicker inpDate;
-    public MenuButton inpTournamentFormat;
-    public MenuItem formatKnockout;
-    public TextField inpFullName;
-    public TextField inpAge;
-    @FXML
-    private Stage stage;
-    @FXML
-    private String tournamentFormat;
-
-
-    //table for handling added competitors
-    public TableView tableCompetitors;
-    public TableColumn<CompetitorModel, String> tblName;
-    public TableColumn<CompetitorModel, Integer> tblAge;
-    //list that will be used to feed into table
-    ObservableList<CompetitorModel> observableList = FXCollections.observableArrayList();
-
-    //ArrayList<Player> players = new ArrayList<>();
+    @FXML private TextField inpTournamentName;
+    @FXML private DatePicker inpDate;
+    @FXML private MenuButton inpTournamentFormat;
+    @FXML private MenuItem formatKnockout;
+    @FXML private TextField inpFullName;
+    @FXML private TextField inpAge;
+    @FXML private String tournamentFormat;
+    @FXML private TableView tableCompetitors;
+    @FXML private TableColumn<CompetitorModel, String> tblName;
+    @FXML private TableColumn<CompetitorModel, Integer> tblAge;
+    @FXML private ObservableList<CompetitorModel> observableList = FXCollections.observableArrayList();
     PlayerRegistry playerRegistry = new PlayerRegistry();
 
-    public static FXMLLoader  FXMLLoader = new FXMLLoader();
-
     /**
-     * Method that loads a new fxml file and sets it as the current scene
-     * This particular methods is called when the tournament hub button is pressed, sending user to the admin tournament hub fxml file
-     * @param  event
-     * @throws IOException exception
+     * method that calls on the fxmlloaderClass to load the tournament hub fxml file
+     * @param actionEvent action event
+     * @throws IOException io exception
      */
-    /*
-    @FXML
     public void goToAdminTournamentHub(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("admin-hub.fxml"));
-        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
-
-        stage.setTitle("Tournament hub");
-        stage.setScene(scene);
-        stage.show();
-    }
-
-     */
-
-    public void goToAdminTournamentHub(ActionEvent event) throws IOException {
-        RegistryClient.fxmlLoaderClass.goToAdminTournamentHub(event);
+        RegistryClient.fxmlLoaderClass.goToAdminTournamentHub(actionEvent);
     }
 
     /**
-     * Method that loads a new fxml file and sets it as the current scene
-     * This particular methods is called when the Manage tournaments button is pressed, sending user to the admin manage fxml file
-     * @param actionEvent event
-     * @throws IOException exception
+     * method that calls on the fxmlloaderClass to load the admin manage fxml file
+     * @param actionEvent action event
+     * @throws IOException io exception
      */
-    @FXML
     public void gotoAdminManageTournament(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("admin-manage-tournaments.fxml"));
-        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
-
-        stage.setTitle("Tournament hub");
-        stage.setScene(scene);
-        stage.show();
+        RegistryClient.fxmlLoaderClass.gotoAdminManageTournament(actionEvent);
     }
 
     /**
-     * Method that loads a new fxml file and sets it as the current scene
-     * This particular methods is called when the Admin log out button is pressed, sending user to main page of application
-     * @param actionEvent event
-     * @throws IOException exception
+     * method that calls on the fxmlloaderClass to load the login fxml file
+     * @param actionEvent action event
+     * @throws IOException io exception
      */
     public void adminLogOut(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("login.fxml"));
-        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
-
-        stage.setTitle("Chess tournament organizer");
-        stage.setScene(scene);
-        stage.show();
+        RegistryClient.fxmlLoaderClass.adminLogOut(actionEvent);
     }
 
     /**
@@ -208,9 +166,5 @@ public class AdminAddTournamentController implements Initializable {
         this.inpTournamentFormat.setText("");
         this.inpDate.getEditor().setText("");
         gotoAdminManageTournament(event);
-
-
-
-
     }
 }
