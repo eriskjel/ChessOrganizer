@@ -29,16 +29,12 @@ import java.util.ResourceBundle;
  */
 public class AdminManageController implements Initializable {
 
-    public TableColumn colDate;
-    public TableColumn colName;
-    public TableColumn colCompetitors;
-    public TableColumn colFormat;
-    public TableView tblTournaments;
-    //list that will be used to feed into table
-    ObservableList<CompetitorModel> observableList = FXCollections.observableArrayList();
-
-    //javafx stage
-    private Stage stage;
+    @FXML private TableColumn colDate;
+    @FXML private TableColumn colName;
+    @FXML private TableColumn colCompetitors;
+    @FXML private TableColumn colFormat;
+    @FXML private TableView tblTournaments;
+    @FXML private ObservableList<CompetitorModel> observableList = FXCollections.observableArrayList();
 
     /**
      * method that calls on the fxmlloaderClass to load the tournament hub fxml file
