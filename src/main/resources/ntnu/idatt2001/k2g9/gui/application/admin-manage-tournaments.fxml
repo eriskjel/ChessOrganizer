@@ -96,7 +96,7 @@
                   </TableView>
                   <Button layoutX="807.0" layoutY="453.0" mnemonicParsing="false" onAction="#goToAddTournament" styleClass="button-logout" stylesheets="@../styles.css" text="New tournament" />
                   <Button layoutX="188.0" layoutY="453.0" mnemonicParsing="false" onAction="#editTournament" prefHeight="25.0" prefWidth="113.0" styleClass="button-logout" stylesheets="@../styles.css" text="Edit tournament" />
-                  <Button layoutX="450.0" layoutY="453.0" mnemonicParsing="false" onAction="#goToBracket" prefHeight="25.0" prefWidth="200.0" styleClass="button-logout" stylesheets="@../styles.css" text="View bracket for tournament" />
+                  <Button layoutX="450.0" layoutY="453.0" mnemonicParsing="false" onAction="#determineAndGoToBracket" prefHeight="25.0" prefWidth="200.0" styleClass="button-logout" stylesheets="@../styles.css" text="View bracket for tournament" />
                </children>
             </Pane>
          </children>
