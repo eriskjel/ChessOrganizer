@@ -163,3 +163,9 @@
 #tableCompetitors .table-column {
     -fx-alignment: CENTER-LEFT;
 }
+
+.separator *.line{
+    -fx-border-width: 2px;
+    -fx-background-color: gray;
+    -fx-border-color: gray;
+}

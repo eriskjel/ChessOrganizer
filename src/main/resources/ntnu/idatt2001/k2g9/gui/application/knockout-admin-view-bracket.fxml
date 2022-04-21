@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -78,7 +79,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <Button layoutX="1190.0" layoutY="32.0" mnemonicParsing="false" onAction="#adminLogOut" styleClass="button-logout" stylesheets="@../styles.css" text="Log out"/>
+                  <Button layoutX="1190.0" layoutY="32.0" mnemonicParsing="false" onAction="#adminLogOut" styleClass="button-logout" stylesheets="@../styles.css" text="Log out" />
                </children>
             </Pane>
             <Pane id="tblCompetitors" layoutX="200.0" layoutY="86.0" prefHeight="570.0" prefWidth="1100.0" stylesheets="@../styles.css">
@@ -118,8 +119,8 @@
                         <Button layoutX="802.0" layoutY="335.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x130" />
                         <Button layoutX="698.0" layoutY="215.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x210" />
                         <Button layoutX="698.0" layoutY="245.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x211" />
-                        <Button layoutX="459.0" layoutY="230.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x300" />
-                        <Button layoutX="550.0" layoutY="230.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x301" />
+                        <Button layoutX="451.0" layoutY="231.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x300" />
+                        <Button layoutX="555.0" layoutY="233.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" text="Player 1" fx:id="x301" />
                         <TextField fx:id="tournamentWinner" editable="false" layoutX="451.0" layoutY="144.0" prefHeight="36.0" prefWidth="174.0">
                            <font>
                               <Font name="System Bold" size="16.0" />
@@ -130,6 +131,17 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
+                        <Separator layoutX="282.0" layoutY="87.0" prefHeight="72.0" prefWidth="23.0" styleClass="10" stylesheets="@../styles.css" />
+                        <Separator layoutX="282.0" layoutY="327.0" prefHeight="72.0" prefWidth="23.0" styleClass="01" stylesheets="@../styles.css" />
+                        <Separator layoutX="304.0" layoutY="121.0" orientation="VERTICAL" prefHeight="124.0" prefWidth="4.0" styleClass="10" />
+                        <Separator layoutX="306.0" layoutY="207.0" prefHeight="72.0" prefWidth="15.0" stylesheets="@../styles.css">
+                           <styleClass>
+                              <String fx:value="10" />
+                              <String fx:value="01" />
+                           </styleClass>
+                        </Separator>
+                        <Separator layoutX="527.0" layoutY="207.0" prefHeight="72.0" prefWidth="23.0" stylesheets="@../styles.css" />
+                        <Separator layoutX="304.0" layoutY="243.0" orientation="VERTICAL" prefHeight="122.0" prefWidth="4.0" styleClass="01" />
                      </children>
                   </Pane>
                   <Label fx:id="lblTournamentName" layoutX="572.0" layoutY="14.0" prefHeight="51.0" prefWidth="354.0" styleClass="header" stylesheets="@../styles.css">
