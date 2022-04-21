@@ -136,17 +136,7 @@ public class AdminAddTournamentController implements Initializable {
      * @return true if date is valid, meaning the date has not already passed, false if otherwise
      */
     public boolean isDateValid(LocalDate date){
-        if (date.isBefore(LocalDate.now())){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning! Date cannot be added.");
-            alert.setHeaderText(null);
-            alert.setContentText("You have chosen a date that has passed. Please choose a date in the future.");
-            alert.showAndWait();
-            return false;
-        }
-        else{
-            return true;
-        }
+        return !date.isBefore(LocalDate.now());
     }
 
     /**
@@ -182,6 +172,13 @@ public class AdminAddTournamentController implements Initializable {
             this.inpTournamentFormat.setText("");
             this.inpDate.getEditor().setText("");
             gotoAdminManageTournament(event);
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning! Date cannot be added.");
+            alert.setHeaderText(null);
+            alert.setContentText("You have chosen a date that has passed. Please choose a date in the future.");
+            alert.showAndWait();
         }
     }
 }
