@@ -139,7 +139,11 @@ public class AdminViewBracketController implements Initializable {
         stage.show();
     }
 
-
+    /**
+     * Method that triggers whenever the interactive buttons are pressed to move player up or down the bracket.
+     *
+     * @param event
+     */
     public void setWinnerKnockout(ActionEvent event) {
         //get fx id from button clicked
         Button button = (Button) event.getSource();
@@ -223,18 +227,14 @@ public class AdminViewBracketController implements Initializable {
             }
             buttonHashMap.get("x"+(roundIndex+1)+ "" + (int) (matchIndex/2) + "" + matchIndex%2).setText(button.getText());
         }
-
-
-
-
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        //sets header with correct tournament name
-        this.lblTournamentName.setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getName());
-
+    /**
+     * Method for filling knockout bracket page with all the matches of the tournament.
+     *
+     * @param tournament The tournament to be visualized.
+     */
+    public void fillKnockoutBracketPage(Tournament tournament){
         //all buttons
         Button[] buttons = {
                 this.x000,
@@ -275,13 +275,9 @@ public class AdminViewBracketController implements Initializable {
             buttons[i].setDisable(false);
         }
 
-        //Gets tournament and bracket.
-        Tournament tournament = RegistryClient.tournamentRegistry.getTournament(tournamentID);
-        tournament.createTournamentBracket();
-        ArrayList<Match[]> bracket = tournament.getTournamentBracket();
         int totalRounds = tournament.getTotalRounds();
-        
-        
+        ArrayList<Match[]> bracket = tournament.getTournamentBracket();
+
         /**
          * This loop overwrites the statically assigned ids of the bracket layout with dynamically reassigned ones.
          * The loop reassigns the ids to the buttons in a way that makes all matches meet in the middle.
@@ -295,24 +291,24 @@ public class AdminViewBracketController implements Initializable {
         int currentMatch = 0;
         int currentPlayer = 1;
         for (int i = buttons.length-1 ; i >= 0 ; i--){
-             if (currentRound > 0){
-                 buttons[i].setId("x"
-                         + Integer.toString(currentRound-1)
-                         + Integer.toString(currentMatch)
-                         + Integer.toString(currentPlayer));
+            if (currentRound > 0){
+                buttons[i].setId("x"
+                        + Integer.toString(currentRound-1)
+                        + Integer.toString(currentMatch)
+                        + Integer.toString(currentPlayer));
 
-                 if(currentPlayer == 0) currentMatch--;
+                if(currentPlayer == 0) currentMatch--;
 
-                 currentPlayer = (currentPlayer == 1 ? 0 : 1);
+                currentPlayer = (currentPlayer == 1 ? 0 : 1);
 
-                 if(currentMatch < 0){
+                if(currentMatch < 0){
                     currentRound--;
                     currentMatch = (int) Math.pow(2, totalRounds-currentRound)-1;
-                 }
-             }
-             else {
-                 buttons[i].setId("x0");
-             }
+                }
+            }
+            else {
+                buttons[i].setId("x0");
+            }
         }
         /**
          * Creates hashmap of the buttons that will be used, any button with id x0 will be ignored.
@@ -321,9 +317,9 @@ public class AdminViewBracketController implements Initializable {
         for (Button button : buttons) {
             if (!button.getId().equals("x0")){
                 buttonHashMap.put(button.getId() , button);
+            }
         }
-        }
-        
+
         //Fills in the bracket using the button hashmap.
         for (int i = 0 ; i < totalRounds ; i++){
             int matchesInRound = bracket.get(i).length;
@@ -340,7 +336,7 @@ public class AdminViewBracketController implements Initializable {
                     buttonHashMap.get("x"+i+n+1).setText(bracket.get(i)[n].getPlayer2().getName());
             }
         }
-        
+
         //Sets all buttons no longer in use invisible.
         for (int i = 0 ; i < buttons.length ; i++){
             if (buttons[i].getText().equals("Player 1")) {
@@ -348,5 +344,15 @@ public class AdminViewBracketController implements Initializable {
                 buttons[i].setDisable(true);
             }
         }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        //sets header with correct tournament name
+        this.lblTournamentName.setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getName());
+
+        //Gets tournament and bracket.
+        Tournament tournament = RegistryClient.tournamentRegistry.getTournament(tournamentID);
+        this.fillKnockoutBracketPage(tournament);
     }
 }
