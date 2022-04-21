@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.shape.Polyline;
 import javafx.stage.Stage;
 import ntnu.idatt2001.k2g9.gui.application.Application;
 import ntnu.idatt2001.k2g9.tournament.Match;
@@ -60,6 +61,21 @@ public class AdminViewBracketController implements Initializable {
     public Button x211;
     public Button x300;
     public Button x301;
+    public Polyline x00;
+    public Polyline x01;
+    public Polyline x02;
+    public Polyline x03;
+    public Polyline x04;
+    public Polyline x05;
+    public Polyline x06;
+    public Polyline x07;
+    public Polyline x10;
+    public Polyline x11;
+    public Polyline x12;
+    public Polyline x13;
+    public Polyline x20;
+    public Polyline x21;
+    public Polyline x30;
 
     public static int tournamentID;
 
@@ -237,36 +253,54 @@ public class AdminViewBracketController implements Initializable {
     public void fillKnockoutBracketPage(Tournament tournament){
         //all buttons
         Button[] buttons = {
-                this.x000,
-                this.x001,
-                this.x010,
-                this.x011,
-                this.x020,
-                this.x021,
-                this.x030,
-                this.x031,
-                this.x040,
-                this.x041,
-                this.x050,
-                this.x051,
-                this.x060,
-                this.x061,
-                this.x070,
-                this.x071,
-                this.x100,
-                this.x101,
-                this.x110,
-                this.x111,
-                this.x120,
-                this.x121,
-                this.x130,
-                this.x131,
-                this.x200,
-                this.x201,
-                this.x210,
-                this.x211,
-                this.x300,
-                this.x301
+            this.x000,
+            this.x001,
+            this.x010,
+            this.x011,
+            this.x020,
+            this.x021,
+            this.x030,
+            this.x031,
+            this.x040,
+            this.x041,
+            this.x050,
+            this.x051,
+            this.x060,
+            this.x061,
+            this.x070,
+            this.x071,
+            this.x100,
+            this.x101,
+            this.x110,
+            this.x111,
+            this.x120,
+            this.x121,
+            this.x130,
+            this.x131,
+            this.x200,
+            this.x201,
+            this.x210,
+            this.x211,
+            this.x300,
+            this.x301
+        };
+
+        Polyline[] polylines = {
+            this.x00,
+            this.x01,
+            this.x02,
+            this.x03,
+            this.x04,
+            this.x05,
+            this.x06,
+            this.x07,
+            this.x10,
+            this.x11,
+            this.x12,
+            this.x13,
+            this.x20,
+            this.x21,
+            this.x30
         };
 
         //Sets all buttons visible and enabled again in case they were disabled on last init.
@@ -276,7 +310,27 @@ public class AdminViewBracketController implements Initializable {
         }
 
         int totalRounds = tournament.getTotalRounds();
+        int totalMatches = tournament.getPlayerRegistry().getSize() - 1;
         ArrayList<Match[]> bracket = tournament.getTournamentBracket();
+
+        /**
+         * Creates hashmap of the polyline objects.
+         */
+        HashMap<String, Polyline> polylineHashMap = new HashMap<>();
+        for (Polyline polyline : polylines) {
+            polylineHashMap.put(polyline.getId() , polyline);
+        }
+
+        /**
+         * Sets polylines of empty matches invisible.
+         */
+        for(Polyline polyline : polylines){
+            int roundNo = Integer.parseInt(polyline.getId().substring(1,2));
+            int matchNo = Integer.parseInt(polyline.getId().substring(2)) + 1;
+            if (Math.pow(2,4)-Math.pow(2,4-roundNo)-1+matchNo < 15 - totalMatches) {
+                polylineHashMap.get("x"+ Integer.toString(roundNo) + Integer.toString((int) Math.pow(2,3-roundNo) - matchNo)).setVisible(false);
+            }
+        }
 
         /**
          * This loop overwrites the statically assigned ids of the bracket layout with dynamically reassigned ones.
@@ -310,6 +364,7 @@ public class AdminViewBracketController implements Initializable {
                 buttons[i].setId("x0");
             }
         }
+
         /**
          * Creates hashmap of the buttons that will be used, any button with id x0 will be ignored.
          */
@@ -337,7 +392,7 @@ public class AdminViewBracketController implements Initializable {
             }
         }
 
-        //Sets all buttons no longer in use invisible.
+        //Sets all buttons not in use invisible.
         for (int i = 0 ; i < buttons.length ; i++){
             if (buttons[i].getText().equals("Player 1")) {
                 buttons[i].setVisible(false);
