@@ -164,7 +164,7 @@
     -fx-alignment: CENTER-LEFT;
 }
 
-.separator *.line{
+.separatorBracket *.line{
     -fx-border-width: 2px;
     -fx-background-color: gray;
     -fx-border-color: gray;

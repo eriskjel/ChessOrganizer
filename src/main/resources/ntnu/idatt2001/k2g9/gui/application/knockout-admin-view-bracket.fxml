@@ -7,12 +7,12 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Polyline?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -131,79 +131,10 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Separator layoutX="290.0" layoutY="87.0" prefHeight="72.0" prefWidth="15.0" styleClass="10" stylesheets="@../styles.css" />
-                        <Separator layoutX="290.0" layoutY="327.0" prefHeight="72.0" prefWidth="15.0" styleClass="01" stylesheets="@../styles.css" />
-                        <Separator layoutX="304.0" layoutY="121.0" orientation="VERTICAL" prefHeight="124.0" prefWidth="4.0" styleClass="10" />
-                        <Separator layoutX="306.0" layoutY="207.0" prefHeight="72.0" prefWidth="15.0" stylesheets="@../styles.css">
-                           <styleClass>
-                              <String fx:value="10" />
-                              <String fx:value="01" />
-                           </styleClass>
-                        </Separator>
-                        <Separator layoutX="304.0" layoutY="243.0" orientation="VERTICAL" prefHeight="122.0" prefWidth="4.0" styleClass="01" />
-                        <Separator layoutX="779.0" layoutY="87.0" prefHeight="72.0" prefWidth="15.0" styleClass="10" stylesheets="@../styles.css" />
-                        <Separator layoutX="779.0" layoutY="327.0" prefHeight="72.0" prefWidth="15.0" styleClass="01" stylesheets="@../styles.css" />
-                        <Separator layoutX="778.0" layoutY="121.0" orientation="VERTICAL" prefHeight="124.0" prefWidth="4.0" styleClass="10" />
-                        <Separator layoutX="769.0" layoutY="207.0" prefHeight="72.0" prefWidth="12.0" stylesheets="@../styles.css">
-                           <styleClass>
-                              <String fx:value="10" />
-                              <String fx:value="01" />
-                           </styleClass>
-                        </Separator>
-                        <Separator layoutX="778.0" layoutY="243.0" orientation="VERTICAL" prefHeight="122.0" prefWidth="4.0" styleClass="01" />
-                        <Separator layoutX="152.0" layoutY="27.0" prefHeight="72.0" prefWidth="23.0" styleClass="10" stylesheets="@../styles.css" />
-                        <Separator layoutX="151.0" layoutY="147.0" prefHeight="72.0" prefWidth="26.0" styleClass="01" stylesheets="@../styles.css" />
-                        <Separator layoutX="174.0" layoutY="61.0" orientation="VERTICAL" prefHeight="62.0" prefWidth="4.0" styleClass="10" />
-                        <Separator layoutX="178.0" layoutY="85.0" prefHeight="72.0" prefWidth="31.0" stylesheets="@../styles.css">
-                           <styleClass>
-                              <String fx:value="10" />
-                              <String fx:value="01" />
-                           </styleClass>
-                        </Separator>
-                        <Separator layoutX="174.0" layoutY="114.0" orientation="VERTICAL" prefHeight="70.0" prefWidth="4.0" styleClass="01" />
-                        <Separator layoutX="150.0" layoutY="269.0" prefHeight="72.0" prefWidth="23.0" styleClass="10" stylesheets="@../styles.css" />
-                        <Separator layoutX="149.0" layoutY="387.0" prefHeight="72.0" prefWidth="26.0" styleClass="01" stylesheets="@../styles.css" />
-                        <Separator layoutX="172.0" layoutY="303.0" orientation="VERTICAL" prefHeight="62.0" prefWidth="4.0" styleClass="10" />
-                        <Separator layoutX="176.0" layoutY="327.0" prefHeight="72.0" prefWidth="31.0" stylesheets="@../styles.css">
-                           <styleClass>
-                              <String fx:value="10" />
-                              <String fx:value="01" />
-                           </styleClass>
-                        </Separator>
-                        <Separator layoutX="172.0" layoutY="356.0" orientation="VERTICAL" prefHeight="68.0" prefWidth="4.0" styleClass="01" />
-                        <Separator layoutX="909.0" layoutY="64.0" orientation="VERTICAL" prefHeight="62.0" prefWidth="4.0" styleClass="10" />
-                        <Separator layoutX="909.0" layoutY="122.0" orientation="VERTICAL" prefHeight="70.0" prefWidth="4.0" styleClass="01" />
-                        <Separator layoutX="910.0" layoutY="27.0" prefHeight="72.0" prefWidth="26.0" styleClass="10" stylesheets="@../styles.css" />
-                        <Separator layoutX="910.0" layoutY="154.0" prefHeight="72.0" prefWidth="26.0" styleClass="01" stylesheets="@../styles.css" />
-                        <Separator layoutX="880.0" layoutY="87.0" prefHeight="72.0" prefWidth="31.0" stylesheets="@../styles.css">
-                           <styleClass>
-                              <String fx:value="10" />
-                              <String fx:value="01" />
-                           </styleClass>
-                        </Separator>
-                        <Separator layoutX="914.0" layoutY="303.0" orientation="VERTICAL" prefHeight="62.0" prefWidth="4.0" styleClass="10" />
-                        <Separator layoutX="915.0" layoutY="266.0" prefHeight="72.0" prefWidth="26.0" styleClass="10" stylesheets="@../styles.css" />
-                        <Separator layoutX="915.0" layoutY="393.0" prefHeight="72.0" prefWidth="26.0" styleClass="01" stylesheets="@../styles.css" />
-                        <Separator layoutX="885.0" layoutY="326.0" prefHeight="72.0" prefWidth="31.0" stylesheets="@../styles.css">
-                           <styleClass>
-                              <String fx:value="10" />
-                              <String fx:value="01" />
-                           </styleClass>
-                        </Separator>
-                        <Separator layoutX="914.0" layoutY="361.0" orientation="VERTICAL" prefHeight="68.0" prefWidth="4.0" styleClass="10" />
-                        <Separator layoutX="401.0" layoutY="207.0" prefHeight="72.0" prefWidth="31.0" stylesheets="@../styles.css">
-                           <styleClass>
-                              <String fx:value="10" />
-                              <String fx:value="01" />
-                           </styleClass>
-                        </Separator>
-                        <Separator layoutX="659.0" layoutY="207.0" prefHeight="72.0" prefWidth="31.0" stylesheets="@../styles.css">
-                           <styleClass>
-                              <String fx:value="10" />
-                              <String fx:value="01" />
-                           </styleClass>
-                        </Separator>
-                        <Separator layoutX="536.0" layoutY="190.0" orientation="VERTICAL" prefHeight="62.0" prefWidth="4.0" />
+                        <Polyline fill="#ff484800" layoutX="374.0" layoutY="62.0" points="-170.0, 46.0, -191.0, 46.0, -191.0, -1.0, -217.0, -1.0" strokeWidth="3.0" fx:id="x00" />
+                        <Polyline fill="#80ff0000" layoutX="212.0" layoutY="205.0" points="-8.0, -68.0, -29.0, -68.0, -29.0, -20.0, -54.0, -20.0" strokeWidth="3.0" fx:id="x01" />
+                        <Polyline fill="#80ff0000" layoutX="222.0" layoutY="215.0" points="-16.0, 162.5, -38.0, 162.5, -38.0, 204.0, -64.0, 204.0" strokeWidth="3.0" fx:id="x04" />
+                        <Polyline fill="#ff484800" layoutX="384.0" layoutY="72.0" points="-178.0, 274.0, -200.0, 274.0, -200.0, 227.0, -224.0, 227.0" strokeWidth="3.0" fx:id="x03" />
                      </children>
                   </Pane>
                   <Label fx:id="lblTournamentName" layoutX="572.0" layoutY="14.0" prefHeight="51.0" prefWidth="354.0" styleClass="header" stylesheets="@../styles.css">
