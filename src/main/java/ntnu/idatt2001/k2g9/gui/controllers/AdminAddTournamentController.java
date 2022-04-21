@@ -131,8 +131,11 @@ public class AdminAddTournamentController implements Initializable {
         singleCompetitor.forEach(allCompetitors::remove);
     }
 
-    public boolean isDateValid(){
-        LocalDate date = inpDate.getValue();
+    /**
+     * checks if the date is valid. returns true if date is after current date
+     * @return true if date is valid, meaning the date has not already passed, false if otherwise
+     */
+    public boolean isDateValid(LocalDate date){
         if (date.isBefore(LocalDate.now())){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning! Date cannot be added.");
@@ -155,7 +158,7 @@ public class AdminAddTournamentController implements Initializable {
         //will be null if a format is not selected in the application
         String tournamentFormat = this.tournamentFormat;
         LocalDate date = this.inpDate.getValue();
-        if (this.isDateValid()){
+        if (this.isDateValid(date)){
             //RegistryClient.tournamentRegistry.addTournament();
             Tournament newTournament = new Tournament(tournamentName, date, tournamentFormat);
             newTournament.addFromList(playerRegistry.getPlayers());
