@@ -139,7 +139,26 @@ public class AdminAddTournamentController implements Initializable {
         String tournamentName = inpTournamentName.getText();
         //will be null if a format is not selected in the application
         String tournamentFormat = this.tournamentFormat;
-        LocalDate date = inpDate.getValue();
+        LocalDate date = null;
+
+
+        try{
+            date = inpDate.getValue();
+        }catch (IllegalArgumentException e) {
+            while(date.isBefore(LocalDate.now())){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Date Error");
+                alert.setHeaderText("Error Date");
+                alert.setContentText("the date is wrond");
+
+                    while(date.equals(inpDate.getValue())){
+                        date = inpDate.getValue();
+
+                }
+            }
+        }
+
+
 
 
 
