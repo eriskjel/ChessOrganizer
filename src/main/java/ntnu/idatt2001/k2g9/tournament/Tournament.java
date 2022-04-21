@@ -16,10 +16,9 @@ public class Tournament {
     private int tournamentID;
 
 
-    public Tournament(String name, LocalDate date, String layout) {
+    public Tournament(String name, LocalDate date, String layout) throws NullPointerException {
         this.name = name;
         this.date = date;
-        //this.organizer = organizer;
         this.players = new PlayerRegistry();
         this.layout = layout;
     }

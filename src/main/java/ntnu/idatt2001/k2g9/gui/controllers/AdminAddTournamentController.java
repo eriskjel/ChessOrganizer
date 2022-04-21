@@ -132,6 +132,14 @@ public class AdminAddTournamentController implements Initializable {
     }
 
     /**
+     * checks if the date is valid. returns true if date is after current date
+     * @return true if date is valid, meaning the date has not already passed, false if otherwise
+     */
+    public boolean isDateValid(LocalDate date){
+        return !date.isBefore(LocalDate.now());
+    }
+
+    /**
      * Method that gets all the data from the input field when a user clicks the add tournament button
      */
     @FXML
@@ -139,32 +147,38 @@ public class AdminAddTournamentController implements Initializable {
         String tournamentName = inpTournamentName.getText();
         //will be null if a format is not selected in the application
         String tournamentFormat = this.tournamentFormat;
-        LocalDate date = inpDate.getValue();
+        LocalDate date = this.inpDate.getValue();
+        if (this.isDateValid(date)){
+            //RegistryClient.tournamentRegistry.addTournament();
+            Tournament newTournament = new Tournament(tournamentName, date, tournamentFormat);
+            newTournament.addFromList(playerRegistry.getPlayers());
+            newTournament.createTournamentBracket();
+
+            RegistryClient.tournamentRegistry.addTournaments(newTournament);
+
+            //clears player arraylist so it can be
+            playerRegistry.getPlayers().clear();
+
+            //clear competitor table
+            ObservableList<CompetitorModel> allCompetitors;
+            allCompetitors = tableCompetitors.getItems();
+            allCompetitors.clear();
 
 
-
-        //RegistryClient.tournamentRegistry.addTournament();
-        Tournament newTournament = new Tournament(tournamentName, date, tournamentFormat);
-        newTournament.addFromList(playerRegistry.getPlayers());
-        newTournament.createTournamentBracket();
-
-        RegistryClient.tournamentRegistry.addTournaments(newTournament);
-
-        //clears player arraylist so it can be
-        playerRegistry.getPlayers().clear();
-
-        //clear competitor table
-        ObservableList<CompetitorModel> allCompetitors;
-        allCompetitors = tableCompetitors.getItems();
-        allCompetitors.clear();
-
-
-        //resets input fields
-        this.inpFullName.setText("");
-        this.inpAge.setText("");
-        this.inpTournamentName.setText("");
-        this.inpTournamentFormat.setText("");
-        this.inpDate.getEditor().setText("");
-        gotoAdminManageTournament(event);
+            //resets input fields
+            this.inpFullName.setText("");
+            this.inpAge.setText("");
+            this.inpTournamentName.setText("");
+            this.inpTournamentFormat.setText("");
+            this.inpDate.getEditor().setText("");
+            gotoAdminManageTournament(event);
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning! Date cannot be added.");
+            alert.setHeaderText(null);
+            alert.setContentText("You have chosen a date that has passed. Please choose a date in the future.");
+            alert.showAndWait();
+        }
     }
 }
