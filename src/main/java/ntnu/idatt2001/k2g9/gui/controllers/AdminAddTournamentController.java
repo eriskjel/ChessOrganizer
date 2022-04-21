@@ -131,6 +131,21 @@ public class AdminAddTournamentController implements Initializable {
         singleCompetitor.forEach(allCompetitors::remove);
     }
 
+    public boolean isDateValid(){
+        LocalDate date = inpDate.getValue();
+        if (date.isBefore(LocalDate.now())){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning! Date cannot be added.");
+            alert.setHeaderText(null);
+            alert.setContentText("You have chosen a date that has passed. Please choose a date in the future.");
+            alert.showAndWait();
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
     /**
      * Method that gets all the data from the input field when a user clicks the add tournament button
      */
@@ -139,51 +154,31 @@ public class AdminAddTournamentController implements Initializable {
         String tournamentName = inpTournamentName.getText();
         //will be null if a format is not selected in the application
         String tournamentFormat = this.tournamentFormat;
-        LocalDate date = null;
+        LocalDate date = this.inpDate.getValue();
+        if (this.isDateValid()){
+            //RegistryClient.tournamentRegistry.addTournament();
+            Tournament newTournament = new Tournament(tournamentName, date, tournamentFormat);
+            newTournament.addFromList(playerRegistry.getPlayers());
+            newTournament.createTournamentBracket();
+
+            RegistryClient.tournamentRegistry.addTournaments(newTournament);
+
+            //clears player arraylist so it can be
+            playerRegistry.getPlayers().clear();
+
+            //clear competitor table
+            ObservableList<CompetitorModel> allCompetitors;
+            allCompetitors = tableCompetitors.getItems();
+            allCompetitors.clear();
 
 
-        try{
-            date = inpDate.getValue();
-        }catch (IllegalArgumentException e) {
-            while(date.isBefore(LocalDate.now())){
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Date Error");
-                alert.setHeaderText("Error Date");
-                alert.setContentText("the date is wrond");
-
-                    while(date.equals(inpDate.getValue())){
-                        date = inpDate.getValue();
-
-                }
-            }
+            //resets input fields
+            this.inpFullName.setText("");
+            this.inpAge.setText("");
+            this.inpTournamentName.setText("");
+            this.inpTournamentFormat.setText("");
+            this.inpDate.getEditor().setText("");
+            gotoAdminManageTournament(event);
         }
-
-
-
-
-
-        //RegistryClient.tournamentRegistry.addTournament();
-        Tournament newTournament = new Tournament(tournamentName, date, tournamentFormat);
-        newTournament.addFromList(playerRegistry.getPlayers());
-        newTournament.createTournamentBracket();
-
-        RegistryClient.tournamentRegistry.addTournaments(newTournament);
-
-        //clears player arraylist so it can be
-        playerRegistry.getPlayers().clear();
-
-        //clear competitor table
-        ObservableList<CompetitorModel> allCompetitors;
-        allCompetitors = tableCompetitors.getItems();
-        allCompetitors.clear();
-
-
-        //resets input fields
-        this.inpFullName.setText("");
-        this.inpAge.setText("");
-        this.inpTournamentName.setText("");
-        this.inpTournamentFormat.setText("");
-        this.inpDate.getEditor().setText("");
-        gotoAdminManageTournament(event);
     }
 }

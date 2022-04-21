@@ -16,14 +16,9 @@ public class Tournament {
     private int tournamentID;
 
 
-    public Tournament(String name, LocalDate date, String layout) throws IllegalArgumentException {
+    public Tournament(String name, LocalDate date, String layout) throws NullPointerException {
         this.name = name;
         this.date = date;
-        //checks if the date has passed
-        if(date.isBefore(LocalDate.now())){
-            throw new IllegalArgumentException("Date has passed!");
-        }
-        //this.organizer = organizer;
         this.players = new PlayerRegistry();
         this.layout = layout;
     }
