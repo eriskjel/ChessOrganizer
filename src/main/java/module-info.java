@@ -3,6 +3,7 @@ module ChessTournament {
     requires javafx.fxml;
     requires com.fasterxml.jackson.databind;
     requires java.base;
+    requires json.simple;
     //requires charm.glisten;
 
 
