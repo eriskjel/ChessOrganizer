@@ -130,7 +130,7 @@
                   </MenuButton>
                   <DatePicker id="inpDate" fx:id="inpDate" layoutX="803.0" layoutY="261.0" prefHeight="25.0" prefWidth="181.0" showWeekNumbers="true" />
                   <Label layoutX="667.0" layoutY="261.0" prefHeight="21.0" prefWidth="132.0" styleClass="p" stylesheets="@../styles.css" text="Pick date:" />
-                  <Button layoutX="667.0" layoutY="449.0" mnemonicParsing="false" onAction="#goToBrackets" styleClass="button-logout" stylesheets="@../styles.css" text="View tournament bracket" />
+                  <Button layoutX="667.0" layoutY="449.0" mnemonicParsing="false" onAction="#goToBracket" styleClass="button-logout" stylesheets="@../styles.css" text="View tournament bracket" />
                   <Button layoutX="864.0" layoutY="436.0" mnemonicParsing="false" onAction="#saveTournament" prefHeight="51.0" prefWidth="132.0" styleClass="btnHub" stylesheets="@../styles.css" text="Save tournament" />
                </children>
             </Pane>

@@ -1,15 +1,20 @@
 package ntnu.idatt2001.k2g9.tournament;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import ntnu.idatt2001.k2g9.file.LocalDateSerializer;
+import ntnu.idatt2001.k2g9.file.TournamentDeserializer;
 import ntnu.idatt2001.k2g9.player.Admin;
 import ntnu.idatt2001.k2g9.player.Player;
 import ntnu.idatt2001.k2g9.player.PlayerRegistry;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
-
+@JsonDeserialize(using = TournamentDeserializer.class)
 public class Tournament {
     private PlayerRegistry players;
     private String name;
-    private LocalDate date;
+    @JsonSerialize(using = LocalDateSerializer.class)
+    public LocalDate date;
     private ArrayList<Match[]> tournamentBracket; //
     private String layout;
     private Admin organizer;
@@ -23,15 +28,34 @@ public class Tournament {
         this.layout = layout;
     }
 
+    public Tournament(String name, LocalDate date, ArrayList<Match[]> tournamentBracket, String layout, Admin organizer, int tournamentID, PlayerRegistry players) {
+        this.name = name;
+        this.date = date;
+        this.tournamentBracket = tournamentBracket;
+        this.layout = layout;
+        this.organizer = organizer;
+        this.tournamentID = tournamentID;
+        this.players = players;
+    }
+
+
     public ArrayList<Match[]> getTournamentBracket() {
         return tournamentBracket;
     }
+    /*
     public ArrayList<Player> getPlayers() {
         return players.getPlayers();
     }
+
+     */
+
     public PlayerRegistry getPlayerRegistry(){
         return this.players;
     }
+
+
+
+
     public int getTotalRounds() {
         return tournamentBracket.size();
     }
@@ -43,9 +67,6 @@ public class Tournament {
     }
     public LocalDate getDate() {
         return date;
-    }
-    public void getPlayers(PlayerRegistry players) {
-        this.players = players;
     }
     public String getName() {
         return name;

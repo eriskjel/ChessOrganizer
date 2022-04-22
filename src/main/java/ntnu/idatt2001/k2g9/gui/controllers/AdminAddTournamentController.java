@@ -97,6 +97,20 @@ public class AdminAddTournamentController implements Initializable {
         this.tblName.setCellValueFactory(new PropertyValueFactory<>("Name"));
         this.tblAge.setCellValueFactory(new PropertyValueFactory<>("Age"));
         this.tableCompetitors.setItems(observableList);
+
+
+
+        //TESTDATA
+        for (int i = 0; i < 10; i++) {
+            Player player = new Player("player"+(i+1), (i + 10));
+            playerRegistry.addPlayer(player);
+        }
+        LocalDate date = LocalDate.parse("2020-06-14");
+        Tournament newTournament = new Tournament("testTournament", date, "Knock-Out");
+        newTournament.addFromList(playerRegistry.getPlayers());
+        newTournament.createTournamentBracket();
+
+        RegistryClient.tournamentRegistry.addTournaments(newTournament);
     }
 
     /**

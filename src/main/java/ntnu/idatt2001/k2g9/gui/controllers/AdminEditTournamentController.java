@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 import ntnu.idatt2001.k2g9.gui.application.Application;
 import ntnu.idatt2001.k2g9.gui.models.CompetitorModel;
 import ntnu.idatt2001.k2g9.player.Player;
-import ntnu.idatt2001.k2g9.player.PlayerRegistry;
 import ntnu.idatt2001.k2g9.tournament.RegistryClient;
 import java.io.IOException;
 import java.net.URL;
@@ -151,7 +150,8 @@ public class AdminEditTournamentController implements Initializable {
         //removes from tournament
         Player player = new Player(singleCompetitor.get(0).getName(), singleCompetitor.get(0).getAge());
         player.setPlayerID(singleCompetitor.get(0).getCompetitorID());
-        RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayerRegistry().removePlayer(player);
+        //RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayerRegistry().removePlayer(player);
+        RegistryClient.tournamentRegistry.getTournament(getTournamentID()).removePlayer(player);
 
         RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayerRegistry().resetPlayerIDs();
     }
@@ -240,5 +240,54 @@ public class AdminEditTournamentController implements Initializable {
 
         //loads new fxml file
         this.gotoAdminManageTournament(event);
+    }
+
+    public void goToKnockoutBracket(ActionEvent actionEvent) throws IOException {
+        //load new fxml file
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("knockout-admin-view-bracket.fxml"));
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
+
+        stage.setTitle("View bracket for tournament");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void goToRoundRobinBracket(ActionEvent actionEvent) throws IOException {
+        //load new fxml file
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("robin-admin-view-bracket.fxml"));
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
+
+        stage.setTitle("View bracket for tournament");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void goToSwissBracket(ActionEvent actionEvent) throws IOException {
+        //load new fxml file
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("swiss-admin-view-bracket.fxml"));
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
+
+        stage.setTitle("View bracket for tournament");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void goToBracket(ActionEvent actionEvent) throws IOException {
+        if (RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout().equals("Knock-Out")){
+            AdminViewKnockOutBracketController.setTournamentID(getTournamentID());
+            goToKnockoutBracket(actionEvent);
+        }
+        else if(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout().equals("Round-Robin")){
+            goToRoundRobinBracket(actionEvent);
+        }
+        else if (RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout().equals("Swiss-System")){
+            goToSwissBracket(actionEvent);
+        }
+        else{
+            System.err.println("something went wrong");
+        }
     }
 }

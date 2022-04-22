@@ -135,7 +135,7 @@ public class AdminManageController implements Initializable {
 
     }
 
-    public int getTournamentID(){
+    public int getSelectedTournamentID(){
         //get selected tournament
         ObservableList<TournamentModel> singleTournament;
         singleTournament = tblTournaments.getSelectionModel().getSelectedItems();
@@ -152,13 +152,7 @@ public class AdminManageController implements Initializable {
      * @throws IOException
      */
     public void editTournament(ActionEvent event) throws IOException {
-        //get selected tournament
-        ObservableList<TournamentModel> singleTournament;
-        singleTournament = tblTournaments.getSelectionModel().getSelectedItems();
-
-        //get selected tournament ID
-        int tournamentID = singleTournament.get(0).getTournamentID();
-        AdminEditTournamentController.setTournamentID(tournamentID);
+        AdminEditTournamentController.setTournamentID(getSelectedTournamentID());
 
         this.goToSpecificTournament(event);
     }
@@ -170,9 +164,10 @@ public class AdminManageController implements Initializable {
      * @throws IOException exception
      */
     public void determineAndGoToBracket(ActionEvent actionEvent) throws IOException, IllegalArgumentException {
+        int selectedTournamentID = getSelectedTournamentID();
         String layout = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout();
         switch (layout) {
-            case "Knock-Out" -> this.goToKnockoutBracket(actionEvent);
+            case "Knock-Out" -> AdminViewKnockOutBracketController.setTournamentID(selectedTournamentID) this.goToKnockoutBracket(actionEvent);
             case "Round-Robin" -> this.goToRoundRobinBracket(actionEvent);
             case "Swiss-System" -> this.goToSwissBracket(actionEvent);
             default -> throw new IllegalArgumentException("Layout not found.");

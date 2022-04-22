@@ -1,11 +1,15 @@
 package ntnu.idatt2001.k2g9.player;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import ntnu.idatt2001.k2g9.file.PlayerDeserializer;
+
 import java.util.Objects;
 
 /**
  * Subclass representing a Player user. This player has stored ranking, age, fideRating and win/loss statistics.
  *
  */
+@JsonDeserialize(using = PlayerDeserializer.class)
 public class Player{
     protected String name;
     protected int age;
@@ -23,6 +27,11 @@ public class Player{
         this.age = age;
     }
 
+    public Player(String name, int age, int playerID) {
+        this.name = name;
+        this.age = age;
+        this.playerID = playerID;
+    }
 
     public int getAge() {
         return age;
