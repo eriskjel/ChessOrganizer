@@ -94,15 +94,18 @@ public class AdminEditTournamentController implements Initializable {
         RegistryClient.fxmlLoaderClass.adminLogOut(actionEvent);
     }
 
+    public void clearCompetitorTable(){
+        ObservableList<CompetitorModel> allCompetitors;
+        allCompetitors = this.tableCompetitors.getItems();
+        allCompetitors.clear();
+    }
 
     /**
      * refreshes data in tables in application. clears table and fills the table with the players registered in selected tournament
      */
     public void refreshData() {
         //clear table beforehand
-        ObservableList<CompetitorModel> allCompetitors;
-        allCompetitors = this.tableCompetitors.getItems();
-        allCompetitors.clear();
+        clearCompetitorTable();
 
 
         ArrayList<Player> competitors = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayerRegistry().getPlayers();
@@ -116,7 +119,6 @@ public class AdminEditTournamentController implements Initializable {
 
         this.updateTournamentInfo();
         this.lblTournamentName.setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getName());
-
     }
 
     /**
@@ -191,7 +193,6 @@ public class AdminEditTournamentController implements Initializable {
      *
      *Method that sets tournament format variable based on what is chosen in the selection menu
      */
-    @FXML
     public void setFormatKnockout() {
         this.inpTournamentFormat.setText("Knock-Out");
     }
@@ -200,11 +201,17 @@ public class AdminEditTournamentController implements Initializable {
      *
      *Method that sets tournament format variable based on what is chosen in the selection menu
      */
-    @FXML
     public void formatSwiss() {
         this.inpTournamentFormat.setText("Swiss-System");
     }
 
+    /**
+     * checks if the date is valid. returns true if date is after current date
+     * @return true if date is valid, meaning the date has not already passed, false if otherwise
+     */
+    public boolean isDateValid(LocalDate date) {
+        return !date.isBefore(LocalDate.now());
+    }
     /**
      * Saves a tournament. If values are not changed in the application, they will be read as null. However if so
      * the method just uses the already registered data from the already registered tournament.
@@ -212,7 +219,6 @@ public class AdminEditTournamentController implements Initializable {
      * @param event event
      * @throws IOException exception
      */
-    @FXML
     public void saveTournament(ActionEvent event) throws IOException {
         String tournamentName = inpTournamentName.getText();
 
@@ -228,14 +234,15 @@ public class AdminEditTournamentController implements Initializable {
         if (date == null){
             date = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getDate();
         }
+        else if(isDateValid(date)){
+            //updates with fresh info
+            RegistryClient.tournamentRegistry.getTournament(tournamentID).setName(tournamentName);
+            RegistryClient.tournamentRegistry.getTournament(tournamentID).setDate(date);
+            RegistryClient.tournamentRegistry.getTournament(tournamentID).setLayout(newTournamentFormat);
 
-        //updates with fresh info
-        RegistryClient.tournamentRegistry.getTournament(tournamentID).setName(tournamentName);
-        RegistryClient.tournamentRegistry.getTournament(tournamentID).setDate(date);
-        RegistryClient.tournamentRegistry.getTournament(tournamentID).setLayout(newTournamentFormat);
-
-        //loads new fxml file
-        this.gotoAdminManageTournament(event);
+            //loads new fxml file
+            this.gotoAdminManageTournament(event);
+        }
     }
 
     /**

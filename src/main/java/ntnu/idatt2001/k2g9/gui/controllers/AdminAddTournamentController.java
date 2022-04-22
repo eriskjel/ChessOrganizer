@@ -70,7 +70,6 @@ public class AdminAddTournamentController implements Initializable {
     /**
      * Sets current tournament format to knockout, which will be stored and used for registration
      */
-    @FXML
     public void setFormatKnockout() {
         this.inpTournamentFormat.setText("Knock-Out");
         this.tournamentFormat = "Knock-Out";
@@ -79,7 +78,6 @@ public class AdminAddTournamentController implements Initializable {
     /**
      * Sets current tournament format to Swiss, which will be stored and used for registration
      */
-    @FXML
     public void formatSwiss() {
         this.inpTournamentFormat.setText("Swiss-System");
         this.tournamentFormat = "Swiss-System";
@@ -158,7 +156,6 @@ public class AdminAddTournamentController implements Initializable {
     /**
      * Method that gets all the data from the input field when a user clicks the add tournament button
      */
-    @FXML
     public void addTournament(ActionEvent event) throws IOException {
         String tournamentName = inpTournamentName.getText();
         //will be null if a format is not selected in the application
@@ -169,25 +166,19 @@ public class AdminAddTournamentController implements Initializable {
             Tournament newTournament = new Tournament(tournamentName, date, tournamentFormat);
             newTournament.addFromList(playerRegistry.getPlayers());
             newTournament.createTournamentBracket();
-
             RegistryClient.tournamentRegistry.addTournaments(newTournament);
 
             //clears player arraylist so it can be
             playerRegistry.getPlayers().clear();
 
             //clear competitor table
-            ObservableList<CompetitorModel> allCompetitors;
-            allCompetitors = tableCompetitors.getItems();
-            allCompetitors.clear();
-
+            clearCompetitorTable();
 
             //resets input fields
-            this.inpFullName.setText("");
-            this.inpAge.setText("");
-            this.inpTournamentName.setText("");
-            this.inpTournamentFormat.setText("");
-            this.inpDate.getEditor().setText("");
-            gotoAdminManageTournament(event);
+            resetInputFields();
+
+            //calls fxml loader method
+            this.gotoAdminManageTournament(event);
         }
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -196,5 +187,25 @@ public class AdminAddTournamentController implements Initializable {
             alert.setContentText("You have chosen a date that has passed. Please choose a date in the future.");
             alert.showAndWait();
         }
+    }
+
+    /**
+     * method that resets all input textfields in application
+     */
+    public void resetInputFields(){
+        this.inpFullName.setText("");
+        this.inpAge.setText("");
+        this.inpTournamentName.setText("");
+        this.inpTournamentFormat.setText("");
+        this.inpDate.getEditor().setText("");
+    }
+
+    /**
+     * clear the table of competitors in the application
+     */
+    public void clearCompetitorTable(){
+        ObservableList<CompetitorModel> allCompetitors;
+        allCompetitors = tableCompetitors.getItems();
+        allCompetitors.clear();
     }
 }
