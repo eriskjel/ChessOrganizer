@@ -407,7 +407,7 @@ public class AdminViewBracketController implements Initializable {
         this.lblTournamentName.setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getName());
 
         //Gets tournament and bracket.
-        Tournament tournament = RegistryClient.tournamentRegistry.getTournament(tournamentID);
+        Tournament tournament = RegistryClient.tournamentRegistry.getTournament(getTournamentID());
         this.fillKnockoutBracketPage(tournament);
     }
 }

@@ -169,7 +169,7 @@ public class AdminManageController implements Initializable {
 
      */
 
-    public int getTournamentID(){
+    public int getSelectedTournamentID(){
         //get selected tournament
         ObservableList<TournamentModel> singleTournament;
         singleTournament = tblTournaments.getSelectionModel().getSelectedItems();
@@ -179,13 +179,7 @@ public class AdminManageController implements Initializable {
     }
 
     public void editTournament(ActionEvent event) throws IOException {
-        //get selected tournament
-        ObservableList<TournamentModel> singleTournament;
-        singleTournament = tblTournaments.getSelectionModel().getSelectedItems();
-
-        //get selected tournament ID
-        int tournamentID = singleTournament.get(0).getTournamentID();
-        AdminEditTournamentController.setTournamentID(tournamentID);
+        AdminEditTournamentController.setTournamentID(getSelectedTournamentID());
 
         //load new fxml file
         goToSpecificTournament(event);
@@ -252,13 +246,15 @@ public class AdminManageController implements Initializable {
     }
 
     public void goToBracket(ActionEvent actionEvent) throws IOException {
-        if (RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout().equals("Knock-Out")){
+        int selectedTournamentID = getSelectedTournamentID();
+        if (RegistryClient.tournamentRegistry.getTournament(selectedTournamentID).getLayout().equals("Knock-Out")){
+            AdminViewBracketController.setTournamentID(selectedTournamentID);
             goToKnockoutBracket(actionEvent);
         }
-        else if(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout().equals("Round-Robin")){
+        else if(RegistryClient.tournamentRegistry.getTournament(selectedTournamentID).getLayout().equals("Round-Robin")){
             goToRoundRobinBracket(actionEvent);
         }
-        else if (RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout().equals("Swiss-System")){
+        else if (RegistryClient.tournamentRegistry.getTournament(selectedTournamentID).getLayout().equals("Swiss-System")){
             goToSwissBracket(actionEvent);
         }
         else{
