@@ -19,6 +19,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -93,8 +94,47 @@ public class FileHandlerTest {
 
         fileHandler.removeTournament(tournament.getTournamentID());
 
-        Assertions.assertThrows(IndexOutOfBoundsException.class ,() -> fileHandler.readTournamentFromFile(tournament.getTournamentID()));
+        fileHandler.readTournamentFromFile(tournament.getTournamentID());
 
+        //Overwrites the test file with an empty JSONArray after testing is done.
+        ObjectMapper objectMapper = new ObjectMapper();
+        JSONArray jsonArray = new JSONArray();
+        objectMapper.writeValue(new File(testPath),jsonArray);
+
+    }
+
+    @Test
+    public void readAllTournaments() throws IOException {
+        //Initialize a PlayerRegistry with 5 players to use in the tournament.
+        PlayerRegistry players = new PlayerRegistry();
+        for(int i = 0 ; i<5 ; i++){
+            players.addPlayer(new Player("Test" + i,20+i));
+        }
+
+        // Initialize two tournaments with different names and IDs.
+        Tournament tournament = new Tournament("TournamentTestOne", LocalDate.now(), "Knock-Out");
+        tournament.setPlayers(players);
+        tournament.createTournamentBracket();
+
+        Tournament tournament1 = new Tournament("TournamentTestTwo", LocalDate.now(), "Swiss-System");
+        tournament1.setPlayers(players);
+        tournament1.createTournamentBracket();
+        tournament1.setTournamentID(1);
+
+        //Write the two tournaments to the file.
+        FileHandler fileHandler = new FileHandler(testPath);
+        fileHandler.writeTournamentToFile(tournament);
+        fileHandler.writeTournamentToFile(tournament1);
+
+        ArrayList<Tournament> reads = fileHandler.readAllFromFile();
+        Assertions.assertEquals(tournament,reads.get(0));
+        Assertions.assertEquals(tournament1,reads.get(1));
+        System.out.println(reads.toString());
+
+        //Overwrites the test file with an empty JSONArray after testing is done.
+        ObjectMapper objectMapper = new ObjectMapper();
+        JSONArray jsonArray = new JSONArray();
+        objectMapper.writeValue(new File(testPath),jsonArray);
     }
     //Testene er unødvendig?
 /*
