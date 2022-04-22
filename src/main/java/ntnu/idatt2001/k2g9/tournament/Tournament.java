@@ -1,4 +1,5 @@
 package ntnu.idatt2001.k2g9.tournament;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import ntnu.idatt2001.k2g9.file.LocalDateSerializer;
@@ -6,6 +7,7 @@ import ntnu.idatt2001.k2g9.file.TournamentDeserializer;
 import ntnu.idatt2001.k2g9.player.Admin;
 import ntnu.idatt2001.k2g9.player.Player;
 import ntnu.idatt2001.k2g9.player.PlayerRegistry;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
