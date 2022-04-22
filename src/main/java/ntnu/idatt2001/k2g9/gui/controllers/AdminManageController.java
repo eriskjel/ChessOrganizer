@@ -153,7 +153,6 @@ public class AdminManageController implements Initializable {
      */
     public void editTournament(ActionEvent event) throws IOException {
         AdminEditTournamentController.setTournamentID(getSelectedTournamentID());
-
         this.goToSpecificTournament(event);
     }
 
