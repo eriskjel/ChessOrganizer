@@ -99,6 +99,7 @@ public class AdminAddTournamentController implements Initializable {
 
 
 
+        /*
         //TESTDATA
         for (int i = 0; i < 10; i++) {
             Player player = new Player("player"+(i+1), (i + 10));
@@ -110,6 +111,8 @@ public class AdminAddTournamentController implements Initializable {
         newTournament.createTournamentBracket();
 
         RegistryClient.tournamentRegistry.addTournaments(newTournament);
+
+         */
     }
 
     /**
