@@ -2,12 +2,10 @@ package ntnu.idatt2001.k2g9.tournament;
 
 import ntnu.idatt2001.k2g9.player.Player;
 import ntnu.idatt2001.k2g9.player.PlayerRegistry;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.stream.IntStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * Class for creating tournament brackets of a given format.
