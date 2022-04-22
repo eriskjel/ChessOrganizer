@@ -61,6 +61,7 @@ public class FileHandlerTest {
         Assertions.assertEquals(tournament1,read1);
 
         //Overwrites the test file with an empty JSONArray after testing is done.
+
         ObjectMapper objectMapper = new ObjectMapper();
         JSONArray jsonArray = new JSONArray();
         objectMapper.writeValue(new File(testPath),jsonArray);
@@ -93,8 +94,6 @@ public class FileHandlerTest {
         Assertions.assertEquals(tournament,read);
 
         fileHandler.removeTournament(tournament.getTournamentID());
-
-        fileHandler.readTournamentFromFile(tournament.getTournamentID());
 
         //Overwrites the test file with an empty JSONArray after testing is done.
         ObjectMapper objectMapper = new ObjectMapper();
@@ -129,7 +128,6 @@ public class FileHandlerTest {
         ArrayList<Tournament> reads = fileHandler.readAllFromFile();
         Assertions.assertEquals(tournament,reads.get(0));
         Assertions.assertEquals(tournament1,reads.get(1));
-        System.out.println(reads.toString());
 
         //Overwrites the test file with an empty JSONArray after testing is done.
         ObjectMapper objectMapper = new ObjectMapper();
