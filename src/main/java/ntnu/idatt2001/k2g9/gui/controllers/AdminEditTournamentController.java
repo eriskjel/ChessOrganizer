@@ -13,9 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import ntnu.idatt2001.k2g9.gui.application.Application;
 import ntnu.idatt2001.k2g9.gui.models.CompetitorModel;
-import ntnu.idatt2001.k2g9.gui.models.TournamentModel;
 import ntnu.idatt2001.k2g9.player.Player;
-import ntnu.idatt2001.k2g9.player.PlayerRegistry;
 import ntnu.idatt2001.k2g9.tournament.RegistryClient;
 import java.io.IOException;
 import java.net.URL;
@@ -307,7 +305,7 @@ public class AdminEditTournamentController implements Initializable {
 
     public void goToBracket(ActionEvent actionEvent) throws IOException {
         if (RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout().equals("Knock-Out")){
-            AdminViewBracketController.setTournamentID(getTournamentID());
+            AdminViewKnockOutBracketController.setTournamentID(getTournamentID());
             goToKnockoutBracket(actionEvent);
         }
         else if(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout().equals("Round-Robin")){

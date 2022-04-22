@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 /**
  * Controller that administers the fxml file "admin-hub-tournaments" and handles all the events on said fxml file
  */
-public class AdminViewBracketController implements Initializable {
+public class AdminViewKnockOutBracketController implements Initializable {
 
     public Label lblTournamentName;
     HashMap<String, Button> buttonHashMap;

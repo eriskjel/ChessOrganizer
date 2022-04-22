@@ -169,3 +169,17 @@
     -fx-background-color: gray;
     -fx-border-color: gray;
 }
+
+.winner{
+    -fx-background-color: #2B78E4;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.winner:hover{
+    -fx-background-color: white;
+    -fx-text-fill: #2B78E4;
+    -fx-border-color: #2B78E4;
+    -fx-border-radius: 5px;
+    -fx-border-width: 2px;
+}

@@ -248,7 +248,7 @@ public class AdminManageController implements Initializable {
     public void goToBracket(ActionEvent actionEvent) throws IOException {
         int selectedTournamentID = getSelectedTournamentID();
         if (RegistryClient.tournamentRegistry.getTournament(selectedTournamentID).getLayout().equals("Knock-Out")){
-            AdminViewBracketController.setTournamentID(selectedTournamentID);
+            AdminViewKnockOutBracketController.setTournamentID(selectedTournamentID);
             goToKnockoutBracket(actionEvent);
         }
         else if(RegistryClient.tournamentRegistry.getTournament(selectedTournamentID).getLayout().equals("Round-Robin")){
