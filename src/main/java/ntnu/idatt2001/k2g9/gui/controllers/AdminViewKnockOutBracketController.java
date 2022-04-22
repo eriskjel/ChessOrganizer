@@ -79,10 +79,20 @@ public class AdminViewKnockOutBracketController implements Initializable {
     @FXML private Polyline x30;
     private static int tournamentID;
 
+    /**
+     * setter for tournamentID
+     * other controllers can pass the tournamentID to this controller using this method
+     * meaning that this controller can read the info from said tournament by using the ID
+     * @param id tournament id
+     */
     public static void setTournamentID(int id){
         tournamentID = id;
     }
 
+    /**
+     * getter for tournamentID
+     * @return tournament id
+     */
     public int getTournamentID(){
         return tournamentID;
     }
@@ -115,7 +125,7 @@ public class AdminViewKnockOutBracketController implements Initializable {
         RegistryClient.fxmlLoaderClass.adminLogOut(actionEvent);
     }
 
-    //TODO: add javadoc
+    //TODO: add javadoc @navid muradi
     public void setWinnerKnockout(ActionEvent event) {
         //get fx id from button clicked
         Button button = (Button) event.getSource();
@@ -201,16 +211,6 @@ public class AdminViewKnockOutBracketController implements Initializable {
         }
     }
 
-    /*
-    //TODO: add javadoc
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        //sets header with correct tournament name
-        this.lblTournamentName.setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getName());
-
-
-     */
     /**
      * Method for filling knockout bracket page with all the matches of the tournament.
      *
@@ -359,7 +359,7 @@ public class AdminViewKnockOutBracketController implements Initializable {
         }
 
         //Sets all buttons not in use invisible.
-        for (int i = 0 ; i < buttons.length ; i++){
+        for (int i = 0 ; i < buttons.length; i++){
             if (buttons[i].getText().equals("Player 1")) {
                 buttons[i].setVisible(false);
                 buttons[i].setDisable(true);
@@ -367,6 +367,12 @@ public class AdminViewKnockOutBracketController implements Initializable {
         }
     }
 
+    /**
+     * runs when fxml file is loaded. sets the header name with the corresponding tournament name
+     * and calls the fill bracket method
+     * @param url url
+     * @param resourceBundle bundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //sets header with correct tournament name
