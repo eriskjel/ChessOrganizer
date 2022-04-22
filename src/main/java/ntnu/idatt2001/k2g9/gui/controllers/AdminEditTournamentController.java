@@ -163,8 +163,8 @@ public class AdminEditTournamentController implements Initializable {
         tableCompetitors.getItems().add(competitor);
 
 
-        //adds player to tournament
-        //Player player = new Player(this.tblName.getText(), Integer.parseInt(this.tblAge.getText()));
+        //creates new bracket with the new competitor
+        RegistryClient.tournamentRegistry.getTournament(getTournamentID()).createTournamentBracket();
 
 
         //resets input fields
