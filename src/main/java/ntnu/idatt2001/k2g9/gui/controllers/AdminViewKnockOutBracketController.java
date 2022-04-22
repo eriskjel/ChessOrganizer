@@ -62,6 +62,21 @@ public class AdminViewKnockOutBracketController implements Initializable {
     @FXML private Button x211;
     @FXML private Button x300;
     @FXML private Button x301;
+    @FXML private Polyline x00;
+    @FXML private Polyline x01;
+    @FXML private Polyline x02;
+    @FXML private Polyline x03;
+    @FXML private Polyline x04;
+    @FXML private Polyline x05;
+    @FXML private Polyline x06;
+    @FXML private Polyline x07;
+    @FXML private Polyline x10;
+    @FXML private Polyline x11;
+    @FXML private Polyline x12;
+    @FXML private Polyline x13;
+    @FXML private Polyline x20;
+    @FXML private Polyline x21;
+    @FXML private Polyline x30;
     private static int tournamentID;
 
     public static void setTournamentID(int id){
@@ -186,6 +201,7 @@ public class AdminViewKnockOutBracketController implements Initializable {
         }
     }
 
+    /*
     //TODO: add javadoc
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -193,6 +209,8 @@ public class AdminViewKnockOutBracketController implements Initializable {
         //sets header with correct tournament name
         this.lblTournamentName.setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getName());
 
+
+     */
     /**
      * Method for filling knockout bracket page with all the matches of the tournament.
      *
@@ -279,9 +297,6 @@ public class AdminViewKnockOutBracketController implements Initializable {
                 polylineHashMap.get("x"+ Integer.toString(roundNo) + Integer.toString((int) Math.pow(2,3-roundNo) - matchNo)).setVisible(false);
             }
         }
-
-        int totalRounds = tournament.getTotalRounds();
-
 
         /**
          * This loop overwrites the statically assigned ids of the bracket layout with dynamically reassigned ones.

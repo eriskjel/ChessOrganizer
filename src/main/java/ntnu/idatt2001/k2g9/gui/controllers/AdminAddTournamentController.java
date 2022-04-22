@@ -31,7 +31,6 @@ public class AdminAddTournamentController implements Initializable {
     @FXML private TextField inpTournamentName;
     @FXML private DatePicker inpDate;
     @FXML private MenuButton inpTournamentFormat;
-    @FXML private MenuItem formatKnockout;
     @FXML private TextField inpFullName;
     @FXML private TextField inpAge;
     @FXML private String tournamentFormat;

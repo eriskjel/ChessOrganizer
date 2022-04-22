@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import ntnu.idatt2001.k2g9.gui.FXMLLoaderClass;
 import ntnu.idatt2001.k2g9.gui.application.Application;
 import ntnu.idatt2001.k2g9.gui.models.CompetitorModel;
 import ntnu.idatt2001.k2g9.player.Player;
@@ -34,7 +35,6 @@ public class AdminEditTournamentController implements Initializable {
     @FXML private TextField inpFullName;
     @FXML private TextField inpAge;
     @FXML private TextField inpTournamentName;
-    @FXML private MenuItem formatKnockout;
     @FXML private DatePicker inpDate;
     @FXML private MenuButton inpTournamentFormat;
     @FXML private Label lblTournamentName;
@@ -94,16 +94,6 @@ public class AdminEditTournamentController implements Initializable {
         RegistryClient.fxmlLoaderClass.adminLogOut(actionEvent);
     }
 
-    /**
-     * method that calls on the fxmlloaderClass to load the bracket fxml file
-     * @param actionEvent action event
-     * @throws IOException io exception
-     */
-    public void goToBrackets(ActionEvent actionEvent) throws IOException {
-        //gives tournamentID to controller that will handle the tournament before loading new fxml file
-        AdminViewBracketController.setTournamentID(tournamentID);
-        RegistryClient.fxmlLoaderClass.goToBrackets(actionEvent);
-    }
 
     /**
      * refreshes data in tables in application. clears table and fills the table with the players registered in selected tournament
@@ -115,7 +105,7 @@ public class AdminEditTournamentController implements Initializable {
         allCompetitors.clear();
 
 
-        ArrayList<Player> competitors = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayers();
+        ArrayList<Player> competitors = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayerRegistry().getPlayers();
         ArrayList<CompetitorModel> competitorModels = new ArrayList<>();
         for (Player player : competitors){
             CompetitorModel competitorModel = new CompetitorModel(player);
@@ -139,7 +129,10 @@ public class AdminEditTournamentController implements Initializable {
         this.inpDate.setPromptText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getDate().toString());
     }
 
-    //TODO: does not work
+    /**
+     * removes competitors from gui table and from tournament, and also calls on the registry to reset all player id's
+     * @param actionEvent event
+     */
     public void removeCompetitor(ActionEvent actionEvent) {
         //removes from table
         ObservableList<CompetitorModel> allCompetitors, singleCompetitor;
@@ -180,6 +173,11 @@ public class AdminEditTournamentController implements Initializable {
     }
 
 
+    /**
+     * method that runs as soon as the fxml file is loaded. this makes sure the competitor table is filled when fxml is opened
+     * @param url url
+     * @param resourceBundle bundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.tblName.setCellValueFactory(new PropertyValueFactory<>("Name"));
@@ -196,7 +194,6 @@ public class AdminEditTournamentController implements Initializable {
     @FXML
     public void setFormatKnockout() {
         this.inpTournamentFormat.setText("Knock-Out");
-        //this.tournamentFormat = "Knock-Out";
     }
 
     /**
@@ -206,7 +203,6 @@ public class AdminEditTournamentController implements Initializable {
     @FXML
     public void formatSwiss() {
         this.inpTournamentFormat.setText("Swiss-System");
-        //this.tournamentFormat = "Swiss";
     }
 
     /**
@@ -242,52 +238,48 @@ public class AdminEditTournamentController implements Initializable {
         this.gotoAdminManageTournament(event);
     }
 
+    /**
+     * method that calls on the fxmlloaderClass to load the knockout bracket fxml file
+     * @param actionEvent action event
+     * @throws IOException io exception
+     */
     public void goToKnockoutBracket(ActionEvent actionEvent) throws IOException {
-        //load new fxml file
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("knockout-admin-view-bracket.fxml"));
-        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
-
-        stage.setTitle("View bracket for tournament");
-        stage.setScene(scene);
-        stage.show();
+        RegistryClient.fxmlLoaderClass.goToKnockoutBracket(actionEvent);
     }
 
+    /**
+     * method that calls on the fxmlloaderClass to load the round robin fxml file
+     * @param actionEvent action event
+     * @throws IOException io exception
+     */
     public void goToRoundRobinBracket(ActionEvent actionEvent) throws IOException {
-        //load new fxml file
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("robin-admin-view-bracket.fxml"));
-        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
-
-        stage.setTitle("View bracket for tournament");
-        stage.setScene(scene);
-        stage.show();
+        RegistryClient.fxmlLoaderClass.goToRoundRobinBracket(actionEvent);
     }
 
+    /**
+     * method that calls on the fxmlloaderClass to load the swiss bracket fxml file
+     * @param actionEvent action event
+     * @throws IOException io exception
+     */
     public void goToSwissBracket(ActionEvent actionEvent) throws IOException {
-        //load new fxml file
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("swiss-admin-view-bracket.fxml"));
-        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
-
-        stage.setTitle("View bracket for tournament");
-        stage.setScene(scene);
-        stage.show();
+        RegistryClient.fxmlLoaderClass.goToSwissBracket(actionEvent);
     }
 
+    /**
+     * method that determines which fxml should be loaded when user clicks to go to the selected tournament bracket
+     * @param actionEvent event
+     * @throws IOException exception
+     */
     public void goToBracket(ActionEvent actionEvent) throws IOException {
-        if (RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout().equals("Knock-Out")){
-            AdminViewKnockOutBracketController.setTournamentID(getTournamentID());
-            goToKnockoutBracket(actionEvent);
-        }
-        else if(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout().equals("Round-Robin")){
-            goToRoundRobinBracket(actionEvent);
-        }
-        else if (RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout().equals("Swiss-System")){
-            goToSwissBracket(actionEvent);
-        }
-        else{
-            System.err.println("something went wrong");
+        String layout = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout();
+        switch (layout) {
+            case "Knock-Out" -> {
+                AdminViewKnockOutBracketController.setTournamentID(getTournamentID());
+                this.goToKnockoutBracket(actionEvent);
+            }
+            case "Round-Robin" -> this.goToRoundRobinBracket(actionEvent);
+            case "Swiss-System" -> this.goToSwissBracket(actionEvent);
+            default -> System.err.println("something went wrong");
         }
     }
 }

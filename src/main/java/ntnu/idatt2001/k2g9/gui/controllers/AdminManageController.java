@@ -165,9 +165,12 @@ public class AdminManageController implements Initializable {
      */
     public void determineAndGoToBracket(ActionEvent actionEvent) throws IOException, IllegalArgumentException {
         int selectedTournamentID = getSelectedTournamentID();
-        String layout = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout();
+        String layout = RegistryClient.tournamentRegistry.getTournament(selectedTournamentID).getLayout();
         switch (layout) {
-            case "Knock-Out" -> AdminViewKnockOutBracketController.setTournamentID(selectedTournamentID) this.goToKnockoutBracket(actionEvent);
+            case "Knock-Out" -> {
+                AdminViewKnockOutBracketController.setTournamentID(selectedTournamentID);
+                this.goToKnockoutBracket(actionEvent);
+            }
             case "Round-Robin" -> this.goToRoundRobinBracket(actionEvent);
             case "Swiss-System" -> this.goToSwissBracket(actionEvent);
             default -> throw new IllegalArgumentException("Layout not found.");
