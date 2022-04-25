@@ -35,6 +35,8 @@ public class FileHandler {
         JSONArray jsonArray = null;
         try {
             jsonArray = (JSONArray) jsonParser.parse(new FileReader(defaultPath));
+            System.out.println(jsonArray.size());
+            System.out.println(jsonArray.toString());
             //Retrieves jsonObject within the jsonArray, which contains tournaments.
             JSONObject jsonObject = (JSONObject) jsonArray.get(tournamentID);
             String jsonValue = (String)jsonObject.get(String.valueOf(tournamentID));

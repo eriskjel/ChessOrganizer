@@ -22,12 +22,17 @@ public class Tournament {
     private Admin organizer;
     private int tournamentID;
 
+    private static int idSetter = 0;
+
 
     public Tournament(String name, LocalDate date, String layout) throws NullPointerException {
         this.name = name;
         this.date = date;
         this.players = new PlayerRegistry();
         this.layout = layout;
+        this.tournamentID = idSetter;
+        idSetter++;
+
     }
 
     public Tournament(String name, LocalDate date, ArrayList<Match[]> tournamentBracket, String layout, Admin organizer, int tournamentID, PlayerRegistry players) {
@@ -72,9 +77,6 @@ public class Tournament {
     }
     public String getName() {
         return name;
-    }
-    public void setTournamentID(int tournamentID) {
-        this.tournamentID = tournamentID;
     }
     public void setLayout(String layout) {
         this.layout = layout;

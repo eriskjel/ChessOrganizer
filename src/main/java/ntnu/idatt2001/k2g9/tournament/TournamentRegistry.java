@@ -38,7 +38,6 @@ public class TournamentRegistry {
      * @param tournament
      */
     public void addTournaments(Tournament tournament){
-        tournament.setTournamentID(tournaments.size());
          this.tournaments.add(tournament);
     }
 
