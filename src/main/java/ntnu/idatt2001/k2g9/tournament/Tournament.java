@@ -24,6 +24,7 @@ public class Tournament {
     private int tournamentID;
 
 
+    //Static variable that is used for giving Tournaments their IDs. ID is set in constructor then never reassigned.
 
     private static int idSetter = new FileHandler().initIDs();
 
