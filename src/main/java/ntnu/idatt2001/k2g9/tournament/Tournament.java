@@ -2,6 +2,7 @@ package ntnu.idatt2001.k2g9.tournament;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import ntnu.idatt2001.k2g9.file.FileHandler;
 import ntnu.idatt2001.k2g9.file.LocalDateSerializer;
 import ntnu.idatt2001.k2g9.file.TournamentDeserializer;
 import ntnu.idatt2001.k2g9.player.Admin;
@@ -22,8 +23,9 @@ public class Tournament {
     private Admin organizer;
     private int tournamentID;
 
-    private static int idSetter = 0;
 
+
+    private static int idSetter = new FileHandler().initIDs();
 
     public Tournament(String name, LocalDate date, String layout) throws NullPointerException {
         this.name = name;

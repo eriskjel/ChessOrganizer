@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import ntnu.idatt2001.k2g9.file.FileHandler;
 import ntnu.idatt2001.k2g9.gui.models.CompetitorModel;
 import ntnu.idatt2001.k2g9.gui.models.TournamentModel;
 import ntnu.idatt2001.k2g9.tournament.RegistryClient;
@@ -30,6 +31,8 @@ public class AdminManageController implements Initializable {
     @FXML private TableColumn colFormat;
     @FXML private TableView tblTournaments;
     @FXML private ObservableList<CompetitorModel> observableList = FXCollections.observableArrayList();
+
+    private FileHandler f = new FileHandler();
 
     /**
      * method that calls on the fxmlloaderClass to load the tournament hub fxml file
@@ -120,7 +123,8 @@ public class AdminManageController implements Initializable {
         allTournaments.clear();
 
         //add tournament
-        ArrayList<Tournament> tournaments = RegistryClient.tournamentRegistry.getTournaments();
+        ArrayList<Tournament> tournaments = f.readAllFromFile();
+        //ArrayList<Tournament> tournaments = RegistryClient.tournamentRegistry.getTournaments();
         ArrayList<TournamentModel> tournamentModels = new ArrayList<>();
         for (Tournament tournament : tournaments) {
             TournamentModel tournamentModel = new TournamentModel(tournament);
@@ -159,7 +163,8 @@ public class AdminManageController implements Initializable {
      */
     public void determineAndGoToBracket(ActionEvent actionEvent) throws IOException, IllegalArgumentException {
         int selectedTournamentID = getSelectedTournamentID();
-        String layout = RegistryClient.tournamentRegistry.getTournament(selectedTournamentID).getLayout();
+        String layout = f.readTournamentFromFile(selectedTournamentID).getLayout();
+        //String layout = RegistryClient.tournamentRegistry.getTournament(selectedTournamentID).getLayout();
         switch (layout) {
             case "Knock-Out" -> {
                 AdminViewKnockOutBracketController.setTournamentID(selectedTournamentID);
