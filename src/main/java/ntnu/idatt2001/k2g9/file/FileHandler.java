@@ -12,7 +12,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.NoSuchElementException;
 
+/**
+ * Class used for handling JSON file Tournament registry. Class has a default path, which refers to the Tournaments.json file.
+ * This file is the main file in the Project used for storing information.
+ */
 public class FileHandler {
 
     ObjectMapper mapper;
@@ -23,13 +28,22 @@ public class FileHandler {
         this.mapper = new ObjectMapper();
     }
 
+    /**
+     * Constructor that allows you to use a custom path.
+     * @param path
+     */
     public FileHandler(String path){
         this.defaultPath = path;
         this.mapper = new ObjectMapper();
     }
 
 
-
+    /**
+     * Method for reading a Tournament from the file. Takes id in as parameter and locates and parses json value into
+     * Tournament object.
+     * @param tournamentID
+     * @return
+     */
     public Tournament readTournamentFromFile(int tournamentID){
         JSONParser jsonParser = new JSONParser();
         //Reads the JSONArray in the file.
@@ -37,16 +51,19 @@ public class FileHandler {
         try {
             jsonArray = (JSONArray) jsonParser.parse(new FileReader(defaultPath));
             //Retrieves jsonObject within the jsonArray, which contains tournaments.
+
             JSONObject jsonObject = null;
             String jsonValue = null;
+            //For statement that enters every object in array.
             for(Object object : jsonArray){
+                //Parses the object into a JSONObject, and if said object has a key equal to tournamentID, jsonValue
+                // is defined as the String within the object.
                 jsonObject = (JSONObject) object;
-                try{
-                    jsonValue = (String)jsonObject.get(String.valueOf(tournamentID));
-                }
-                catch(IndexOutOfBoundsException e){
-                }
+                    if(jsonObject.get(String.valueOf(tournamentID)) != null){
+                        jsonValue = (String)jsonObject.get(String.valueOf(tournamentID));
+                    }
             }
+            //Mapper is created and String is parsed into Tournament object.
             ObjectMapper objectMapper = new ObjectMapper();
             Tournament t = objectMapper.readValue(jsonValue, Tournament.class);
             return t;
@@ -71,8 +88,16 @@ public class FileHandler {
             //Creates a json string formatted properly using serializer.
             String jsonString = mapper.writeValueAsString(tournament);
             int id = tournament.getTournamentID();
+
+
             JSONObject jsonObject = null;
             String jsonValue = null;
+
+            /*For loop that goes through all objects in the jsonArray. Loop tries to retrieve internal object with key
+            and if its not found it will only return null. Therefore running through the whole array and not finding
+             any values assigned to the tournamentID key will prove that the ArrayList does not already contain the tournament.
+
+             */
             for(Object object : jsonArray){
                 jsonObject = (JSONObject) object;
                 jsonValue = (String) jsonObject.get(String.valueOf(id));
@@ -97,6 +122,10 @@ public class FileHandler {
         }
     }
 
+    /**
+     * Method used for updating Tournament that already exists in Register. Used in Edit Tournament (GUI).
+     * @param tournament
+     */
     public void updateTournament(Tournament  tournament){
         JSONParser jsonParser = new JSONParser();
 
@@ -108,24 +137,26 @@ public class FileHandler {
             String jsonString = mapper.writeValueAsString(tournament);
             int id = tournament.getTournamentID();
             JSONObject jsonObject = null;
-            String correctObject = null;
+
+            // For loop that traverses Array and breaks if content with key is found, and therefore locating correct object.
+
             for(Object object : jsonArray){
                 jsonObject = (JSONObject) object;
-                try{
-                    correctObject = (String) jsonObject.get(String.valueOf(id));
-                    break;
-                }
-                catch(IndexOutOfBoundsException e){
-
-                }
+                    if(jsonObject.get(String.valueOf(id)) != null){
+                        break;
+                    }
             }
             if(jsonObject == null){
                 throw new IllegalArgumentException("Could not find the tournament");
             }
+                //Object found earlier is removed from Array.
                 jsonArray.remove(jsonObject);
-                jsonObject.remove(String.valueOf(id));
-                jsonObject.put(id,jsonString);
-                jsonArray.add(jsonObject);
+
+                //New JSON Object is created and given the correct value and key.
+                JSONObject newObject = new JSONObject();
+                newObject.put(String.valueOf(id),jsonString);
+
+                jsonArray.add(newObject);
                 //Overwrites the Json file with updated JSONArray.
                 mapper.writeValue(new File(defaultPath),jsonArray);
 
@@ -137,6 +168,11 @@ public class FileHandler {
         }
     }
 
+    /**
+     * Method for removing a tournament from the JSON tournament register. Takes id as parameter and removes file
+     * if found.
+     * @param tournamentID
+     */
     public void removeTournament(int tournamentID){
         JSONParser jsonParser = new JSONParser();
         //Reads the JSONArray in the file.
@@ -145,20 +181,18 @@ public class FileHandler {
             jsonArray = (JSONArray) jsonParser.parse(new FileReader(defaultPath));
             JSONObject jsonObject = null;
             String correctObject = null;
+            //Locates the object with the proper key and value.
             for(Object object : jsonArray){
                 jsonObject = (JSONObject) object;
-                try{
-                    correctObject = (String)jsonObject.get(String.valueOf(tournamentID));
+                if(jsonObject.get(String.valueOf(tournamentID))!=null){
                     break;
-                }
-                catch(IndexOutOfBoundsException e){
-
                 }
             }
             if(jsonObject == null){
                 throw new IllegalArgumentException("Tournament was not found");
             }
 
+            //Removes said value from Array and writes over Array in file.
             jsonArray.remove(jsonObject);
             mapper.writeValue(new File(defaultPath),jsonArray);
         } catch (IOException | ParseException | IndexOutOfBoundsException e) {
@@ -167,16 +201,23 @@ public class FileHandler {
 
     }
 
+    /**
+     * Method that reads all tournaments stored in the JSON file.
+     * @return
+     */
     public ArrayList<Tournament> readAllFromFile(){
+        // Initalize objects needed in method.
         JSONParser jsonParser = new JSONParser();
         ArrayList<Tournament> tournaments = new ArrayList<>();
         JSONObject j = null;
         Collection<String> item;
         try{
             JSONArray jsonArray = (JSONArray) jsonParser.parse(new FileReader(defaultPath));
+            // Controls if the array is empty.
             if(jsonArray.isEmpty()){
-                throw new IllegalArgumentException("Json file is empty. Nothing to read");
+                return null;
             }
+            //Traverses through array and maps object and adds them to ArrayList.
             for(Object object : jsonArray){
                 j = (JSONObject) object;
                 item = j.values();
@@ -190,6 +231,7 @@ public class FileHandler {
                         });
 
             }
+            // Return
             return tournaments;
 
         }
@@ -197,6 +239,19 @@ public class FileHandler {
             e.printStackTrace();
             return null;
         }
+    }
+    /*
+       Method that is used for initializing the static idSetter in Tournament class at the start of the run. This is to
+       make sure the static variable knows how many preexisting tournaments there are.
+     */
+    public int initIDs(){
+        ArrayList<Tournament> tournaments = this.readAllFromFile();
+        if(tournaments == null){
+            return 0;
+        }
+            return tournaments.stream()
+                    .mapToInt(Tournament -> Tournament.getTournamentID())
+                    .max().orElse(0);
     }
 }
 

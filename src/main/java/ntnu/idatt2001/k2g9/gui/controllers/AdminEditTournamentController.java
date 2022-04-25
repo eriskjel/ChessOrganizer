@@ -241,7 +241,7 @@ public class AdminEditTournamentController implements Initializable {
             date = this.t.getDate();
             //date = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getDate();
         }
-        else if(isDateValid(date)){
+        if(isDateValid(date)){
             //updates with fresh info
             this.t.setName(tournamentName);
             this.t.setDate(date);
@@ -252,7 +252,8 @@ public class AdminEditTournamentController implements Initializable {
             RegistryClient.tournamentRegistry.getTournament(tournamentID).setLayout(newTournamentFormat);
 
              */
-
+            //Saves all changes to the tournament.
+            this.f.updateTournament(this.t);
             //loads new fxml file
             this.gotoAdminManageTournament(event);
         }

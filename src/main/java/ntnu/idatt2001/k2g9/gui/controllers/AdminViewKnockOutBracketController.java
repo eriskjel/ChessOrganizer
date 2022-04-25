@@ -8,10 +8,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.shape.Polyline;
+import ntnu.idatt2001.k2g9.file.FileHandler;
 import ntnu.idatt2001.k2g9.tournament.Match;
 import ntnu.idatt2001.k2g9.tournament.RegistryClient;
 import ntnu.idatt2001.k2g9.tournament.Tournament;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -73,6 +75,9 @@ public class AdminViewKnockOutBracketController implements Initializable {
     @FXML private Polyline x21;
     @FXML private Polyline x30;
     private static int tournamentID;
+    private FileHandler f = new FileHandler();
+    Tournament tournament;
+
 
     /**
      * setter for tournamentID
@@ -131,7 +136,7 @@ public class AdminViewKnockOutBracketController implements Initializable {
         int matchIndex = Integer.parseInt(fxid.substring(2,3));
         int playerIndex = Integer.parseInt(fxid.substring(3,4));
 
-        Tournament tournament = RegistryClient.tournamentRegistry.getTournament(tournamentID);
+        //Tournament tournament = RegistryClient.tournamentRegistry.getTournament(tournamentID);
         ArrayList<Match[]> bracket = tournament.getTournamentBracket();
 
 
@@ -370,11 +375,12 @@ public class AdminViewKnockOutBracketController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        tournament = f.readTournamentFromFile(tournamentID);
         //sets header with correct tournament name
-        this.lblTournamentName.setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getName());
+        this.lblTournamentName.setText(f.readTournamentFromFile(tournamentID).getName());
 
         //Gets tournament and bracket.
-        Tournament tournament = RegistryClient.tournamentRegistry.getTournament(getTournamentID());
+        Tournament tournament = f.readTournamentFromFile(tournamentID);
         this.fillKnockoutBracketPage(tournament);
     }
 }
