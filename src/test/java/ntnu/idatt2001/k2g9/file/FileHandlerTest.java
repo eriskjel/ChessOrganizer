@@ -48,7 +48,7 @@ public class FileHandlerTest {
         Tournament read = fileHandler.readTournamentFromFile(tournament.getTournamentID());
 
         //Confirms that the tournament was written correctly.
-        //Assertions.assertEquals(tournament,read);
+        Assertions.assertEquals(tournament,read);
 
         //Run the test for two tournaments, to assure that several tournaments wont cause issues.
         Tournament tournament1 = new Tournament("TournamentTestTwo", LocalDate.now(), "Swiss-System");
@@ -131,6 +131,34 @@ public class FileHandlerTest {
         ObjectMapper objectMapper = new ObjectMapper();
         JSONArray jsonArray = new JSONArray();
         objectMapper.writeValue(new File(testPath),jsonArray);
+    }
+
+
+    @Test
+    public void editTest() throws IOException {
+        PlayerRegistry players = new PlayerRegistry();
+        for(int i = 0 ; i<5 ; i++){
+            players.addPlayer(new Player("Test" + i,20+i));
+        }
+
+        // Initialize two tournaments with different names and IDs.
+        Tournament tournament = new Tournament("TournamentTestOne", LocalDate.now(), "Knock-Out");
+        tournament.setPlayers(players);
+        tournament.createTournamentBracket();
+        FileHandler f = new FileHandler(testPath);
+        f.writeTournamentToFile(tournament);
+
+        tournament.setName("NameChanged");
+        f.updateTournament(tournament);
+
+        Tournament control = f.readTournamentFromFile(tournament.getTournamentID());
+
+        //Overwrites the test file with an empty JSONArray after testing is done.
+        ObjectMapper objectMapper = new ObjectMapper();
+        JSONArray jsonArray = new JSONArray();
+        objectMapper.writeValue(new File(testPath),jsonArray);
+        Assertions.assertEquals(tournament,control);
+
     }
     //Testene er unødvendig?
 /*

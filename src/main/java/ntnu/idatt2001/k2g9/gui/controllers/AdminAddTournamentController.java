@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import ntnu.idatt2001.k2g9.file.FileHandler;
 import ntnu.idatt2001.k2g9.gui.application.Application;
 import ntnu.idatt2001.k2g9.gui.models.CompetitorModel;
 import ntnu.idatt2001.k2g9.player.Player;
@@ -166,7 +167,9 @@ public class AdminAddTournamentController implements Initializable {
             Tournament newTournament = new Tournament(tournamentName, date, tournamentFormat);
             newTournament.addFromList(playerRegistry.getPlayers());
             newTournament.createTournamentBracket();
-            RegistryClient.tournamentRegistry.addTournaments(newTournament);
+            FileHandler f =  new FileHandler();
+            f.writeTournamentToFile(newTournament);
+            //RegistryClient.tournamentRegistry.addTournaments(newTournament);
 
             //clears player arraylist so it can be
             playerRegistry.getPlayers().clear();

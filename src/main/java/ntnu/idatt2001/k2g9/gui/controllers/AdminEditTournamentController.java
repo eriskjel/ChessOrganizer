@@ -7,9 +7,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import ntnu.idatt2001.k2g9.file.FileHandler;
 import ntnu.idatt2001.k2g9.gui.models.CompetitorModel;
 import ntnu.idatt2001.k2g9.player.Player;
 import ntnu.idatt2001.k2g9.tournament.RegistryClient;
+import ntnu.idatt2001.k2g9.tournament.Tournament;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,6 +36,9 @@ public class AdminEditTournamentController implements Initializable {
     @FXML private MenuButton inpTournamentFormat;
     @FXML private Label lblTournamentName;
     @FXML private ObservableList<CompetitorModel> observableList = FXCollections.observableArrayList();
+
+    private FileHandler f = new FileHandler();
+    Tournament t = f.readTournamentFromFile(getTournamentID());
 
     /**
      * sets current tournamentID
@@ -103,7 +108,7 @@ public class AdminEditTournamentController implements Initializable {
         clearCompetitorTable();
 
 
-        ArrayList<Player> competitors = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayerRegistry().getPlayers();
+        ArrayList<Player> competitors = this.t.getPlayerRegistry().getPlayers();
         ArrayList<CompetitorModel> competitorModels = new ArrayList<>();
         for (Player player : competitors){
             CompetitorModel competitorModel = new CompetitorModel(player);
@@ -113,7 +118,7 @@ public class AdminEditTournamentController implements Initializable {
         tableCompetitors.getItems().addAll(competitorModels);
 
         this.updateTournamentInfo();
-        this.lblTournamentName.setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getName());
+        this.lblTournamentName.setText(this.t.getName());
     }
 
     /**
@@ -121,9 +126,9 @@ public class AdminEditTournamentController implements Initializable {
      * can see what the tournament info already is.
      */
     public void updateTournamentInfo(){
-        this.inpTournamentName.setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getName());
-        this.inpTournamentFormat.setText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout());
-        this.inpDate.setPromptText(RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getDate().toString());
+        this.inpTournamentName.setText(this.t.getName());
+        this.inpTournamentFormat.setText(this.t.getLayout());
+        this.inpDate.setPromptText(this.t.getDate().toString());
     }
 
     /**
@@ -141,9 +146,11 @@ public class AdminEditTournamentController implements Initializable {
         Player player = new Player(singleCompetitor.get(0).getName(), singleCompetitor.get(0).getAge());
         player.setPlayerID(singleCompetitor.get(0).getCompetitorID());
         //RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayerRegistry().removePlayer(player);
-        RegistryClient.tournamentRegistry.getTournament(getTournamentID()).removePlayer(player);
+        this.t.removePlayer(player);
 
-        RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayerRegistry().resetPlayerIDs();
+        //RegistryClient.tournamentRegistry.getTournament(getTournamentID()).removePlayer(player);
+        this.t.getPlayerRegistry().resetPlayerIDs();
+        //RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayerRegistry().resetPlayerIDs();
     }
 
     /**
@@ -152,7 +159,9 @@ public class AdminEditTournamentController implements Initializable {
      */
     public void addCompetitor(ActionEvent actionEvent) {
         Player player = new Player(this.inpFullName.getText(), Integer.parseInt(this.inpAge.getText()));
-        RegistryClient.tournamentRegistry.getTournament(getTournamentID()).addPlayer(player);
+        this.t.addPlayer(player);
+
+        //RegistryClient.tournamentRegistry.getTournament(getTournamentID()).addPlayer(player);
 
         //object to be added to table in GUI.
         //CompetitorModel competitor = new CompetitorModel(this.tblName.getText(), Integer.parseInt(this.tblAge.getText()), );
@@ -161,7 +170,8 @@ public class AdminEditTournamentController implements Initializable {
 
 
         //creates new bracket with the new competitor
-        RegistryClient.tournamentRegistry.getTournament(getTournamentID()).createTournamentBracket();
+        this.t.createTournamentBracket();
+        //RegistryClient.tournamentRegistry.getTournament(getTournamentID()).createTournamentBracket();
 
 
         //resets input fields
@@ -220,20 +230,28 @@ public class AdminEditTournamentController implements Initializable {
         String newTournamentFormat = this.inpTournamentFormat.getText();
         //will be null if not altered with in application, is so the program uses the already registered format
         if (newTournamentFormat == null){
-            newTournamentFormat = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout();
+            newTournamentFormat = this.t.getLayout();
+            //newTournamentFormat = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout();
         }
 
 
         //will be null if not altered with in application, is so the program uses the already registered date
         LocalDate date = this.inpDate.getValue();
         if (date == null){
-            date = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getDate();
+            date = this.t.getDate();
+            //date = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getDate();
         }
         else if(isDateValid(date)){
             //updates with fresh info
+            this.t.setName(tournamentName);
+            this.t.setDate(date);
+            this.t.setLayout(newTournamentFormat);
+            /*
             RegistryClient.tournamentRegistry.getTournament(tournamentID).setName(tournamentName);
             RegistryClient.tournamentRegistry.getTournament(tournamentID).setDate(date);
             RegistryClient.tournamentRegistry.getTournament(tournamentID).setLayout(newTournamentFormat);
+
+             */
 
             //loads new fxml file
             this.gotoAdminManageTournament(event);
@@ -273,7 +291,8 @@ public class AdminEditTournamentController implements Initializable {
      * @throws IOException exception
      */
     public void goToBracket(ActionEvent actionEvent) throws IOException {
-        String layout = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout();
+        String layout = t.getLayout();
+        //String layout = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout();
         switch (layout) {
             case "Knock-Out" -> {
                 AdminViewKnockOutBracketController.setTournamentID(getTournamentID());

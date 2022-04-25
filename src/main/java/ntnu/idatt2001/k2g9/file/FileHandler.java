@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class FileHandler {
 
@@ -35,12 +36,17 @@ public class FileHandler {
         JSONArray jsonArray = null;
         try {
             jsonArray = (JSONArray) jsonParser.parse(new FileReader(defaultPath));
-            System.out.println(jsonArray.size());
-            System.out.println(jsonArray.toString());
             //Retrieves jsonObject within the jsonArray, which contains tournaments.
-            JSONObject jsonObject = (JSONObject) jsonArray.get(tournamentID);
-            String jsonValue = (String)jsonObject.get(String.valueOf(tournamentID));
-
+            JSONObject jsonObject = null;
+            String jsonValue = null;
+            for(Object object : jsonArray){
+                jsonObject = (JSONObject) object;
+                try{
+                    jsonValue = (String)jsonObject.get(String.valueOf(tournamentID));
+                }
+                catch(IndexOutOfBoundsException e){
+                }
+            }
             ObjectMapper objectMapper = new ObjectMapper();
             Tournament t = objectMapper.readValue(jsonValue, Tournament.class);
             return t;
@@ -64,11 +70,22 @@ public class FileHandler {
             jsonArray = (JSONArray) jsonParser.parse(new FileReader(defaultPath));
             //Creates a json string formatted properly using serializer.
             String jsonString = mapper.writeValueAsString(tournament);
+            int id = tournament.getTournamentID();
+            JSONObject jsonObject = null;
+            String jsonValue = null;
+            for(Object object : jsonArray){
+                jsonObject = (JSONObject) object;
+                jsonValue = (String) jsonObject.get(String.valueOf(id));
+                }
+            if(jsonValue != null){
+                throw new IllegalArgumentException("Tournament already exists");
+            }
 
             //Create a json object with the formatted string and a key, which is assigned by tournamentID.
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put(tournament.getTournamentID(),jsonString);
+            jsonObject = new JSONObject();
+            jsonObject.put(id,jsonString);
             jsonArray.add(jsonObject);
+
 
             //Overwrites the Json file with updated JSONArray.
             mapper.writeValue(new File(defaultPath),jsonArray);
@@ -78,8 +95,46 @@ public class FileHandler {
         } catch (IOException | ParseException | IndexOutOfBoundsException e) {
             e.printStackTrace();
         }
+    }
+
+    public void updateTournament(Tournament  tournament){
+        JSONParser jsonParser = new JSONParser();
+
+        //Reads the Array that exists in the tournament file.
+        JSONArray jsonArray = null;
+        try {
+            jsonArray = (JSONArray) jsonParser.parse(new FileReader(defaultPath));
+            //Creates a json string formatted properly using serializer.
+            String jsonString = mapper.writeValueAsString(tournament);
+            int id = tournament.getTournamentID();
+            JSONObject jsonObject = null;
+            String correctObject = null;
+            for(Object object : jsonArray){
+                jsonObject = (JSONObject) object;
+                try{
+                    correctObject = (String) jsonObject.get(String.valueOf(id));
+                    break;
+                }
+                catch(IndexOutOfBoundsException e){
+
+                }
+            }
+            if(jsonObject == null){
+                throw new IllegalArgumentException("Could not find the tournament");
+            }
+                jsonArray.remove(jsonObject);
+                jsonObject.remove(String.valueOf(id));
+                jsonObject.put(id,jsonString);
+                jsonArray.add(jsonObject);
+                //Overwrites the Json file with updated JSONArray.
+                mapper.writeValue(new File(defaultPath),jsonArray);
 
 
+            //Catches any errors that occur when parsing the JSONArray or mapping the object into a JSON String.
+            // eg. if the JSON file was to contain elements other than a JSONArray.
+        } catch (IOException | ParseException | IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
     }
 
     public void removeTournament(int tournamentID){
@@ -88,7 +143,23 @@ public class FileHandler {
         JSONArray jsonArray = null;
         try {
             jsonArray = (JSONArray) jsonParser.parse(new FileReader(defaultPath));
-            jsonArray.remove(tournamentID);
+            JSONObject jsonObject = null;
+            String correctObject = null;
+            for(Object object : jsonArray){
+                jsonObject = (JSONObject) object;
+                try{
+                    correctObject = (String)jsonObject.get(String.valueOf(tournamentID));
+                    break;
+                }
+                catch(IndexOutOfBoundsException e){
+
+                }
+            }
+            if(jsonObject == null){
+                throw new IllegalArgumentException("Tournament was not found");
+            }
+
+            jsonArray.remove(jsonObject);
             mapper.writeValue(new File(defaultPath),jsonArray);
         } catch (IOException | ParseException | IndexOutOfBoundsException e) {
             e.printStackTrace();
@@ -99,17 +170,25 @@ public class FileHandler {
     public ArrayList<Tournament> readAllFromFile(){
         JSONParser jsonParser = new JSONParser();
         ArrayList<Tournament> tournaments = new ArrayList<>();
-        JSONObject j = new JSONObject();
+        JSONObject j = null;
+        Collection<String> item;
         try{
             JSONArray jsonArray = (JSONArray) jsonParser.parse(new FileReader(defaultPath));
-            for(int i = 0; i < jsonArray.size();i++){
-                try{
-                    j = (JSONObject) jsonArray.get(i);
-                    String tString = (String) j.get(String.valueOf(i));
-                    tournaments.add(mapper.readValue(tString,Tournament.class));
-                }catch(IndexOutOfBoundsException e){
-                    e.printStackTrace();
-                }
+            if(jsonArray.isEmpty()){
+                throw new IllegalArgumentException("Json file is empty. Nothing to read");
+            }
+            for(Object object : jsonArray){
+                j = (JSONObject) object;
+                item = j.values();
+                item.stream()
+                        .forEach(String -> {
+                            try {
+                                tournaments.add(mapper.readValue(String, Tournament.class));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
+
             }
             return tournaments;
 
