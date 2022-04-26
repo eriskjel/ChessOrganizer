@@ -3,13 +3,15 @@ package ntnu.idatt2001.k2g9.gui.application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import ntnu.idatt2001.k2g9.file.FileHandler;
+import ntnu.idatt2001.k2g9.tournament.Tournament;
 
 import java.io.IOException;
 
     /**
      * Application class of the project.
      */
-    public class Application extends javafx.application.Application {
+    public class Application extends javafx.application.Application{
 
     /**
      * start method which loads a fxml file, and shows it to the user in an application window
