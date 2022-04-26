@@ -76,7 +76,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <Button layoutX="1190.0" layoutY="32.0" mnemonicParsing="false" onAction="#adminLogOut" styleClass="button-logout" stylesheets="@../styles.css" text="Log out"/>
+                  <Button layoutX="1190.0" layoutY="32.0" mnemonicParsing="false" onAction="#adminLogOut" styleClass="button-logout" stylesheets="@../styles.css" text="Log out" />
                </children>
             </Pane>
             <Pane id="tblCompetitors" layoutX="200.0" layoutY="86.0" prefHeight="570.0" prefWidth="1100.0" stylesheets="@../styles.css">
@@ -96,7 +96,8 @@
                   </TableView>
                   <Button layoutX="807.0" layoutY="453.0" mnemonicParsing="false" onAction="#goToAddTournament" styleClass="button-logout" stylesheets="@../styles.css" text="New tournament" />
                   <Button layoutX="188.0" layoutY="453.0" mnemonicParsing="false" onAction="#editTournament" prefHeight="25.0" prefWidth="113.0" styleClass="button-logout" stylesheets="@../styles.css" text="Edit tournament" />
-                  <Button layoutX="450.0" layoutY="453.0" mnemonicParsing="false" onAction="#determineAndGoToBracket" prefHeight="25.0" prefWidth="200.0" styleClass="button-logout" stylesheets="@../styles.css" text="View bracket for tournament" />
+                  <Button layoutX="571.0" layoutY="453.0" mnemonicParsing="false" onAction="#determineAndGoToBracket" prefHeight="25.0" prefWidth="160.0" styleClass="button-logout" stylesheets="@../styles.css" text="View tournament bracket" />
+                  <Button layoutX="359.0" layoutY="453.0" mnemonicParsing="false" onAction="#deleteTournament" prefHeight="25.0" prefWidth="160.0" styleClass="button-logout" stylesheets="@../styles.css" text="Delete tournament" />
                </children>
             </Pane>
          </children>

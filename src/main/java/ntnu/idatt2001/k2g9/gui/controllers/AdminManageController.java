@@ -176,4 +176,8 @@ public class AdminManageController implements Initializable {
             default -> throw new IllegalArgumentException("Layout not found.");
         }
     }
+
+    public void deleteTournament(ActionEvent actionEvent) {
+        //TODO: danielski add ur code her fatnigga
+    }
 }
