@@ -9,11 +9,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.shape.Polyline;
 import ntnu.idatt2001.k2g9.file.FileHandler;
+import ntnu.idatt2001.k2g9.gui.FXMLLoaderClass;
 import ntnu.idatt2001.k2g9.tournament.Match;
-import ntnu.idatt2001.k2g9.tournament.RegistryClient;
 import ntnu.idatt2001.k2g9.tournament.Tournament;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -104,7 +103,7 @@ public class AdminViewKnockOutBracketController implements Initializable {
      * @throws IOException io exception
      */
     public void goToAddTournament(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.goToAddTournament(actionEvent);
+        FXMLLoaderClass.goToAddTournament(actionEvent);
     }
 
     /**
@@ -113,7 +112,7 @@ public class AdminViewKnockOutBracketController implements Initializable {
      * @throws IOException io exception
      */
     public void goToAdminTournamentHub(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.goToAdminTournamentHub(actionEvent);
+        FXMLLoaderClass.goToAdminTournamentHub(actionEvent);
     }
 
     /**
@@ -122,7 +121,7 @@ public class AdminViewKnockOutBracketController implements Initializable {
      * @throws IOException io exception
      */
     public void adminLogOut(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.adminLogOut(actionEvent);
+        FXMLLoaderClass.adminLogOut(actionEvent);
     }
 
     //TODO: add javadoc @navid muradi

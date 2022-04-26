@@ -10,9 +10,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import ntnu.idatt2001.k2g9.file.FileHandler;
+import ntnu.idatt2001.k2g9.gui.FXMLLoaderClass;
 import ntnu.idatt2001.k2g9.gui.models.CompetitorModel;
 import ntnu.idatt2001.k2g9.gui.models.TournamentModel;
-import ntnu.idatt2001.k2g9.tournament.RegistryClient;
 import ntnu.idatt2001.k2g9.tournament.Tournament;
 
 import java.io.IOException;
@@ -40,7 +40,7 @@ public class AdminManageController implements Initializable {
      * @throws IOException io exception
      */
     public void goToAddTournament(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.goToAddTournament(actionEvent);
+        FXMLLoaderClass.goToAddTournament(actionEvent);
     }
 
     /**
@@ -49,7 +49,7 @@ public class AdminManageController implements Initializable {
      * @throws IOException io exception
      */
     public void goToAdminTournamentHub(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.goToAdminTournamentHub(actionEvent);
+        FXMLLoaderClass.goToAdminTournamentHub(actionEvent);
     }
 
     /**
@@ -58,7 +58,7 @@ public class AdminManageController implements Initializable {
      * @throws IOException io exception
      */
     public void adminLogOut(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.adminLogOut(actionEvent);
+        FXMLLoaderClass.adminLogOut(actionEvent);
     }
 
     /**
@@ -67,7 +67,7 @@ public class AdminManageController implements Initializable {
      * @throws IOException io exception
      */
     public void goToSpecificTournament(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.goToSpecificTournament(actionEvent);
+        FXMLLoaderClass.goToSpecificTournament(actionEvent);
     }
 
     /**
@@ -76,7 +76,7 @@ public class AdminManageController implements Initializable {
      * @throws IOException io exception
      */
     public void goToKnockoutBracket(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.goToKnockoutBracket(actionEvent);
+        FXMLLoaderClass.goToKnockoutBracket(actionEvent);
     }
 
     /**
@@ -85,7 +85,7 @@ public class AdminManageController implements Initializable {
      * @throws IOException io exception
      */
     public void goToRoundRobinBracket(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.goToRoundRobinBracket(actionEvent);
+        FXMLLoaderClass.goToRoundRobinBracket(actionEvent);
     }
 
     /**
@@ -94,7 +94,7 @@ public class AdminManageController implements Initializable {
      * @throws IOException io exception
      */
     public void goToSwissBracket(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.goToSwissBracket(actionEvent);
+        FXMLLoaderClass.goToSwissBracket(actionEvent);
     }
 
 
@@ -124,12 +124,15 @@ public class AdminManageController implements Initializable {
 
         //add tournament
         ArrayList<Tournament> tournaments = f.readAllFromFile();
-        ArrayList<TournamentModel> tournamentModels = new ArrayList<>();
-        for (Tournament tournament : tournaments) {
-            TournamentModel tournamentModel = new TournamentModel(tournament);
-            tournamentModels.add(tournamentModel);
+        //Checks if the file is empty.
+        if(tournaments != null){
+            ArrayList<TournamentModel> tournamentModels = new ArrayList<>();
+            for (Tournament tournament : tournaments) {
+                TournamentModel tournamentModel = new TournamentModel(tournament);
+                tournamentModels.add(tournamentModel);
+            }
+            tblTournaments.getItems().addAll(tournamentModels);
         }
-        tblTournaments.getItems().addAll(tournamentModels);
 
     }
 

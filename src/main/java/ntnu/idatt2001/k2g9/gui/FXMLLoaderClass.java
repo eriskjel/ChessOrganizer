@@ -19,7 +19,7 @@ import java.io.IOException;
 public class FXMLLoaderClass {
 
 
-    private Stage stage;
+    private static Stage stage;
 
 
     /**
@@ -29,7 +29,7 @@ public class FXMLLoaderClass {
      * @throws IOException exception
      */
     @FXML
-    public void goToAdminTournamentHub(ActionEvent actionEvent) throws IOException {
+    public static void goToAdminTournamentHub(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("admin-hub.fxml"));
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
@@ -47,7 +47,7 @@ public class FXMLLoaderClass {
      */
 
     @FXML
-    public void gotoAdminManageTournament(ActionEvent actionEvent) throws IOException {
+    public static void gotoAdminManageTournament(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("admin-manage-tournaments.fxml"));
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
@@ -64,7 +64,7 @@ public class FXMLLoaderClass {
      * @param actionEvent event
      * @throws IOException exception
      */
-    public void adminLogOut(ActionEvent actionEvent) throws IOException {
+    public static void adminLogOut(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("login.fxml"));
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
@@ -81,7 +81,7 @@ public class FXMLLoaderClass {
      * @throws IOException exception
      */
     @FXML
-    public void goToAddTournament(ActionEvent actionEvent) throws IOException {
+    public static void goToAddTournament(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("admin-add-tournament.fxml"));
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
@@ -98,7 +98,7 @@ public class FXMLLoaderClass {
      * @param actionEvent actionevent
      * @throws IOException exception
      */
-    public void goToBrackets(ActionEvent actionEvent) throws IOException {
+    public static void goToBrackets(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("knockout-admin-view-bracket.fxml"));
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
@@ -114,7 +114,7 @@ public class FXMLLoaderClass {
      * @param actionEvent actionevent
      * @throws IOException exception
      */
-    public void goToSpecificTournament(ActionEvent actionEvent) throws IOException {
+    public static void goToSpecificTournament(ActionEvent actionEvent) throws IOException {
         //load new fxml file
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("admin-edit-tournament.fxml"));
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -131,7 +131,7 @@ public class FXMLLoaderClass {
      * @param actionEvent actionevent
      * @throws IOException exception
      */
-    public void goToKnockoutBracket(ActionEvent actionEvent) throws IOException {
+    public static void goToKnockoutBracket(ActionEvent actionEvent) throws IOException {
         //load new fxml file
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("knockout-admin-view-bracket.fxml"));
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -148,7 +148,7 @@ public class FXMLLoaderClass {
      * @param actionEvent actionevent
      * @throws IOException exception
      */
-    public void goToRoundRobinBracket(ActionEvent actionEvent) throws IOException {
+    public static void goToRoundRobinBracket(ActionEvent actionEvent) throws IOException {
         //load new fxml file
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("robin-admin-view-bracket.fxml"));
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -165,7 +165,7 @@ public class FXMLLoaderClass {
      * @param actionEvent actionevent
      * @throws IOException exception
      */
-    public void goToSwissBracket(ActionEvent actionEvent) throws IOException {
+    public static void goToSwissBracket(ActionEvent actionEvent) throws IOException {
         //load new fxml file
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("swiss-admin-view-bracket.fxml"));
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();

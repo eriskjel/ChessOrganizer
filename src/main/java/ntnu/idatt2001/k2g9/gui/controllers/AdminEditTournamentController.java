@@ -8,9 +8,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import ntnu.idatt2001.k2g9.file.FileHandler;
+import ntnu.idatt2001.k2g9.gui.FXMLLoaderClass;
 import ntnu.idatt2001.k2g9.gui.models.CompetitorModel;
 import ntnu.idatt2001.k2g9.player.Player;
-import ntnu.idatt2001.k2g9.tournament.RegistryClient;
 import ntnu.idatt2001.k2g9.tournament.Tournament;
 
 import java.io.IOException;
@@ -63,7 +63,7 @@ public class AdminEditTournamentController implements Initializable {
      * @throws IOException io exception
      */
     public void goToAddTournament(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.goToAddTournament(actionEvent);
+        FXMLLoaderClass.goToAddTournament(actionEvent);
     }
 
 
@@ -73,7 +73,7 @@ public class AdminEditTournamentController implements Initializable {
      * @throws IOException io exception
      */
     public void goToAdminTournamentHub(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.goToAdminTournamentHub(actionEvent);
+        FXMLLoaderClass.goToAdminTournamentHub(actionEvent);
     }
 
     /**
@@ -82,7 +82,7 @@ public class AdminEditTournamentController implements Initializable {
      * @throws IOException io exception
      */
     public void gotoAdminManageTournament(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.gotoAdminManageTournament(actionEvent);
+        FXMLLoaderClass.gotoAdminManageTournament(actionEvent);
     }
 
     /**
@@ -91,7 +91,7 @@ public class AdminEditTournamentController implements Initializable {
      * @throws IOException io exception
      */
     public void adminLogOut(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.adminLogOut(actionEvent);
+        FXMLLoaderClass.adminLogOut(actionEvent);
     }
 
     public void clearCompetitorTable(){
@@ -250,7 +250,7 @@ public class AdminEditTournamentController implements Initializable {
      * @throws IOException io exception
      */
     public void goToKnockoutBracket(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.goToKnockoutBracket(actionEvent);
+        FXMLLoaderClass.goToKnockoutBracket(actionEvent);
     }
 
     /**
@@ -259,7 +259,7 @@ public class AdminEditTournamentController implements Initializable {
      * @throws IOException io exception
      */
     public void goToRoundRobinBracket(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.goToRoundRobinBracket(actionEvent);
+        FXMLLoaderClass.goToRoundRobinBracket(actionEvent);
     }
 
     /**
@@ -268,7 +268,7 @@ public class AdminEditTournamentController implements Initializable {
      * @throws IOException io exception
      */
     public void goToSwissBracket(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.goToSwissBracket(actionEvent);
+        FXMLLoaderClass.goToSwissBracket(actionEvent);
     }
 
     /**

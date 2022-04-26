@@ -4,19 +4,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import ntnu.idatt2001.k2g9.file.FileHandler;
-import ntnu.idatt2001.k2g9.gui.application.Application;
+import ntnu.idatt2001.k2g9.gui.FXMLLoaderClass;
 import ntnu.idatt2001.k2g9.gui.models.CompetitorModel;
 import ntnu.idatt2001.k2g9.player.Player;
 import ntnu.idatt2001.k2g9.player.PlayerRegistry;
-import ntnu.idatt2001.k2g9.tournament.RegistryClient;
 import ntnu.idatt2001.k2g9.tournament.Tournament;
 
 import java.io.IOException;
@@ -47,7 +42,7 @@ public class AdminAddTournamentController implements Initializable {
      * @throws IOException io exception
      */
     public void goToAdminTournamentHub(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.goToAdminTournamentHub(actionEvent);
+        FXMLLoaderClass.goToAdminTournamentHub(actionEvent);
     }
 
     /**
@@ -56,7 +51,7 @@ public class AdminAddTournamentController implements Initializable {
      * @throws IOException io exception
      */
     public void gotoAdminManageTournament(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.gotoAdminManageTournament(actionEvent);
+        FXMLLoaderClass.gotoAdminManageTournament(actionEvent);
     }
 
     /**
@@ -65,7 +60,7 @@ public class AdminAddTournamentController implements Initializable {
      * @throws IOException io exception
      */
     public void adminLogOut(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.adminLogOut(actionEvent);
+        FXMLLoaderClass.adminLogOut(actionEvent);
     }
 
     /**

@@ -2,7 +2,7 @@ package ntnu.idatt2001.k2g9.gui.controllers;
 
 
 import javafx.event.ActionEvent;
-import ntnu.idatt2001.k2g9.tournament.RegistryClient;
+import ntnu.idatt2001.k2g9.gui.FXMLLoaderClass;
 
 import java.io.IOException;
 
@@ -18,7 +18,7 @@ public class AdminHubController {
      * @throws IOException io exception
      */
     public void goToAddTournament(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.goToAddTournament(actionEvent);
+        FXMLLoaderClass.goToAddTournament(actionEvent);
     }
 
 
@@ -28,7 +28,7 @@ public class AdminHubController {
      * @throws IOException io exception
      */
     public void goToAdminTournamentHub(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.goToAdminTournamentHub(actionEvent);
+        FXMLLoaderClass.goToAdminTournamentHub(actionEvent);
     }
 
     /**
@@ -37,7 +37,7 @@ public class AdminHubController {
      * @throws IOException io exception
      */
     public void gotoAdminManageTournament(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.gotoAdminManageTournament(actionEvent);
+        FXMLLoaderClass.gotoAdminManageTournament(actionEvent);
     }
 
     /**
@@ -46,7 +46,7 @@ public class AdminHubController {
      * @throws IOException io exception
      */
     public void adminLogOut(ActionEvent actionEvent) throws IOException {
-        RegistryClient.fxmlLoaderClass.adminLogOut(actionEvent);
+        FXMLLoaderClass.adminLogOut(actionEvent);
     }
 
 
