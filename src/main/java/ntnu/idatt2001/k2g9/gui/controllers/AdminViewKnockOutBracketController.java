@@ -208,6 +208,7 @@ public class AdminViewKnockOutBracketController implements Initializable {
             }
             buttonHashMap.get("x"+(roundIndex+1)+ "" + (int) (matchIndex/2) + "" + matchIndex%2).setText(button.getText());
         }
+        f.updateTournament(tournament);
     }
 
     /**
