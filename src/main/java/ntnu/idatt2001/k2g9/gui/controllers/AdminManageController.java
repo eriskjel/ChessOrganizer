@@ -178,6 +178,8 @@ public class AdminManageController implements Initializable {
     }
 
     public void deleteTournament(ActionEvent actionEvent) {
-        //TODO: danielski add ur code her fatnigga
+        int selectedTournamentID = getSelectedTournamentID();
+        f.removeTournament(selectedTournamentID);
+        refreshTable();
     }
 }
