@@ -13,6 +13,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 @JsonDeserialize(using = TournamentDeserializer.class)
+/**
+ * Class representing a Tournament object. This class contains all information about players, date, name etc. for a tournament.
+ * The class has defined which de-serializer to use when creating Tournament objects from ObjectMapper.
+ */
 public class Tournament {
     private PlayerRegistry players;
     private String name;
@@ -25,9 +29,15 @@ public class Tournament {
 
 
     //Static variable that is used for giving Tournaments their IDs. ID is set in constructor then never reassigned.
-
     public static int idSetter = new FileHandler().initIDs() + 1;
 
+    /**
+     * Constructor that only uses name, date and layout. Used for creating a brand new Tournament.
+     * @param name
+     * @param date
+     * @param layout
+     * @throws NullPointerException
+     */
     public Tournament(String name, LocalDate date, String layout) throws NullPointerException {
         this.name = name;
         this.date = date;
@@ -38,6 +48,16 @@ public class Tournament {
 
     }
 
+    /**
+     * Contructor with all data given. Used for reconstructing a tournament that has been saved in the JSON file.
+     * @param name
+     * @param date
+     * @param tournamentBracket
+     * @param layout
+     * @param organizer
+     * @param tournamentID
+     * @param players
+     */
     public Tournament(String name, LocalDate date, ArrayList<Match[]> tournamentBracket, String layout, Admin organizer, int tournamentID, PlayerRegistry players) {
         this.name = name;
         this.date = date;
@@ -48,52 +68,98 @@ public class Tournament {
         this.players = players;
     }
 
-
+    /**
+     * Returns the tournament bracket.
+     * @return
+     */
     public ArrayList<Match[]> getTournamentBracket() {
         return tournamentBracket;
     }
-    /*
-    public ArrayList<Player> getPlayers() {
-        return players.getPlayers();
-    }
 
+    /**
+     * Returns the player register.
+     * @return
      */
-
     public PlayerRegistry getPlayerRegistry(){
         return this.players;
     }
 
-
-
-
+    /**
+     * Returns the total rounds in the tournament.
+     * @return
+     */
     public int getTotalRounds() {
         return tournamentBracket.size();
     }
+
+    /**
+     * Returns the id of the tournament.
+     * @return
+     */
     public int getTournamentID() {
         return tournamentID;
     }
+
+    /**
+     * Returns the tournament format.
+     * @return
+     */
     public String getLayout() {
         return layout;
     }
+
+    /**
+     * Returns the date of the tournament.
+     * @return
+     */
     public LocalDate getDate() {
         return date;
     }
+
+    /**
+     * Returns the tournament name.
+     * @return
+     */
     public String getName() {
         return name;
     }
+
+    /**
+     * Sets the tournament format.
+     * @param layout
+     */
     public void setLayout(String layout) {
         this.layout = layout;
     }
+
+    /**
+     * Sets the player Registry.
+     * @param players
+     */
     public void setPlayers(PlayerRegistry players) {
         this.players = players;
     }
+
+    /**
+     * Sets the date of the tournament.
+     * @param date
+     */
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
+    /**
+     * Sets the name of the tournament.
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Adds all players from parameter ArrayList to the PlayerRegistry.
+     * @param playerList
+     */
     public void addFromList(ArrayList<Player> playerList){
         for(Player p : playerList){
             p.setPlayerID(players.getSize());

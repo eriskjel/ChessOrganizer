@@ -20,6 +20,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class that deserializes the Tournament object. This class uses the other deserializers objects in order to create
+ * a Tournament object with all the saved data.
+ */
 public class TournamentDeserializer extends StdDeserializer{
 
     public TournamentDeserializer() {
@@ -30,6 +34,13 @@ public class TournamentDeserializer extends StdDeserializer{
         super(vc);
     }
 
+    /**
+     * Method creates a Tournament object from JSON formatted data.
+     * @param jp
+     * @param deserializationContext
+     * @return
+     * @throws IOException
+     */
     @Override
     public Object deserialize(JsonParser jp, DeserializationContext deserializationContext) throws IOException{
         JsonNode node = jp.getCodec().readTree(jp);

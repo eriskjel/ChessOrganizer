@@ -9,7 +9,7 @@ import java.util.Objects;
 
 /**
  * Class that represents an Admin in the application. Contains an ArrayList of all the tournaments the admin organises.
- * Also contains login in
+ * Also contains login in information.
  */
 public class Admin{
     private ArrayList<Tournament> myTournaments;

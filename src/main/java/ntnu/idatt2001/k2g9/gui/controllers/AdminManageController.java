@@ -114,7 +114,7 @@ public class AdminManageController implements Initializable {
     }
 
     /**
-     * clear all data from table, and updates and inserts data from the Registryclient
+     * clear all data from table, and updates and inserts data from the JSON file.
      */
     public void refreshTable() {
         //clear table beforehand
@@ -124,7 +124,6 @@ public class AdminManageController implements Initializable {
 
         //add tournament
         ArrayList<Tournament> tournaments = f.readAllFromFile();
-        //ArrayList<Tournament> tournaments = RegistryClient.tournamentRegistry.getTournaments();
         ArrayList<TournamentModel> tournamentModels = new ArrayList<>();
         for (Tournament tournament : tournaments) {
             TournamentModel tournamentModel = new TournamentModel(tournament);
@@ -164,7 +163,6 @@ public class AdminManageController implements Initializable {
     public void determineAndGoToBracket(ActionEvent actionEvent) throws IOException, IllegalArgumentException {
         int selectedTournamentID = getSelectedTournamentID();
         String layout = f.readTournamentFromFile(selectedTournamentID).getLayout();
-        //String layout = RegistryClient.tournamentRegistry.getTournament(selectedTournamentID).getLayout();
         switch (layout) {
             case "Knock-Out" -> {
                 AdminViewKnockOutBracketController.setTournamentID(selectedTournamentID);

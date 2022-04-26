@@ -255,6 +255,10 @@ public class FileHandler {
                     .max().orElse(0);
     }
 
+    /**
+     * Method that is used once in the start of the application. Method creates the json file if it does not exist.
+     * @throws IOException
+     */
     public void initFile() throws IOException {
         File f = new File(defaultPath);
         if(!f.exists()){

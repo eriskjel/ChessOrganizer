@@ -145,12 +145,9 @@ public class AdminEditTournamentController implements Initializable {
         //removes from tournament
         Player player = new Player(singleCompetitor.get(0).getName(), singleCompetitor.get(0).getAge());
         player.setPlayerID(singleCompetitor.get(0).getCompetitorID());
-        //RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayerRegistry().removePlayer(player);
         this.t.removePlayer(player);
 
-        //RegistryClient.tournamentRegistry.getTournament(getTournamentID()).removePlayer(player);
         this.t.getPlayerRegistry().resetPlayerIDs();
-        //RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getPlayerRegistry().resetPlayerIDs();
     }
 
     /**
@@ -161,18 +158,13 @@ public class AdminEditTournamentController implements Initializable {
         Player player = new Player(this.inpFullName.getText(), Integer.parseInt(this.inpAge.getText()));
         this.t.addPlayer(player);
 
-        //RegistryClient.tournamentRegistry.getTournament(getTournamentID()).addPlayer(player);
 
         //object to be added to table in GUI.
-        //CompetitorModel competitor = new CompetitorModel(this.tblName.getText(), Integer.parseInt(this.tblAge.getText()), );
         CompetitorModel competitor = new CompetitorModel(player);
         tableCompetitors.getItems().add(competitor);
 
-
         //creates new bracket with the new competitor
         this.t.createTournamentBracket();
-        //RegistryClient.tournamentRegistry.getTournament(getTournamentID()).createTournamentBracket();
-
 
         //resets input fields
         this.inpFullName.setText("");
@@ -231,7 +223,6 @@ public class AdminEditTournamentController implements Initializable {
         //will be null if not altered with in application, is so the program uses the already registered format
         if (newTournamentFormat == null){
             newTournamentFormat = this.t.getLayout();
-            //newTournamentFormat = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout();
         }
 
 
@@ -239,19 +230,13 @@ public class AdminEditTournamentController implements Initializable {
         LocalDate date = this.inpDate.getValue();
         if (date == null){
             date = this.t.getDate();
-            //date = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getDate();
         }
         if(isDateValid(date)){
             //updates with fresh info
             this.t.setName(tournamentName);
             this.t.setDate(date);
             this.t.setLayout(newTournamentFormat);
-            /*
-            RegistryClient.tournamentRegistry.getTournament(tournamentID).setName(tournamentName);
-            RegistryClient.tournamentRegistry.getTournament(tournamentID).setDate(date);
-            RegistryClient.tournamentRegistry.getTournament(tournamentID).setLayout(newTournamentFormat);
 
-             */
             //Saves all changes to the tournament.
             this.f.updateTournament(this.t);
             //loads new fxml file
@@ -293,7 +278,6 @@ public class AdminEditTournamentController implements Initializable {
      */
     public void goToBracket(ActionEvent actionEvent) throws IOException {
         String layout = t.getLayout();
-        //String layout = RegistryClient.tournamentRegistry.getTournament(getTournamentID()).getLayout();
         switch (layout) {
             case "Knock-Out" -> {
                 AdminViewKnockOutBracketController.setTournamentID(getTournamentID());

@@ -6,7 +6,7 @@ import ntnu.idatt2001.k2g9.file.PlayerDeserializer;
 import java.util.Objects;
 
 /**
- * Subclass representing a Player user. This player has stored ranking, age, fideRating and win/loss statistics.
+ * Subclass representing a Player user. This is an unregistered player and contains name, age and playerID.
  *
  */
 @JsonDeserialize(using = PlayerDeserializer.class)
@@ -27,6 +27,12 @@ public class Player{
         this.age = age;
     }
 
+    /**
+     * Constructor for a player that already has been created but has been saved as JSON.
+     * @param name
+     * @param age
+     * @param playerID
+     */
     public Player(String name, int age, int playerID) {
         this.name = name;
         this.age = age;

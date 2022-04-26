@@ -17,6 +17,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Class that de-serializes a PlayerRegistry object.
+ */
 public class PlayerRegistryDeserializer extends StdDeserializer{
 
     public PlayerRegistryDeserializer() {
@@ -27,7 +30,13 @@ public class PlayerRegistryDeserializer extends StdDeserializer{
         super(vc);
     }
 
-
+    /**
+     * Writes the PlayerRegistry out as a JSON formatted String.
+     * @param jp
+     * @param deserializationContext
+     * @return
+     * @throws IOException
+     */
     @Override
     public Object deserialize(JsonParser jp, DeserializationContext deserializationContext) throws IOException {
         JsonNode node = jp.getCodec().readTree(jp);
