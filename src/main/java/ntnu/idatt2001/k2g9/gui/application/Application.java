@@ -26,6 +26,7 @@ import java.io.IOException;
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
+        new FileHandler().initFile();
     }
 
     /**

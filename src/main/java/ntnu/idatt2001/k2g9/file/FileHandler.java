@@ -9,6 +9,7 @@ import org.json.simple.parser.ParseException;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -252,6 +253,17 @@ public class FileHandler {
             return tournaments.stream()
                     .mapToInt(Tournament -> Tournament.getTournamentID())
                     .max().orElse(0);
+    }
+
+    public void initFile() throws IOException {
+        File f = new File(defaultPath);
+        if(!f.exists()){
+            f.createNewFile();
+            FileWriter writer = new FileWriter(f);
+            writer.write("[]");
+            writer.close();
+        }
+
     }
 }
 
