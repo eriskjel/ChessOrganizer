@@ -23,7 +23,7 @@ import java.io.IOException;
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1300, 680);
-        stage.setTitle("Hello!");
+        stage.setTitle("Chess tournament organizer");
         stage.setScene(scene);
         stage.show();
         new FileHandler().initFile();
