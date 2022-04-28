@@ -381,6 +381,12 @@ public class AdminViewKnockOutBracketController implements Initializable {
 
         //Gets tournament and bracket.
         Tournament tournament = f.readTournamentFromFile(tournamentID);
+        try {
+            tournamentWinner.setText(tournament.getTournamentBracket().get(tournament.getTournamentBracket().size() - 1)[0].getWinner().getName());
+        }
+        catch (NullPointerException e){
+
+        }
         this.fillKnockoutBracketPage(tournament);
     }
 }
