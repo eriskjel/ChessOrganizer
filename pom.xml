@@ -133,7 +133,7 @@
             <uniqueVersion>false</uniqueVersion>
             <id>corp1</id>
             <name>Corporate Repository</name>
-            <url>file:///C:\Users\eriks\OneDrive - NTNU\NTNU\2. Semester\IDATT1002\Prosjekt\idatt1002_2022_k2g9\idatt1002_2022_k2g9</url>
+            <url>file:/${user.home}/Desktop</url>
             <layout>default</layout>
         </repository>
     </distributionManagement>

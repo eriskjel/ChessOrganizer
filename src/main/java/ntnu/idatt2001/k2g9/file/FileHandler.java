@@ -25,7 +25,7 @@ public class FileHandler {
     private String defaultPath;
 
     public FileHandler(){
-        this.defaultPath = "src/main/resources/ntnu/idatt2001/k2g9/gui/registry/tournaments/Tournaments.json";
+        this.defaultPath = "Tournaments.json";
         this.mapper = new ObjectMapper();
     }
 
