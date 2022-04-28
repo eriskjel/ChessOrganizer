@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FileHandlerTest {
-
     public String testPath = "src/main/resources/ntnu/idatt2001/k2g9/gui/registry/tournaments/TournamentsTest.json";
 
     @Test
@@ -160,60 +159,5 @@ public class FileHandlerTest {
         Assertions.assertEquals(tournament,control);
 
     }
-    //Testene er unødvendig?
-/*
-    @Test
-    public void readFromFile() throws IOException, ParseException {
-        //Initialize a PlayerRegistry with 5 players to use in the tournament.
-        PlayerRegistry players = new PlayerRegistry();
-        for(int i = 0 ; i < 5 ; i++){
-            players.addPlayer(new Player("Test"+ Integer.toString(i),20+i));
-        }
-
-        //Create a tournament with the players above.
-        Tournament tournament = new Tournament("TournamentTestOne", LocalDate.now(), "Knock-Out");
-        tournament.setPlayers(players);
-        tournament.createTournamentBracket();
-
-        //Filehandler object created with the testpath.
-        FileHandler fileHandler = new FileHandler(testPath);
-        fileHandler.writeTournamentToFile(tournament);
-
-        //Confirms that the tournament has been read properly.
-        assertEquals(tournament, fileHandler.readTournamentFromFile(0));
-
-        //Overwrites the test file with an empty JSONArray after testing is done.
-        ObjectMapper objectMapper = new ObjectMapper();
-        JSONArray jsonArray = new JSONArray();
-        objectMapper.writeValue(new File(testPath),jsonArray);
-    }
-
-
-    @Test
-    public void readAndWriteToFile() throws IOException, ParseException {
-        PlayerRegistry players = new PlayerRegistry();
-
-        for(int i = 0 ; i<5 ; i++){
-            players.addPlayer(new Player("Test" + i,20+i));
-        }
-
-        Tournament tournament = new Tournament("TournamentTestOne", LocalDate.now(), "Knock-Out");
-        tournament.setPlayers(players);
-        tournament.createTournamentBracket();
-
-        FileHandler fileHandler = new FileHandler(testPath);
-        fileHandler.writeTournamentToFile(tournament);
-
-        Tournament sameTournamentFromFile = fileHandler.readTournamentFromFile(tournament.getTournamentID());
-        assertEquals(tournament, sameTournamentFromFile);
-
-        //Overwrites the test file with an empty JSONArray after testing is done.
-        ObjectMapper objectMapper = new ObjectMapper();
-        JSONArray jsonArray = new JSONArray();
-        objectMapper.writeValue(new File(testPath),jsonArray);
-
-    }
-
- */
 
 }
