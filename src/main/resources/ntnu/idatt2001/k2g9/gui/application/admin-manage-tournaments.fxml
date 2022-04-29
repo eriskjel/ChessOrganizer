@@ -66,7 +66,6 @@
                         <String fx:value="activeBtn" />
                      </styleClass></Button>
                   <Button layoutY="62.0" mnemonicParsing="false" onAction="#goToAddTournament" prefHeight="62.0" prefWidth="200.0" styleClass="button-menu" stylesheets="@../styles.css" text="Add tournament" />
-                  <Button layoutY="186.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" styleClass="button-menu" stylesheets="@../styles.css" text="Admin settings" />
                </children>
             </Pane>
             <Pane prefHeight="86.0" prefWidth="1300.0" styleClass="top-bar" stylesheets="@../styles.css">
