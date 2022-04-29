@@ -124,7 +124,12 @@ public class AdminViewKnockOutBracketController implements Initializable {
         FXMLLoaderClass.adminLogOut(actionEvent);
     }
 
-    //TODO: add javadoc @navid muradi
+    /**
+     * Method that is called whenever a player has to be moved up or down.
+     * Sets the text of the interactive buttons and changes variables for the match objects in the bracket.
+     *
+     * @param event When buttons with player name is clicked on bracket.
+     */
     public void setWinnerKnockout(ActionEvent event) {
         //get fx id from button clicked
         Button button = (Button) event.getSource();
@@ -137,7 +142,6 @@ public class AdminViewKnockOutBracketController implements Initializable {
 
         //Tournament tournament = RegistryClient.tournamentRegistry.getTournament(tournamentID);
         ArrayList<Match[]> bracket = tournament.getTournamentBracket();
-
 
         //Checks if the current player is in the final round.
         if (roundIndex+1 == tournament.getTotalRounds()){
@@ -157,8 +161,13 @@ public class AdminViewKnockOutBracketController implements Initializable {
             }
             else if(playerIndex == 1){
                 if(buttonHashMap.get("x" + roundIndex + matchIndex + (playerIndex - 1)).getText().isEmpty()){
-                    button.setText("");
-                    bracket.get(roundIndex-1)[matchIndex*2+playerIndex].setWinner(null);
+                    //If there is no match for the player to be moved back to, returns instead.
+                    try {
+                        Match match = bracket.get(roundIndex-1)[matchIndex*2+playerIndex];
+                        button.setText("");
+                        match.setWinner(null);
+                        tournamentWinner.setText("");
+                    } catch (IndexOutOfBoundsException e) { return; }
                 }
                 else {
                     bracket.get(roundIndex)[matchIndex].setWinner(bracket.get(roundIndex)[matchIndex].getPlayer2());
@@ -171,6 +180,7 @@ public class AdminViewKnockOutBracketController implements Initializable {
                 && bracket.get(roundIndex)[matchIndex].getWinner().getName().equals(button.getText())){
             bracket.get(roundIndex)[matchIndex].setWinner(null);
             buttonHashMap.get("x"+(roundIndex+1)+ "" + (int) (matchIndex/2) + "" + matchIndex%2).setText("");
+            tournamentWinner.setText("");
         }
 
         else if(playerIndex == 0) {
@@ -178,15 +188,18 @@ public class AdminViewKnockOutBracketController implements Initializable {
                 //If a player1 is clicked while player2 of match hasn't been assigned, player1 will be moved back.
                 button.setText("");
                 bracket.get(roundIndex-1)[matchIndex*2+playerIndex].setWinner(null);
+                tournamentWinner.setText("");
             }
             else if (matchIndex%2 == 0){
                 //If player 1 is the winner, and they're in an even match, they get sent to the match in next round as player 1
                 bracket.get(roundIndex)[matchIndex].setWinner(bracket.get(roundIndex)[matchIndex].getPlayer1());
                 bracket.get(roundIndex+1)[(int) (matchIndex/2)].setPlayer1(bracket.get(roundIndex)[matchIndex].getPlayer1());
+                tournamentWinner.setText("");
             }
             else {//If player 1 is the winner, and they're in an even match, they get sent to the match in next round as player 2
                 bracket.get(roundIndex)[matchIndex].setWinner(bracket.get(roundIndex)[matchIndex].getPlayer1());
                 bracket.get(roundIndex + 1)[(int) ( matchIndex / 2 )].setPlayer2(bracket.get(roundIndex)[matchIndex].getPlayer1());
+                tournamentWinner.setText("");
             }
             buttonHashMap.get("x"+(roundIndex+1)+ "" + (int) (matchIndex/2) + "" + matchIndex%2).setText(button.getText());
         }
@@ -195,16 +208,19 @@ public class AdminViewKnockOutBracketController implements Initializable {
                 //If a player2 is clicked while player1 of match hasn't been assigned, player2 will be moved back.
                 button.setText("");
                 bracket.get(roundIndex-1)[matchIndex*2+playerIndex].setWinner(null);
+                tournamentWinner.setText("");
             }
             else if (matchIndex%2 == 0){
                 //If player 2 is the winner, and they're in an even match, they get sent to the match in next round as player 1
                 bracket.get(roundIndex)[matchIndex].setWinner(bracket.get(roundIndex)[matchIndex].getPlayer2());
                 bracket.get(roundIndex+1)[(int) (matchIndex/2)].setPlayer1(bracket.get(roundIndex)[matchIndex].getPlayer2());
+                tournamentWinner.setText("");
             }
             else {
                 //If player 2 is the winner, and they're in an odd match, they get sent to the match in next round as player 2
                 bracket.get(roundIndex)[matchIndex].setWinner(bracket.get(roundIndex)[matchIndex].getPlayer2());
                 bracket.get(roundIndex+1)[(int) (matchIndex/2)].setPlayer2(bracket.get(roundIndex)[matchIndex].getPlayer2());
+                tournamentWinner.setText("");
             }
             buttonHashMap.get("x"+(roundIndex+1)+ "" + (int) (matchIndex/2) + "" + matchIndex%2).setText(button.getText());
         }
