@@ -56,6 +56,6 @@ pages:
   - mv .public public
   artifacts:
     paths:
-    - src/main/java/ntnu/idatt2001/k2g9
+    - public
   only:
   - main
