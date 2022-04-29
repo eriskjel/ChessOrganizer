@@ -20,7 +20,9 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 /**
- * Controller that administers the fxml file "admin-hub-tournaments" and handles all the events on said fxml file
+ * Controller that administers the fxml file "AdminViewKnockoutBracketController" and handles all the events on said fxml file.
+ * This controller makes it possible to interactively manage the tournament bracket with mouse clicks.
+ *
  */
 public class AdminViewKnockOutBracketController implements Initializable {
 
