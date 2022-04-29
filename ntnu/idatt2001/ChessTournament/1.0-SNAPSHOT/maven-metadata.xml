@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>ntnu.idatt2001</groupId>
+  <artifactId>ChessTournament</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20220428.124859</timestamp>
+      <buildNumber>6</buildNumber>
+    </snapshot>
+    <lastUpdated>20220428124859</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>1.0-20220428.124859-6</value>
+        <updated>20220428124859</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>1.0-20220428.124859-6</value>
+        <updated>20220428124859</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <classifier>shaded</classifier>
+        <extension>jar</extension>
+        <value>1.0-20220428.124859-6</value>
+        <updated>20220428124859</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>

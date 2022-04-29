@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Polyline?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="680.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntnu.idatt2001.k2g9.gui.controllers.AdminViewKnockOutBracketController">
+   <children>
+      <MenuBar prefHeight="25.0" prefWidth="1217.0" VBox.vgrow="NEVER">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="New" />
+                  <MenuItem mnemonicParsing="false" text="Open…" />
+                  <Menu mnemonicParsing="false" text="Open Recent" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <MenuItem mnemonicParsing="false" text="Save As…" />
+                  <MenuItem mnemonicParsing="false" text="Revert" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Preferences…" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Quit" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Undo" />
+                  <MenuItem mnemonicParsing="false" text="Redo" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Cut" />
+                  <MenuItem mnemonicParsing="false" text="Copy" />
+                  <MenuItem mnemonicParsing="false" text="Paste" />
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Select All" />
+                  <MenuItem mnemonicParsing="false" text="Unselect All" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="739.0" prefWidth="1251.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Pane layoutY="86.0" prefHeight="570.0" prefWidth="200.0" styleClass="top-bar" stylesheets="@../styles.css">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#goToAdminTournamentHub" prefHeight="62.0" prefWidth="200.0" style="-fx-text-alignment: left;" styleClass="button-menu" stylesheets="@../styles.css" text="Tournament hub" />
+                  <Button layoutY="124.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" stylesheets="@../styles.css" text="Manage tournaments">
+                     <styleClass>
+                        <String fx:value="button-menu" />
+                        <String fx:value="activeBtn" />
+                     </styleClass>
+                  </Button>
+                  <Button layoutY="62.0" mnemonicParsing="false" onAction="#goToAddTournament" prefHeight="62.0" prefWidth="200.0" styleClass="button-menu" stylesheets="@../styles.css" text="Add tournament" />
+               </children>
+            </Pane>
+            <Pane prefHeight="86.0" prefWidth="1300.0" styleClass="top-bar" stylesheets="@../styles.css">
+               <children>
+                  <Label layoutY="29.0" prefHeight="30.0" prefWidth="286.0" styleClass="p-header" stylesheets="@../styles.css" text="Chess tournament organizer">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <Button layoutX="1190.0" layoutY="32.0" mnemonicParsing="false" onAction="#adminLogOut" styleClass="button-logout" stylesheets="@../styles.css" text="Log out" />
+               </children>
+            </Pane>
+            <Pane id="tblCompetitors" layoutX="200.0" layoutY="86.0" prefHeight="570.0" prefWidth="1100.0" stylesheets="@../styles.css">
+               <children>
+                  <Label layoutX="251.0" layoutY="14.0" prefHeight="51.0" prefWidth="299.0" styleClass="header" stylesheets="@../styles.css" text="View bracket for:">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <Pane layoutY="59.0" prefHeight="512.0" prefWidth="1100.0">
+                     <children>
+                        <Button layoutX="82.0" layoutY="30.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x000" />
+                        <Button layoutX="82.0" layoutY="150.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x010" />
+                        <Button layoutX="82.0" layoutY="70.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x001" />
+                        <Button layoutX="82.0" layoutY="270.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x020" />
+                        <Button layoutX="212.0" layoutY="95.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x100" />
+                        <Button layoutX="324.0" layoutY="245.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x201" />
+                        <Button layoutX="82.0" layoutY="430.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x031" />
+                        <Button layoutX="82.0" layoutY="190.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x011" />
+                        <Button layoutX="82.0" layoutY="310.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x021" />
+                        <Button layoutX="82.0" layoutY="390.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x030" />
+                        <Button layoutX="212.0" layoutY="125.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x101" />
+                        <Button layoutX="324.0" layoutY="215.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x200" />
+                        <Button layoutX="212.0" layoutY="365.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x111" />
+                        <Button layoutX="212.0" layoutY="335.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x110" />
+                        <Button layoutX="946.0" layoutY="30.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x040" />
+                        <Button layoutX="946.0" layoutY="150.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x050" />
+                        <Button layoutX="946.0" layoutY="70.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x041" />
+                        <Button layoutX="946.0" layoutY="270.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x060" />
+                        <Button layoutX="946.0" layoutY="430.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x071" />
+                        <Button layoutX="946.0" layoutY="190.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x051" />
+                        <Button layoutX="946.0" layoutY="310.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x061" />
+                        <Button layoutX="946.0" layoutY="390.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x070" />
+                        <Button layoutX="802.0" layoutY="95.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x120" />
+                        <Button layoutX="802.0" layoutY="125.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x121" />
+                        <Button layoutX="802.0" layoutY="365.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x131" />
+                        <Button layoutX="802.0" layoutY="335.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x130" />
+                        <Button layoutX="698.0" layoutY="215.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x210" />
+                        <Button layoutX="698.0" layoutY="245.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x211" />
+                        <Button layoutX="451.0" layoutY="231.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x300" />
+                        <Button layoutX="555.0" layoutY="231.0" mnemonicParsing="false" onAction="#setWinnerKnockout" prefHeight="25.0" prefWidth="70.0" styleClass="winner" stylesheets="@../styles.css" text="Player 1" fx:id="x301" />
+                        <TextField fx:id="tournamentWinner" editable="false" layoutX="451.0" layoutY="144.0" prefHeight="36.0" prefWidth="174.0">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </TextField>
+                        <Text layoutX="438.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tournament Winner" textAlignment="CENTER" wrappingWidth="200.0">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Polyline fill="#ff484800" layoutX="374.0" layoutY="62.0" points="-170.0, 46.0, -191.0, 46.0, -191.0, -1.0, -217.0, -1.0" strokeWidth="3.0" fx:id="x00" />
+                        <Polyline fill="#80ff0000" layoutX="212.0" layoutY="205.0" points="-8.0, -68.0, -29.0, -68.0, -29.0, -20.0, -54.0, -20.0" strokeWidth="3.0" fx:id="x01" />
+                        <Polyline fill="#80ff0000" layoutX="222.0" layoutY="215.0" points="-16.0, 162.5, -38.0, 162.5, -38.0, 204.0, -64.0, 204.0" strokeWidth="3.0" fx:id="x03" />
+                        <Polyline fill="#ff484800" layoutX="384.0" layoutY="72.0" points="-178.0, 274.0, -200.0, 274.0, -200.0, 227.0, -224.0, 227.0" strokeWidth="3.0" fx:id="x02" />
+                        <Polyline fill="#80ff0000" layoutX="232.0" layoutY="225.0" points="85.0, 36.0, 69.0, 36.0, 69.0, 137.0, 58.0, 137.0" strokeWidth="3.0" fx:id="x11" />
+                        <Polyline fill="#ff484800" layoutX="495.0" layoutY="99.0" points="-56.0, 142.0, -76.0, 142.0, -76.0, 142.0, -93.0, 142.0" strokeWidth="3.0" fx:id="x20" />
+                        <Polyline fill="#ff484800" layoutX="394.0" layoutY="82.0" points="-77.0, 155.0, -93.0, 155.0, -93.0, 42.0, -106.0, 42.0" strokeWidth="3.0" fx:id="x10" />
+                        <Polyline fill="#ff484800" layoutX="505.0" layoutY="109.0" points="152.0, 134.0, 171.0, 134.0, 184.0, 134.0, 140.0, 134.0" strokeWidth="3.0" fx:id="x21" />
+                        <Polyline fill="#ff484800" layoutX="384.0" layoutY="72.0" points="503.0, 34.0, 529.0, 34.0, 529.0, -9.0, 553.0, -9.0" strokeWidth="3.0" fx:id="x04" />
+                        <Polyline fill="#80ff0000" layoutX="222.0" layoutY="215.0" points="666.0, -77.0, 692.0, -77.0, 692.0, -32.0, 716.0, -32.0" strokeWidth="3.0" fx:id="x05" />
+                        <Polyline fill="#ff484800" layoutX="394.0" layoutY="82.0" points="490.0, 264.0, 527.0, 264.0, 527.0, 218.0, 544.0, 218.0" strokeWidth="3.0" fx:id="x06" />
+                        <Polyline fill="#ff484800" layoutX="404.0" layoutY="92.0" points="480.0, 287.0, 518.0, 287.0, 518.0, 332.0, 538.0, 332.0" strokeWidth="3.0" fx:id="x07" />
+                        <Polyline fill="#ff484800" layoutX="404.0" layoutY="92.0" points="370.0, 135.0, 379.0, 135.0, 379.0, 32.0, 390.0, 32.0" strokeWidth="3.0" fx:id="x12" />
+                        <Polyline fill="#ff484800" layoutX="414.0" layoutY="102.0" points="363.0, 155.5, 370.0, 155.5, 370.0, 263.0, 379.0, 263.0" strokeWidth="3.0" fx:id="x13" />
+                        <Polyline fill="#ff484800" layoutX="505.0" layoutY="109.0" points="30.0, 81.0, 30.0, 113.0, 30.0, 96.0, 30.0, 128.0" strokeWidth="3.0" fx:id="x30" />
+                        <Label layoutX="337.0" layoutY="22.0" text="Select a winner by clicking the button corresponding with the match winner" />
+                     </children>
+                  </Pane>
+                  <Label fx:id="lblTournamentName" layoutX="550.0" layoutY="14.0" prefHeight="51.0" prefWidth="354.0" styleClass="header" stylesheets="@../styles.css">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <Pane prefHeight="200.0" prefWidth="200.0" />
+   </children>
+</VBox>

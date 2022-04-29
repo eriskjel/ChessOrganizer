@@ -1,0 +1,185 @@
+.top-bar{
+    -fx-background-color:  #333333;
+}
+
+.p-header{
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+
+}
+
+.header{
+    -fx-text-fill: #2B78E4;
+    -fx-font-size: 35px;
+    -fx-font-weight: bold;
+}
+
+.h2{
+    -fx-text-fill: black;
+    -fx-font-size: 25px;
+    -fx-padding: 0;
+}
+
+.button:hover{
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+}
+
+.menuButton:hover{
+    -fx-cursor: hand;
+}
+
+.date-picker > .arrow-button {
+    -fx-background-color:  #2B78E4;
+}
+
+.date-picker > .arrow-button:hover {
+    -fx-background-color: #5090ec;
+}
+
+.menu-button .label{
+    -fx-text-fill: white;
+}
+
+.menu-button > .arrow-button > .arrow {
+    -fx-text-fill: white;
+}
+
+.button-logout .menuItem .label{
+    -fx-text-fill: #2B78E4;
+}
+
+.button-logout .menuItem:focused{
+    -fx-background-color: #2B78E4;
+    -fx-text-fill: white !important;
+}
+
+.button-logout .menuItem:focused .label{
+    -fx-background-color: #2B78E4;
+    -fx-text-fill: white !important;
+}
+
+.menu-button .arrow-button .arrow{
+    -fx-background-color: white;
+}
+
+.button-menu{
+    -fx-alignment: center-left;
+    -fx-background-color: #333333;
+    -fx-text-fill: #DCDDCE;
+    -fx-font-size: 18px;
+}
+
+.activeBtn{
+    -fx-background-color: #2B78E4;
+    -fx-text-fill: white
+}
+
+.button-logoutd{
+    -fx-text-fill: #2B78E4;
+    -fx-font-weight: bold;
+    -fx-background-color: white;
+}
+
+.button-logout{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-color: #2B78E4;
+}
+
+.p{
+    -fx-font-size: 15px;
+}
+
+.blueBtn{
+    -fx-background-color: #2B78E4;
+}
+
+.btnHub{
+    -fx-border-color: #2B78E4;
+    -fx-border-width: 3px;
+    -fx-border-radius: 4px;
+    -fx-background-color: white;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2B78E4;
+}
+
+.btnHub:hover{
+    -fx-text-fill: white;
+    -fx-background-color: #2B78E4;
+}
+
+.anchor{
+    -fx-text-fill: blue;
+}
+
+.anchor:hover{
+    -fx-underline: true;
+}
+
+.table-view .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+
+.table-view .corner {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header {
+    -fx-background-color: #2B78E4;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: #2B78E4;
+    -fx-background-radius: 7px 7px 0px 0px;
+    -fx-background-insets: 0 0 0 0;
+    -fx-padding: 0 0 3px 0;
+}
+
+.table-view .table-cell{
+    -fx-border-color: transparent;
+    -fx-padding: 2 0 2 10px;
+}
+.table-row-cell:odd{
+    -fx-background-color: white;
+    -fx-background-insets: 0, 0 0 0 0;
+    -fx-padding: 0.0em;
+}
+.table-row-cell:even{
+    -fx-background-color: #E9E9E9;
+    -fx-background-insets: 0, 0 0 0 0;
+    -fx-padding: 0.0em;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #a2a3a9;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-text-alignment: LEFT;
+}
+
+#tableCompetitors .table-column {
+    -fx-alignment: CENTER-LEFT;
+}
+
+.separatorBracket *.line{
+    -fx-border-width: 2px;
+    -fx-background-color: gray;
+    -fx-border-color: gray;
+}
+
+.winner{
+    -fx-background-color: #2B78E4;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.winner:hover{
+    -fx-background-color: white;
+    -fx-text-fill: #2B78E4;
+    -fx-border-color: #2B78E4;
+    -fx-border-radius: 5px;
+    -fx-border-width: 2px;
+}
