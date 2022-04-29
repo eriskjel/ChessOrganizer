@@ -154,7 +154,7 @@
                             <MenuItem mnemonicParsing="false" onAction="#formatSwiss" styleClass="menuItem" text="Swiss-System" />
                           </items>
                         </MenuButton>
-                        <DatePicker id="inpDate" fx:id="inpDate" layoutX="697.0" layoutY="226.0" prefHeight="25.0" prefWidth="181.0" showWeekNumbers="true" />
+                        <DatePicker id="inpDate" fx:id="inpDate" layoutX="697.0" layoutY="226.0" prefHeight="25.0" prefWidth="181.0" promptText="DD.MM.YYYY" showWeekNumbers="true" />
                         <Label layoutX="697.0" layoutY="194.0" prefHeight="21.0" prefWidth="132.0" styleClass="p" stylesheets="@../styles.css" text="Pick date:" />
                         <Label layoutX="694.0" layoutY="18.0" prefHeight="51.0" prefWidth="220.0" styleClass="h2" stylesheets="@../styles.css" text="Tournament info">
                            <padding>
