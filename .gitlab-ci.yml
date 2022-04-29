@@ -58,4 +58,4 @@ pages:
     paths:
     - src/main/java/ntnu/idatt2001/k2g9
   only:
-  - master
+  - main
