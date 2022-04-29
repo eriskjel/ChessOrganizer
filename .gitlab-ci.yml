@@ -47,3 +47,15 @@ deploy-job:      # This job runs in the deploy stage.
     - echo "Deploying application..."
     - echo "Application successfully deployed."
     - $MAVEN_HOME/bin/mvn clean deploy
+
+pages:
+  stage: deploy
+  script:
+  - mkdir .public
+  - cp -r javadoc/* .public
+  - mv .public public
+  artifacts:
+    paths:
+    - public
+  only:
+  - main
